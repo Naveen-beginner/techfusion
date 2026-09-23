@@ -55,7 +55,9 @@
 }
 
 /* Base Reset & Typography */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -207,8 +209,13 @@ body {
 }
 
 @keyframes announcementScroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -441,8 +448,15 @@ body {
 }
 
 @keyframes heroFadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Institution Eyebrow Badge */
@@ -483,8 +497,18 @@ body {
 }
 
 @keyframes pulseGlow {
-  0%, 100% { opacity: 0.6; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 18px var(--accent-cyan); }
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+    box-shadow: 0 0 18px var(--accent-cyan);
+  }
 }
 
 /* Main Event Title */
@@ -744,8 +768,17 @@ body {
 }
 
 @keyframes scrollWheel {
-  0%, 100% { opacity: 0.35; transform: translate(-50%, 0); }
-  50% { opacity: 1; transform: translate(-50%, 10px); }
+
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translate(-50%, 0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, 10px);
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1723,6 +1756,7 @@ footer::before {
   .events-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .events-grid .event-card:nth-child(3) {
     grid-column: span 2;
     max-width: 600px;
@@ -1848,7 +1882,10 @@ footer::before {
 
 /* Reduced Motion for Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
