@@ -79,6 +79,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* --------------------------------------------------------------------------
+   Universal Crisp Vector Icon Styling (Zero External Font Dependencies)
+   -------------------------------------------------------------------------- */
+.tf-icon {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  vertical-align: -0.18em;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, stroke 0.25s ease, color 0.25s ease;
+}
+
+.tf-icon-fill {
+  fill: currentColor;
+  stroke: none;
+}
+
 /* Background Atmosphere */
 .ambient-glow {
   position: fixed;
@@ -170,7 +192,8 @@ body {
   letter-spacing: 0.4px;
 }
 
-.no-fee-text i {
+.no-fee-text i,
+.no-fee-text .tf-icon {
   color: var(--accent-cyan);
   margin-right: 8px;
   font-size: 0.95rem;
@@ -244,7 +267,8 @@ body {
   transition: all 0.25s var(--ease-spring);
 }
 
-.btn-back-innovex i {
+.btn-back-innovex i,
+.btn-back-innovex .tf-icon {
   transition: transform 0.25s ease;
 }
 
@@ -256,7 +280,8 @@ body {
   box-shadow: 0 0 18px rgba(0, 242, 254, 0.25);
 }
 
-.btn-back-innovex:hover i {
+.btn-back-innovex:hover i,
+.btn-back-innovex:hover .tf-icon {
   transform: translateX(-2px);
 }
 
@@ -517,7 +542,8 @@ body {
   color: #ecfcff;
 }
 
-.pill-date i {
+.pill-date i,
+.pill-date .tf-icon {
   color: var(--accent-cyan);
 }
 
@@ -526,7 +552,8 @@ body {
   color: #f3e8ff;
 }
 
-.pill-fest i {
+.pill-fest i,
+.pill-fest .tf-icon {
   color: var(--accent-purple);
 }
 
@@ -535,7 +562,8 @@ body {
   color: #ecfdf5;
 }
 
-.pill-fee i {
+.pill-fee i,
+.pill-fee .tf-icon {
   color: var(--accent-emerald);
 }
 
@@ -1022,7 +1050,8 @@ body {
   font-weight: 500;
 }
 
-.card-meta-item i {
+.card-meta-item i,
+.card-meta-item .tf-icon {
   font-size: 0.75rem;
   color: var(--accent-cyan);
 }
@@ -1046,7 +1075,8 @@ body {
   transition: all 0.3s var(--ease-spring);
 }
 
-.btn-card-action i {
+.btn-card-action i,
+.btn-card-action .tf-icon {
   transition: transform 0.25s ease;
 }
 
@@ -1069,7 +1099,8 @@ body {
   box-shadow: 0 0 25px var(--accent-emerald-glow);
 }
 
-.event-card:hover .btn-card-action i {
+.event-card:hover .btn-card-action i,
+.event-card:hover .btn-card-action .tf-icon {
   transform: translateX(4px);
 }
 
@@ -1263,7 +1294,8 @@ dialog.event-modal[open]::backdrop {
   margin-bottom: 12px;
 }
 
-.modal-block-title i {
+.modal-block-title i,
+.modal-block-title .tf-icon {
   font-size: 1rem;
 }
 
@@ -1527,6 +1559,11 @@ dialog.event-modal[open]::backdrop {
   flex-shrink: 0;
 }
 
+.coord-avatar i,
+.coord-avatar .tf-icon {
+  font-size: 1.4rem;
+}
+
 .coord-info {
   display: flex;
   flex-direction: column;
@@ -1638,7 +1675,8 @@ footer::before {
   transition: all 0.25s ease;
 }
 
-.social-pill i {
+.social-pill i,
+.social-pill .tf-icon {
   font-size: 1rem;
 }
 

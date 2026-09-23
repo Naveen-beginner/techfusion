@@ -131,10 +131,107 @@ const eventsData = [
 ];
 
 // =============================================================================
-// 3. INITIALIZATION ON DOM READY
+// 3. ZERO-DEPENDENCY VECTOR ICON SYSTEM (100% RELIABLE OFFLINE & LOCAL)
+// =============================================================================
+
+const ICONS = {
+  bullhorn: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>`,
+  arrowLeft: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>`,
+  arrowRight: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>`,
+  arrowDown: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>`,
+  bolt: `<svg class="tf-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+  bars: `<svg class="tf-icon" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>`,
+  xmark: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`,
+  calendar: `<svg class="tf-icon" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>`,
+  checkCircle: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
+  compass: `<svg class="tf-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>`,
+  code: `<svg class="tf-icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+  timeline: `<svg class="tf-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><line x1="3" x2="9" y1="12" y2="12"/><line x1="15" x2="21" y1="12" y2="12"/></svg>`,
+  clock: `<svg class="tf-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+  microphone: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>`,
+  laptop: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55A1 1 0 0 1 20.38 20H3.62a1 1 0 0 1-.9-1.45L4 16"/><path d="m10 9-2 2 2 2"/><path d="m14 9 2 2-2 2"/></svg>`,
+  utensils: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" x2="6" y1="1" y2="4"/><line x1="10" x2="10" y1="1" y2="4"/><line x1="14" x2="14" y1="1" y2="4"/></svg>`,
+  award: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>`,
+  userTie: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>`,
+  chalkboardUser: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="m7 21 5-5 5 5"/></svg>`,
+  userGear: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+  graduationCap: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>`,
+  phone: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
+  info: `<svg class="tf-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>`,
+  target: `<svg class="tf-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>`,
+  listCheck: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>`,
+  toolbox: `<svg class="tf-icon" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
+  calendarCheck: `<svg class="tf-icon" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/></svg>`,
+  shield: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  externalLink: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>`,
+  users: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+  ticket: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>`,
+  instagram: `<svg class="tf-icon" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>`,
+  youtube: `<svg class="tf-icon" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><polygon points="10 15 15 12 10 9 10 15" fill="currentColor"/></svg>`,
+  twitter: `<svg class="tf-icon tf-icon-fill" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`
+};
+
+/**
+ * Automatically converts any FontAwesome <i> tags to inline SVGs
+ * to ensure 100% reliable rendering offline, on file://, or on restricted networks.
+ */
+function replaceFaWithSvg() {
+  const iconClassMap = {
+    "fa-bullhorn": ICONS.bullhorn,
+    "fa-arrow-left": ICONS.arrowLeft,
+    "fa-arrow-right": ICONS.arrowRight,
+    "fa-arrow-down": ICONS.arrowDown,
+    "fa-bolt": ICONS.bolt,
+    "fa-bars": ICONS.bars,
+    "fa-xmark": ICONS.xmark,
+    "fa-calendar-days": ICONS.calendar,
+    "fa-circle-check": ICONS.checkCircle,
+    "fa-compass": ICONS.compass,
+    "fa-code": ICONS.code,
+    "fa-timeline": ICONS.timeline,
+    "fa-clock": ICONS.clock,
+    "fa-microphone": ICONS.microphone,
+    "fa-laptop-code": ICONS.laptop,
+    "fa-utensils": ICONS.utensils,
+    "fa-award": ICONS.award,
+    "fa-user-tie": ICONS.userTie,
+    "fa-chalkboard-user": ICONS.chalkboardUser,
+    "fa-user-gear": ICONS.userGear,
+    "fa-graduation-cap": ICONS.graduationCap,
+    "fa-phone": ICONS.phone,
+    "fa-circle-info": ICONS.info,
+    "fa-bullseye": ICONS.target,
+    "fa-list-check": ICONS.listCheck,
+    "fa-toolbox": ICONS.toolbox,
+    "fa-calendar-check": ICONS.calendarCheck,
+    "fa-shield-halved": ICONS.shield,
+    "fa-arrow-up-right-from-square": ICONS.externalLink,
+    "fa-users": ICONS.users,
+    "fa-ticket": ICONS.ticket,
+    "fa-instagram": ICONS.instagram,
+    "fa-youtube": ICONS.youtube,
+    "fa-x-twitter": ICONS.twitter
+  };
+
+  document.querySelectorAll("i").forEach(el => {
+    for (const [cls, svg] of Object.entries(iconClassMap)) {
+      if (el.classList.contains(cls)) {
+        const span = document.createElement("span");
+        span.className = "tf-icon-wrapper";
+        span.innerHTML = svg;
+        el.replaceWith(span.firstElementChild || span);
+        break;
+      }
+    }
+  });
+}
+
+// =============================================================================
+// 4. INITIALIZATION ON DOM READY
 // =============================================================================
 
 document.addEventListener("DOMContentLoaded", () => {
+  replaceFaWithSvg();
   renderEventCards();
   initEventModal();
   initCountdown();
@@ -145,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // =============================================================================
-// 4. RENDER THREE EVENT CARDS DYNAMICALLY
+// 5. RENDER THREE EVENT CARDS DYNAMICALLY
 // =============================================================================
 
 function renderEventCards() {
@@ -170,20 +267,20 @@ function renderEventCards() {
         <!-- Meta list -->
         <div class="card-meta-list">
           <span class="card-meta-item">
-            <i class="fa-solid fa-users"></i> ${event.teamSize}
+            ${ICONS.users} ${event.teamSize}
           </span>
           <span class="card-meta-item">
-            <i class="fa-solid fa-clock"></i> ${event.time}
+            ${ICONS.clock} ${event.time}
           </span>
           <span class="card-meta-item">
-            <i class="fa-solid fa-ticket"></i> ${event.entryFee}
+            ${ICONS.ticket} ${event.entryFee}
           </span>
         </div>
 
         <!-- Action Button -->
         <button type="button" class="btn-card-action" data-event-id="${event.id}">
           <span>VIEW DETAILS</span>
-          <i class="fa-solid fa-arrow-right"></i>
+          ${ICONS.arrowRight}
         </button>
       </div>
     </article>
@@ -528,7 +625,7 @@ function initMobileMenu() {
   toggleBtn.addEventListener("click", () => {
     const isOpen = navLinks.classList.toggle("open");
     toggleBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    toggleBtn.innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    toggleBtn.innerHTML = isOpen ? ICONS.xmark : ICONS.bars;
   });
 
   // Close when clicking any nav link
@@ -536,7 +633,7 @@ function initMobileMenu() {
     link.addEventListener("click", () => {
       navLinks.classList.remove("open");
       toggleBtn.setAttribute("aria-expanded", "false");
-      toggleBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      toggleBtn.innerHTML = ICONS.bars;
     });
   });
 }
