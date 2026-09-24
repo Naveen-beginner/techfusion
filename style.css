@@ -1611,9 +1611,11 @@ dialog.event-modal[open]::backdrop {
   border-color: rgba(234, 179, 8, 0.35);
   color: #fef08a;
 }
+
 .prize-gold .prize-rank {
   color: #facc15;
 }
+
 .prize-gold .prize-amount {
   color: #ffffff;
 }
@@ -1623,9 +1625,11 @@ dialog.event-modal[open]::backdrop {
   border-color: rgba(148, 163, 184, 0.35);
   color: #f1f5f9;
 }
+
 .prize-silver .prize-rank {
   color: #cbd5e1;
 }
+
 .prize-silver .prize-amount {
   color: #ffffff;
 }
@@ -1635,9 +1639,11 @@ dialog.event-modal[open]::backdrop {
   border-color: rgba(249, 115, 22, 0.35);
   color: #fed7aa;
 }
+
 .prize-bronze .prize-rank {
   color: #fb923c;
 }
+
 .prize-bronze .prize-amount {
   color: #ffffff;
 }
@@ -1646,6 +1652,7 @@ dialog.event-modal[open]::backdrop {
   .modal-rounds-grid {
     grid-template-columns: 1fr;
   }
+
   .modal-info-row-grid {
     grid-template-columns: 1fr;
   }
@@ -2768,6 +2775,7 @@ footer::before {
 
 /* Reduced Motion for Accessibility */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -2797,8 +2805,8 @@ body.intro-active {
   overflow: hidden;
   perspective: 1200px;
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .intro-splash-screen.fade-out {
@@ -2826,7 +2834,7 @@ body.intro-active {
 .intro-grid-overlay {
   position: absolute;
   inset: 0;
-  background-image: 
+  background-image:
     linear-gradient(rgba(0, 242, 254, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 242, 254, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
@@ -2859,13 +2867,23 @@ body.intro-active {
 }
 
 @keyframes introOrbFloat1 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(40px, 50px) scale(1.15); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(40px, 50px) scale(1.15);
+  }
 }
 
 @keyframes introOrbFloat2 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(-50px, -40px) scale(1.1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(-50px, -40px) scale(1.1);
+  }
 }
 
 /* Skip Intro Button */
@@ -3021,7 +3039,7 @@ body.intro-active {
   opacity: 0;
   transform: translateY(25px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .intro-events-showcase.visible {
@@ -3072,8 +3090,8 @@ body.intro-active {
   opacity: 0;
   transform: scale(0.88) translateY(18px);
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s;
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 
@@ -3185,6 +3203,7 @@ body.intro-active {
     opacity: 0;
     transform: translateY(-15px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -3196,9 +3215,11 @@ body.intro-active {
     opacity: 0;
     transform: scale(0.82) translateY(25px);
   }
+
   70% {
     transform: scale(1.03) translateY(-4px);
   }
+
   100% {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -3210,6 +3231,7 @@ body.intro-active {
     opacity: 0;
     transform: translateY(15px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -3267,4 +3289,4 @@ body.intro-active {
     padding: 6px 14px;
     font-size: 0.72rem;
   }
-}
+}

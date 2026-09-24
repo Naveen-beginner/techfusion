@@ -962,7 +962,7 @@ function initIntroSplash() {
       } else if (progress < 95) {
         introStatusText.textContent = "SYSTEMS ONLINE • READY";
       } else {
-        introStatusText.textContent = "WELCOME TO TECHNIZEN 2K26!";
+        introStatusText.textContent = "WELCOME TO TECHFUSION 2K26!";
       }
     }
 
