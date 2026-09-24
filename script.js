@@ -88,6 +88,10 @@ const eventsData = [
       { rank: "3rd Prize", amount: "₹1,000" }
     ],
     prizes: "1st Prize: ₹3,000 | 2nd Prize: ₹2,000 | 3rd Prize: ₹1,000",
+    coordinators: [
+      { name: "Revtish Muthineni", phone: "+91 7675890406", role: "Student Coordinator" },
+      // { name: "B. Poshitha", phone: "+91 84990 98999", role: "Student Coordinator" }
+    ],
     formUrl: eventForms.event2
   },
   {
@@ -147,6 +151,10 @@ const eventsData = [
       { rank: "3rd Prize", amount: "₹1,000" }
     ],
     prizes: "1st Prize: ₹3,000 | 2nd Prize: ₹2,000 | 3rd Prize: ₹1,000",
+    coordinators: [
+      { name: "P. Sampath Vinayak", phone: "+91 9392515992", role: "Student Coordinator" },
+      { name: "Y. Lokesh Babu", phone: "+91 8639465554", role: "Student Coordinator" }
+    ],
     formUrl: eventForms.event1
   },
   {
@@ -214,6 +222,10 @@ const eventsData = [
       { rank: "3rd Prize", title: "Creative Catalyst", amount: "₹1,000" }
     ],
     prizes: "1st Prize - Best Meme Magician: ₹3,000 | 2nd Prize - Humor Hacker: ₹2,000 | 3rd Prize - Creative Catalyst: ₹1,000",
+    coordinators: [
+      { name: "P. Bharath", phone: "+91 7569063286", role: "Student Coordinator" },
+      { name: "A. Reddy Charan", phone: "+91 9346555753", role: "Student Coordinator" }
+    ],
     formUrl: eventForms.event3
   }
 ];
@@ -500,6 +512,31 @@ function openEventModal(eventId) {
           <span class="prize-rank">${item.rank}</span>
           ${titleTag}
           <span class="prize-amount">${item.amount}</span>
+        </div>
+      `;
+    }).join("");
+  }
+
+  // Populate Event Coordinators (1 Row 2 Cards)
+  const coordsGridEl = document.getElementById("modalCoordsGrid");
+  if (coordsGridEl && event.coordinators) {
+    coordsGridEl.innerHTML = event.coordinators.map(coord => {
+      const cleanPhone = coord.phone.replace(/[^+\d]/g, "");
+      return `
+        <div class="modal-coord-card">
+          <div class="modal-coord-avatar">
+            ${ICONS.users}
+          </div>
+          <div class="modal-coord-info">
+            <span class="modal-coord-role">${coord.role || "Event Coordinator"}</span>
+            <h4 class="modal-coord-name">${coord.name}</h4>
+            <a href="tel:${cleanPhone}" class="modal-coord-phone" title="Call ${coord.name}">
+              <svg class="tf-icon" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <span>${coord.phone}</span>
+            </a>
+          </div>
         </div>
       `;
     }).join("");

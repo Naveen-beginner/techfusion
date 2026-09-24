@@ -1651,6 +1651,110 @@ dialog.event-modal[open]::backdrop {
   }
 }
 
+/* Modal Event Coordinators Grid (1 Row 2 Cards) */
+.modal-coords-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  width: 100%;
+}
+
+.modal-coord-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  background: rgba(14, 20, 48, 0.75);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.3s var(--ease-spring);
+}
+
+.modal-coord-card:hover {
+  background: rgba(20, 28, 64, 0.9);
+  border-color: rgba(0, 242, 254, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 242, 254, 0.15);
+  transform: translateY(-2px);
+}
+
+.modal-coord-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 242, 254, 0.1);
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent-cyan);
+}
+
+.modal-coord-avatar .tf-icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
+.modal-coord-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.modal-coord-role {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+}
+
+.modal-coord-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.modal-coord-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.2s;
+  margin-top: 2px;
+}
+
+.modal-coord-phone .tf-icon {
+  width: 14px;
+  height: 14px;
+  stroke: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.modal-coord-phone:hover {
+  color: var(--accent-cyan);
+}
+
+@media (max-width: 640px) {
+  .modal-coords-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .modal-coord-card {
+    padding: 12px 14px;
+  }
+}
+
 /* Modal Sticky Footer CTA */
 .modal-footer {
   padding: 18px 32px;
