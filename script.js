@@ -11,9 +11,9 @@
 
 const eventForms = {
   // Google Form URLs for each of the 3 events
-  event1: "https://forms.gle/techfusion-event1-placeholder",
-  event2: "https://forms.gle/techfusion-event2-placeholder",
-  event3: "https://forms.gle/techfusion-event3-placeholder"
+  event1: "https://docs.google.com/forms/d/e/1FAIpQLSe9-mhq9XDyUetCXr59xetVPYxJNYrNnYoRZjwy2LaULjMBTQ/viewform",
+  event2: "https://docs.google.com/forms/d/e/1FAIpQLSe9-mhq9XDyUetCXr59xetVPYxJNYrNnYoRZjwy2LaULjMBTQ/viewform",
+  event3: "https://docs.google.com/forms/d/e/1FAIpQLSe9-mhq9XDyUetCXr59xetVPYxJNYrNnYoRZjwy2LaULjMBTQ/viewform"
 };
 
 const FESTIVAL_CONFIG = {
@@ -39,7 +39,7 @@ const eventsData = [
     category: "TECH / QUIZ",
     title: "MICRO MISSION",
     badgeLabel: "TECHNICAL QUEST",
-    image: "assets/event1.jpeg",
+    image: "assets/event1d.jpeg",
     shortDesc: "A multi-round technical challenge designed to test reasoning, programming knowledge, teamwork, communication, and technical creativity.",
     about: "Micro Mission is a captivating technical quest that evaluates and enriches participants' expertise across a broad spectrum of technical subjects. The event covers areas ranging from general reasoning and basic programming to technical communication, creative thinking, and problem-solving.",
     task: "Complete the multi-stage Micro Mission challenge, beginning with a prelims round and progressing through four mains rounds: Think N Sync, Tech Charades, Racking Brains, and Byte Talks.",
@@ -67,9 +67,26 @@ const eventsData = [
     teamSize: "2 Members",
     eligibility: "Open to college students participating as a two-member team from the same college.",
     date: "9th Oct, 2026",
-    time: "Varies",
+    time: "Prelims: 8:00 AM - 12:00 PM | Mains: 1:00 PM - 4:00 PM",
+    prelimsTime: "Prelims: 8:00 AM - 12:00 PM",
+    mainsTime: "Mains: 1:00 PM - 4:00 PM",
+    prelims: {
+      timing: "8:00 AM - 12:00 PM",
+      questions: "15 MCQs (General Reasoning to basic-level programming)",
+      timeLimit: "10 Minutes"
+    },
+    mains: {
+      timing: "1:00 PM - 4:00 PM",
+      questions: "4 Specialized Rounds (Think N Sync, Tech Charades, Racking Brains, Byte Talks)",
+      timeLimit: "3 Hours"
+    },
     venue: "Cyber Block Labs",
-    entryFee: "[REGISTRATION FEE]",
+    entryFee: "[NO REGISTRATION FEE]",
+    prizesList: [
+      { rank: "1st Prize", amount: "₹3,000" },
+      { rank: "2nd Prize", amount: "₹2,000" },
+      { rank: "3rd Prize", amount: "₹1,000" }
+    ],
     prizes: "1st Prize: ₹3,000 | 2nd Prize: ₹2,000 | 3rd Prize: ₹1,000",
     formUrl: eventForms.event2
   },
@@ -80,7 +97,7 @@ const eventsData = [
     category: "TECH / DEVELOPMENT",
     title: "META MATRIX",
     badgeLabel: "TECHNICAL CHALLENGE",
-    image: "assets/event2.jpeg",
+    image: "assets/metamatrix.png",
     shortDesc: "An exciting technical challenge featuring Prelims and Mains rounds designed to test programming knowledge, core computer science fundamentals, analytical thinking, and problem-solving ability.",
     about: "META Matrix is a technical challenge consisting of Prelims and Mains rounds. The event begins with an online MCQ round covering basic programming concepts and core computer science fundamentals, followed by a competitive coding-based Mains Round featuring questions of varying difficulty levels.",
     task: "Participate in the Prelims online MCQ round and qualify for the Mains Round, where participants must solve five coding and analytical problems within the allotted time. Solutions will be evaluated using predefined test cases for accuracy, logic, and robustness.",
@@ -106,45 +123,97 @@ const eventsData = [
       "Requirement 3: Each team must consist of a maximum of two participants from the same college.",
       "Requirement 4: Participants must report at least 10 minutes before the event begins."
     ],
-    teamSize: "Maximum 2 Members",
+    teamSize: "2 Members",
     eligibility: "Open to all UG and PG students. Each team can have a maximum of two participants from the same college.",
-    date: "26th December 2025",
-    time: "Prelims: 8:00 AM - 12:00 PM | Mains: 1:30 PM - 4:00 PM",
+    date: "9th Oct, 2026",
+    time: "Prelims: 8:00 AM - 12:00 PM | Mains: 1:00 PM - 4:00 PM",
+    prelimsTime: "Prelims: 8:00 AM - 12:00 PM",
+    mainsTime: "Mains: 1:00 PM - 4:00 PM",
+    prelims: {
+      timing: "8:00 AM - 12:00 PM",
+      questions: "20 MCQs (Basic Programming Concepts & CS Fundamentals)",
+      timeLimit: "10 Minutes"
+    },
+    mains: {
+      timing: "1:00 PM - 4:00 PM",
+      questions: "5 Coding Questions (Varying difficulty, evaluated against predefined test cases)",
+      timeLimit: "2 Hours"
+    },
     venue: "Cyber Block, ACC Lab",
-    entryFee: "[REGISTRATION FEE]",
+    entryFee: "[NO REGISTRATION FEE]",
+    prizesList: [
+      { rank: "1st Prize", amount: "₹3,000" },
+      { rank: "2nd Prize", amount: "₹2,000" },
+      { rank: "3rd Prize", amount: "₹1,000" }
+    ],
     prizes: "1st Prize: ₹3,000 | 2nd Prize: ₹2,000 | 3rd Prize: ₹1,000",
     formUrl: eventForms.event1
   },
   {
     id: 3,
     number: "EVENT 03",
-    theme: "emerald",
-    category: "CREATIVE / WEB & IoT",
-    title: "[EVENT 3 NAME] WEBFORGE & SMART SYSTEMS",
-    badgeLabel: "HARDWARE & WEB EXPO",
-    image: "assets/event3.jpeg",
-    shortDesc: "Design next-gen interactive user interfaces, connected IoT prototypes, or smart embedded gadgets with intuitive dashboards.",
-    about: "WEBFORGE & SMART SYSTEMS is a creative showdown bridging hardware and software. Whether you specialize in sleek UI/UX design, real-time WebSockets, microcontrollers, or responsive cloud interfaces, this is your canvas to craft futuristic technology.",
-    task: "[REPLACE WITH ACTUAL TASK] Develop an interactive smart dashboard interface connected to simulated or physical IoT telemetry (sensors, actuators, or MQTT brokers) delivering real-time user insights.",
+    theme: "cyan",
+    category: "CREATIVE / DESIGN",
+    title: "MEME MAGIC",
+    badgeLabel: "MEME DESIGN CHALLENGE",
+    image: "assets/event3d.jpeg",
+    shortDesc: "A creative and humorous meme-making challenge testing wit, visual storytelling, originality, and digital design skills through online and on-campus meme challenges.",
+    about: "Meme Magic is a creative and humorous competition designed to test participants' meme-making skills, wit, visual storytelling, and digital design abilities. The event consists of an Online Prelims Submission followed by an On-Campus Video Meme Challenge. Teams of two will create engaging, theme-based memes while demonstrating originality, humor, creativity, and ethical digital expression.",
+    task: "Create original, creative, humorous, and impactful memes based on the given themes. In the Prelims, teams must submit one static meme online. The shortlisted teams will participate in the On-Campus Mains Video Meme Challenge, where they will create a 10–15 second video meme based on a surprise theme.",
     rules: [
-      "Rule 1: Teams can submit either pure web applications or hybrid web-plus-hardware prototypes.",
-      "Rule 2: UI evaluation will be based on responsiveness, visual aesthetics, accessibility, and micro-interactions.",
-      "Rule 3: For hardware entries, teams are encouraged to bring their own microcontroller boards (ESP32, Arduino, Raspberry Pi).",
-      "Rule 4: Teams will be given 7 minutes to present their live working demo to the judges.",
-      "Rule 5: All assets must be credited appropriately."
+      "Rule 1: All participants must carry their valid college ID card and earphones.",
+      "Rule 2: Registration must be completed before the event begins.",
+      "Rule 3: Memes must not target any individual or group and must not contain objectionable content.",
+      "Rule 4: Plagiarism, offensive content, or suspicious activity will result in disqualification.",
+      "Rule 5: All memes must adhere to the given theme and ethical guidelines.",
+      "Rule 6: Memes should be original and creative, use minimal yet effective text, and communicate humor clearly.",
+      "Rule 7: Political, abusive, sensitive, or explicit material is not permitted.",
+      "Rule 8: Prelims participation is limited to teams of two members from the same college.",
+      "Rule 9: Each team must submit one static meme based on one of the given themes: Developers vs Bugs, Technology vs Reality, or The Life of Software Professionals With AI.",
+      "Rule 10: Prelims submissions must be in PNG or JPG format with a maximum file size of 10 MB.",
+      "Rule 11: The file name must follow the format teamname_themename. Example: PixelKings_Technology vs Reality.",
+      "Rule 12: Prelims memes must be submitted through the official submission form by scanning the provided QR code.",
+      "Rule 13: The Prelims submission deadline is 6th October 2026 at 11:59 PM IST.",
+      "Rule 14: The Top 25 teams will be shortlisted based on Creativity & Originality (50%) and Humor & Theme Relevance (50%).",
+      "Rule 15: Shortlisted participants will be notified through email.",
+      "Rule 16: The Mains Round will be conducted on campus and will consist of a Surprise Theme Reveal, Video Meme Creation, Submission & Verification, and Judging & Presentation.",
+      "Rule 17: The Video Meme created during the Mains Round must be 10–15 seconds long.",
+      "Rule 18: The Mains Round will have a duration of 3 hours.",
+      "Rule 19: In the Tie-Breaker Round, teams must guess the missing dialogue from a displayed meme image.",
+      "Rule 20: E-certificates will be issued to all participants."
     ],
     requirements: [
-      "Requirement 1: College ID Card for verification.",
-      "Requirement 2: Laptops, development boards, sensors, and connecting cables.",
-      "Requirement 3: Working demo hosted locally or deployed to a free cloud staging platform (Vercel, Netlify, etc.)."
+      "Requirement 1: Valid college ID card is mandatory for all participants.",
+      "Requirement 2: Participants must carry earphones for the event.",
+      "Requirement 3: Each team must consist of two members from the same college.",
+      "Requirement 4: Prelims submissions must be in PNG or JPG format and must not exceed 10 MB.",
+      "Requirement 5: The submitted meme must be original and follow the specified theme and ethical guidelines.",
+      "Requirement 6: Participants must submit their Prelims entry through the official submission form before the deadline."
     ],
-    teamSize: "2 - 4 Members",
-    eligibility: "Open to curious creators across all engineering streams and semesters.",
+    teamSize: "2 Members",
+    eligibility: "Open to student teams consisting of two members from the same college.",
     date: "9th October 2026",
-    time: "11:00 AM - 04:30 PM",
-    venue: "CSE Seminar Hall 1 & Hardware Lab",
-    entryFee: "FREE (No Registration Fee)",
-    prizes: "Cash Awards for Best Innovation, Best UI/UX + Participation Certificates",
+    time: "Prelims Deadline: 6th Oct 2026 - 11:59 PM IST | Mains: 1:00 PM - 4:00 PM",
+    prelimsTime: "Prelims Deadline: 6th Oct 2026 - 11:59 PM IST",
+    mainsTime: "Mains: 1:00 PM - 4:00 PM",
+    prelims: {
+      timing: "Deadline: 6th Oct 2026 - 11:59 PM IST",
+      questions: "1 Static Meme (Themes: Developers vs Bugs / Technology vs Reality / Life with AI)",
+      timeLimit: "Submission Deadline: 6th Oct 2026"
+    },
+    mains: {
+      timing: "1:00 PM - 4:00 PM",
+      questions: "10–15s Video Meme (Surprise Theme) + Tie-Breaker Dialogue Round",
+      timeLimit: "3 Hours"
+    },
+    venue: "Cyber Block",
+    entryFee: "[NO REGISTRATION FEE]",
+    prizesList: [
+      { rank: "1st Prize", title: "Best Meme Magician", amount: "₹3,000" },
+      { rank: "2nd Prize", title: "Humor Hacker", amount: "₹2,000" },
+      { rank: "3rd Prize", title: "Creative Catalyst", amount: "₹1,000" }
+    ],
+    prizes: "1st Prize - Best Meme Magician: ₹3,000 | 2nd Prize - Humor Hacker: ₹2,000 | 3rd Prize - Creative Catalyst: ₹1,000",
     formUrl: eventForms.event3
   }
 ];
@@ -251,6 +320,7 @@ function replaceFaWithSvg() {
 
 document.addEventListener("DOMContentLoaded", () => {
   replaceFaWithSvg();
+  initIntroSplash();
   renderEventCards();
   initEventModal();
   initCountdown();
@@ -264,18 +334,26 @@ document.addEventListener("DOMContentLoaded", () => {
 // 5. RENDER THREE EVENT CARDS DYNAMICALLY
 // =============================================================================
 
+function getTimeLines(event) {
+  if (event.prelimsTime && event.mainsTime) {
+    return [event.prelimsTime, event.mainsTime];
+  }
+  if (event.time && event.time.includes("|")) {
+    return event.time.split("|").map(t => t.trim());
+  }
+  return [event.time];
+}
+
 function renderEventCards() {
   const container = document.getElementById("eventsGrid");
   if (!container) return;
 
   container.innerHTML = eventsData.map(event => `
     <article class="event-card" data-theme="${event.theme}" data-id="${event.id}" tabindex="0" role="button" aria-label="View details for ${event.title}">
-      <!-- Card Image & Header -->
+      <!-- Card Image & Media -->
       <div class="card-media-wrap">
         <img src="${event.image}" alt="${event.title}" class="card-img" loading="lazy" />
         <div class="card-media-overlay"></div>
-        <span class="card-num-badge badge-${event.theme}">${event.number}</span>
-        <span class="card-category-badge">${event.category}</span>
       </div>
 
       <!-- Card Body -->
@@ -288,8 +366,11 @@ function renderEventCards() {
           <span class="card-meta-item">
             ${ICONS.users} ${event.teamSize}
           </span>
-          <span class="card-meta-item">
-            ${ICONS.clock} ${event.time}
+          <span class="card-meta-item card-meta-time">
+            ${ICONS.clock}
+            <span class="card-time-stack">
+              ${getTimeLines(event).map(line => `<span class="card-time-line">${line}</span>`).join("")}
+            </span>
           </span>
           <span class="card-meta-item">
             ${ICONS.ticket} ${event.entryFee}
@@ -379,13 +460,50 @@ function openEventModal(eventId) {
   const reqList = document.getElementById("modalReqList");
   reqList.innerHTML = event.requirements.map(req => `<li>${req}</li>`).join("");
 
-  // Populate Meta Grid
-  document.getElementById("modalTeamSize").textContent = event.teamSize;
-  document.getElementById("modalEligibility").textContent = event.eligibility;
-  document.getElementById("modalDate").textContent = event.date;
-  document.getElementById("modalTime").textContent = event.time;
-  document.getElementById("modalVenue").textContent = event.venue;
-  document.getElementById("modalPrizes").textContent = event.prizes;
+  // Populate Logistics: Two Columns (Prelims vs Mains)
+  if (event.prelims) {
+    const pTime = document.getElementById("modalPrelimsTime");
+    const pQuest = document.getElementById("modalPrelimsQuestions");
+    const pLimit = document.getElementById("modalPrelimsTimeLimit");
+    if (pTime) pTime.textContent = event.prelims.timing;
+    if (pQuest) pQuest.textContent = event.prelims.questions;
+    if (pLimit) pLimit.textContent = event.prelims.timeLimit;
+  }
+  if (event.mains) {
+    const mTime = document.getElementById("modalMainsTime");
+    const mQuest = document.getElementById("modalMainsQuestions");
+    const mLimit = document.getElementById("modalMainsTimeLimit");
+    if (mTime) mTime.textContent = event.mains.timing;
+    if (mQuest) mQuest.textContent = event.mains.questions;
+    if (mLimit) mLimit.textContent = event.mains.timeLimit;
+  }
+
+  // Populate Logistics: Horizontal Row Grid (Eligibility, Venue & Date, Prizes)
+  const teamSizeEl = document.getElementById("modalTeamSize");
+  const eligEl = document.getElementById("modalEligibility");
+  const dateEl = document.getElementById("modalDate");
+  const venueEl = document.getElementById("modalVenue");
+
+  if (teamSizeEl) teamSizeEl.textContent = event.teamSize;
+  if (eligEl) eligEl.textContent = event.eligibility;
+  if (dateEl) dateEl.textContent = event.date;
+  if (venueEl) venueEl.textContent = event.venue;
+
+  // Populate 3-Line Prizes
+  const prizesListEl = document.getElementById("modalPrizesList");
+  if (prizesListEl && event.prizesList) {
+    prizesListEl.innerHTML = event.prizesList.map((item, idx) => {
+      const cls = idx === 0 ? "prize-gold" : idx === 1 ? "prize-silver" : "prize-bronze";
+      const titleTag = item.title ? `<span class="prize-tag">${item.title}</span>` : "";
+      return `
+        <div class="prize-line ${cls}">
+          <span class="prize-rank">${item.rank}</span>
+          ${titleTag}
+          <span class="prize-amount">${item.amount}</span>
+        </div>
+      `;
+    }).join("");
+  }
 
   // Set Google Form CTA
   const registerBtn = document.getElementById("modalRegisterBtn");
@@ -655,4 +773,169 @@ function initMobileMenu() {
       toggleBtn.innerHTML = ICONS.bars;
     });
   });
+}
+
+// =============================================================================
+// 11. TECHNIZEN 2K26 OPENING INTRO SPLASH CONTROLLER
+// =============================================================================
+
+function initIntroSplash() {
+  const introSplash = document.getElementById("introSplash");
+  if (!introSplash) return;
+
+  const introEventsShowcase = document.getElementById("introEventsShowcase");
+  const introStatusText = document.getElementById("introStatusText");
+  const introPercentText = document.getElementById("introPercentText");
+  const introProgressFill = document.getElementById("introProgressFill");
+  const introSkipBtn = document.getElementById("introSkipBtn");
+  const introCanvas = document.getElementById("introCanvas");
+
+  let isFinished = false;
+  let animFrameId = null;
+
+  // 1. Particle Canvas Background Animation
+  if (introCanvas) {
+    const ctx = introCanvas.getContext("2d");
+    let width = (introCanvas.width = window.innerWidth);
+    let height = (introCanvas.height = window.innerHeight);
+
+    const onResize = () => {
+      if (isFinished) return;
+      width = introCanvas.width = window.innerWidth;
+      height = introCanvas.height = window.innerHeight;
+    };
+    window.addEventListener("resize", onResize);
+
+    const particleCount = Math.min(60, Math.floor((width * height) / 18000));
+    const particles = [];
+    const colors = ["#00f2fe", "#38bdf8", "#a855f7", "#c084fc"];
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 1.2,
+        vy: (Math.random() - 0.5) * 1.2,
+        radius: Math.random() * 2 + 1,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      });
+    }
+
+    function renderCanvas() {
+      if (isFinished) return;
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw connections
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 110) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(0, 242, 254, ${0.25 * (1 - dist / 110)})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw particles
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.shadowColor = p.color;
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      });
+
+      animFrameId = requestAnimationFrame(renderCanvas);
+    }
+
+    renderCanvas();
+  }
+
+  // 2. Finish / Dismiss Intro
+  function finishIntro() {
+    if (isFinished) return;
+    isFinished = true;
+
+    if (animFrameId) cancelAnimationFrame(animFrameId);
+    introSplash.classList.add("fade-out");
+    document.body.classList.remove("intro-active");
+
+    setTimeout(() => {
+      introSplash.style.display = "none";
+    }, 850);
+  }
+
+  // Skip Button & Keyboard Esc Handler
+  if (introSkipBtn) {
+    introSkipBtn.addEventListener("click", finishIntro);
+  }
+
+  window.addEventListener("keydown", (e) => {
+    if (!isFinished && (e.key === "Escape" || e.key === "Enter" || e.key === " ")) {
+      finishIntro();
+    }
+  });
+
+  // 3. Timed Progression (Title -> 3 Events -> Progress Bar -> Enter)
+  // Reveal Events at 1.1s
+  setTimeout(() => {
+    if (!isFinished && introEventsShowcase) {
+      introEventsShowcase.classList.add("visible");
+    }
+  }, 1100);
+
+  // Progress Bar Animation (0% to 100% over 3.2s)
+  const startTime = performance.now();
+  const totalDuration = 3200;
+
+  function updateProgress(currentTime) {
+    if (isFinished) return;
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(100, Math.floor((elapsed / totalDuration) * 100));
+
+    if (introProgressFill) {
+      introProgressFill.style.width = `${progress}%`;
+    }
+    if (introPercentText) {
+      introPercentText.textContent = `${progress}%`;
+    }
+
+    if (introStatusText) {
+      if (progress < 30) {
+        introStatusText.textContent = "INITIALIZING MATRIX MODULES...";
+      } else if (progress < 70) {
+        introStatusText.textContent = "CALIBRATING 3 FLAGSHIP ARENAS...";
+      } else if (progress < 95) {
+        introStatusText.textContent = "SYSTEMS ONLINE • READY";
+      } else {
+        introStatusText.textContent = "WELCOME TO TECHNIZEN 2K26!";
+      }
+    }
+
+    if (progress < 100) {
+      requestAnimationFrame(updateProgress);
+    } else {
+      // Completed, brief pause then transition out smoothly
+      setTimeout(finishIntro, 400);
+    }
+  }
+
+  requestAnimationFrame(updateProgress);
 }

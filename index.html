@@ -24,7 +24,87 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body class="intro-active">
+
+  <!-- Cinematic Technizen 2K26 Opening Splash Animation -->
+  <div class="intro-splash-screen" id="introSplash" role="dialog" aria-modal="true" aria-label="Technizen 2K26 Opening Experience">
+    <div class="intro-bg-canvas-wrap">
+      <canvas id="introCanvas"></canvas>
+      <div class="intro-grid-overlay"></div>
+      <div class="intro-glow-orb orb-1"></div>
+      <div class="intro-glow-orb orb-2"></div>
+    </div>
+
+    <!-- Skip Intro Button -->
+    <button type="button" class="intro-skip-btn" id="introSkipBtn" aria-label="Skip Intro Animation">
+      <span>SKIP INTRO</span>
+      <svg class="tf-icon" viewBox="0 0 24 24">
+        <polygon points="5 4 15 12 5 20 5 4" />
+        <line x1="19" x2="19" y1="5" y2="19" />
+      </svg>
+    </button>
+
+    <div class="intro-content-container">
+      <!-- Eyebrow / College Banner -->
+      <div class="intro-eyebrow" id="introEyebrow">
+        <span class="intro-pulse-dot" aria-hidden="true"></span>
+        <span class="intro-eyebrow-text">R.V.R. &amp; J.C. COLLEGE OF ENGINEERING &bull; CSE &amp; IoT</span>
+      </div>
+
+      <!-- Main Technizen 2K26 Title -->
+      <div class="intro-title-wrap" id="introTitleWrap">
+        <div class="intro-dept-tag">DEPT. OF CSE &amp; IoT PRESENTS</div>
+        <h1 class="intro-main-title">
+          <span class="title-tech">TECHNIZEN</span>
+          <span class="title-year">2K26</span>
+        </h1>
+        <p class="intro-subline">TECHFUSION &bull; 9<sup>TH</sup> OCTOBER 2026</p>
+      </div>
+
+      <!-- Phase 2: Cascading 3 Flagship Event Arenas -->
+      <div class="intro-events-showcase" id="introEventsShowcase">
+        <div class="intro-events-label">
+          <span class="intro-label-line"></span>
+          <span>EXPLORE 3 FLAGSHIP ARENAS</span>
+          <span class="intro-label-line"></span>
+        </div>
+        <div class="intro-events-cards">
+          <div class="intro-event-pill pill-cyan">
+            <div class="pill-icon">⚡</div>
+            <div class="pill-info">
+              <span class="pill-title">MICRO MISSION</span>
+              <span class="pill-tag">Technical Quest</span>
+            </div>
+          </div>
+          <div class="intro-event-pill pill-purple">
+            <div class="pill-icon">🌐</div>
+            <div class="pill-info">
+              <span class="pill-title">META MATRIX</span>
+              <span class="pill-tag">Coding Challenge</span>
+            </div>
+          </div>
+          <div class="intro-event-pill pill-emerald">
+            <div class="pill-icon">🎭</div>
+            <div class="pill-info">
+              <span class="pill-title">MEME MAGIC</span>
+              <span class="pill-tag">Creative Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3: High-tech Progress / Status Bar -->
+      <div class="intro-loader-wrap" id="introLoaderWrap">
+        <div class="intro-status-row">
+          <span class="intro-status-text" id="introStatusText">INITIALIZING MATRIX MODULES...</span>
+          <span class="intro-percent-text" id="introPercentText">0%</span>
+        </div>
+        <div class="intro-progress-bar">
+          <div class="intro-progress-fill" id="introProgressFill"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Ambient Cosmic Lighting Orbs -->
   <div class="ambient-glow" aria-hidden="true">
@@ -94,12 +174,12 @@
       <!-- Navigation Links -->
       <ul class="nav-links" id="navLinks">
         <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#banner" class="nav-link">Banner</a></li>
+        <!-- <li><a href="#banner" class="nav-link">Banner</a></li> -->
         <li><a href="#events" class="nav-link">Events</a></li>
         <li><a href="#schedule" class="nav-link">Schedule</a></li>
         <li><a href="#coordinators" class="nav-link">Coordinators</a></li>
         <li>
-          <a href="#events" class="btn-nav-register">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSe9-mhq9XDyUetCXr59xetVPYxJNYrNnYoRZjwy2LaULjMBTQ/viewform" class="btn-nav-register" target="_blank" rel="noopener noreferrer">
             <svg class="tf-icon" viewBox="0 0 24 24">
               <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
             </svg>
@@ -161,7 +241,7 @@
               <svg class="tf-icon" viewBox="0 0 24 24">
                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
               </svg>
-              <span>INNOVEX 2026 &bull; CSE BLOCK</span>
+              <span>INNOVEX 2026 &bull; CYBER BLOCK</span>
             </div>
             <div class="hero-meta-pill pill-fee">
               <svg class="tf-icon" viewBox="0 0 24 24">
@@ -203,7 +283,7 @@
           </div>
 
           <!-- Call to Action Buttons -->
-          <div class="hero-cta-group">
+          <!-- <div class="hero-cta-group">
             <a href="#events" class="btn-hero-primary">
               <svg class="tf-icon" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="10" />
@@ -218,17 +298,17 @@
               </svg>
               <span>BACK TO INNOVEX</span>
             </a>
-          </div>
+          </div> -->
 
           <!-- Scroll Down Indicator -->
-          <div class="scroll-indicator-container">
+          <!-- <div class="scroll-indicator-container">
             <a href="#events" class="scroll-link" aria-label="Scroll down to events section">
               <div class="scroll-mouse">
                 <div class="scroll-wheel"></div>
               </div>
               <span class="scroll-text">Scroll Down</span>
             </a>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -236,7 +316,7 @@
 
   <main>
     <!-- Interactive Official Symposium Banner Section -->
-    <section class="banner-section" id="banner">
+    <!-- <section class="banner-section" id="banner">
       <a href="#events" class="symposium-banner-card" title="Click to explore the three TechFusion events">
         <div class="banner-media-wrap">
           <img src="assets/techfusion_banner.jpeg"
@@ -250,17 +330,17 @@
           </div>
         </div>
       </a>
-    </section>
+    </section> -->
 
     <!-- Three Flagship Events Section -->
     <section class="events-section" id="events">
       <div class="section-header">
         <div class="section-eyebrow">
-          <svg class="tf-icon" viewBox="0 0 24 24">
+          <!-- <svg class="tf-icon" viewBox="0 0 24 24">
             <polyline points="16 18 22 12 16 6" />
             <polyline points="8 6 2 12 8 18" />
           </svg>
-          <span>FLAGSHIP COMPETITIONS</span>
+          <span>FLAGSHIP COMPETITIONS</span> -->
         </div>
         <h2 class="section-title">TECHFUSION EVENTS</h2>
         <p class="section-subtitle">
@@ -292,7 +372,7 @@
         </div>
         <h2 class="section-title">THE TECHFUSION JOURNEY</h2>
         <p class="section-subtitle">
-          Timeline and itinerary of the flagship CSE &amp; IoT symposium day.
+          Timeline of the whole technizen event
         </p>
       </div>
 
@@ -306,9 +386,9 @@
                 <circle cx="12" cy="12" r="10" />
                 <polyline points="12 6 12 12 16 14" />
               </svg>
-              <span>09:00 AM &ndash; 10:00 AM</span>
+              <span>08:00 AM &ndash; 12:00 PM</span>
             </span>
-            <h3 class="timeline-title">Participant Check-in &amp; Kit Distribution</h3>
+            <h3 class="timeline-title">Prelims</h3>
             <p class="timeline-desc">
               Arrival of teams at Silver Jubilee Block. Verification of college IDs, badge allocation, and complimentary
               welcome kits.
@@ -322,22 +402,21 @@
           <div class="timeline-card">
             <span class="timeline-time-badge">
               <svg class="tf-icon" viewBox="0 0 24 24">
-                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
-                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                <line x1="12" x2="12" y1="19" y2="22" />
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
               </svg>
-              <span>10:00 AM &ndash; 10:45 AM</span>
+              <span>01:00 PM &ndash; 04:00 PM</span>
             </span>
-            <h3 class="timeline-title">Inaugural Ceremony &amp; Problem Statements Release</h3>
+            <h3 class="timeline-title">Mains</h3>
             <p class="timeline-desc">
-              Keynote address by CSE &amp; IoT faculty conveners, followed by the official release of detailed hackathon
-              problem tracks.
+              Arrival of teams at Silver Jubilee Block. Verification of college IDs, badge allocation, and complimentary
+              welcome kits.
             </p>
           </div>
         </div>
 
         <!-- Milestone 3 -->
-        <div class="timeline-node">
+        <!-- <div class="timeline-node">
           <div class="timeline-bullet"></div>
           <div class="timeline-card">
             <span class="timeline-time-badge">
@@ -355,10 +434,10 @@
               checkpoint mentoring.
             </p>
           </div>
-        </div>
+        </div> -->
 
         <!-- Milestone 4 -->
-        <div class="timeline-node">
+        <!-- <div class="timeline-node">
           <div class="timeline-bullet"></div>
           <div class="timeline-card">
             <span class="timeline-time-badge">
@@ -376,7 +455,7 @@
               Delicious lunch arranged for all registered participants and coordinators at the college dining complex.
             </p>
           </div>
-        </div>
+        </div> -->
 
         <!-- Milestone 5 -->
         <div class="timeline-node">
@@ -391,7 +470,7 @@
                 <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
                 <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
               </svg>
-              <span>02:30 PM &ndash; 04:30 PM</span>
+              <span>04:00 PM &ndash; 05:00 PM</span>
             </span>
             <h3 class="timeline-title">Final Demos, Judging &amp; Grand Valedictory</h3>
             <p class="timeline-desc">
@@ -414,7 +493,7 @@
           </svg>
           <span>LEADERSHIP &amp; ASSISTANCE</span>
         </div>
-        <h2 class="section-title">EVENT COORDINATORS</h2>
+        <h2 class="section-title">TECHFUSION COORDINATORS</h2>
         <p class="section-subtitle">
           Reach out to our faculty and student coordinators for queries regarding participation, guidelines, or venue
           access.
@@ -432,9 +511,9 @@
             </svg>
           </div>
           <div class="coord-info">
-            <span class="coord-role">Staff Convener (CSE)</span>
-            <h3 class="coord-name">Dr. Ch. Sudha Rani</h3>
-            <p class="coord-contact">Professor &amp; Head, Dept. of CSE</p>
+            <span class="coord-role">Advisory Committee</span>
+            <h3 class="coord-name">Dr. M. Sreelatha</h3>
+            <p class="coord-contact">Professor &amp; Dean, Dept. of CSE</p>
           </div>
         </div>
 
@@ -447,11 +526,50 @@
             </svg>
           </div>
           <div class="coord-info">
-            <span class="coord-role">Staff Convener (IoT)</span>
-            <h3 class="coord-name">Dr. M. Sreelatha</h3>
-            <p class="coord-contact">Coordinator, Dept. of CSE (IoT)</p>
+            <span class="coord-role">Advisory Committee</span>
+            <h3 class="coord-name">Dr. N. Nagamalleswara Rao</h3>
+            <p class="coord-contact">Professor &amp; HOD, Dept. of CSE(IOT)</p>
           </div>
         </div>
+
+        <!-- Faculty Coordinator 3 -->
+        <div class="coordinator-card">
+          <div class="coord-avatar">
+            <svg class="tf-icon" viewBox="0 0 24 24">
+              <path d="M2 3h20" />
+              <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" />
+              <path d="m7 21 5-5 5 5" />
+            </svg>
+          </div>
+          <div class="coord-info">
+            <span class="coord-role">Staff Convener (CSE)</span>
+            <h3 class="coord-name">Dr. M. Srikanth</h3>
+            <p class="coord-contact">Professor, Dept. of CSE</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Coordinators Section -->
+    <section class="coordinators-section" id="coordinators">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <svg class="tf-icon" viewBox="0 0 24 24">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <polyline points="16 11 18 13 22 9" />
+          </svg>
+          <span>LEADERSHIP &amp; ASSISTANCE</span>
+        </div>
+        <h2 class="section-title">STUDENT COORDINATORS</h2>
+        <p class="section-subtitle">
+          Reach out to our faculty and student coordinators for queries regarding participation, guidelines, or venue
+          access.
+        </p>
+      </div>
+
+      <div class="coordinators-grid">
 
         <!-- Student Coordinator 1 -->
         <div class="coordinator-card">
@@ -462,15 +580,15 @@
             </svg>
           </div>
           <div class="coord-info">
-            <span class="coord-role">Student Lead (Tech)</span>
-            <h3 class="coord-name">K. V. Sai Krishna</h3>
+            <span class="coord-role">Student Coordinator</span>
+            <h3 class="coord-name">K. Kalyan</h3>
             <p class="coord-contact">
               <a href="tel:+919876543210">
                 <svg class="tf-icon" viewBox="0 0 24 24">
                   <path
                     d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
-                <span>+91 98765 43210</span>
+                <span>+91 75692 92106</span>
               </a>
             </p>
           </div>
@@ -485,21 +603,22 @@
             </svg>
           </div>
           <div class="coord-info">
-            <span class="coord-role">Student Lead (Operations)</span>
-            <h3 class="coord-name">P. Harshitha</h3>
+            <span class="coord-role">Student Coordinator</span>
+            <h3 class="coord-name">B. Poshitha</h3>
             <p class="coord-contact">
               <a href="tel:+919876543211">
                 <svg class="tf-icon" viewBox="0 0 24 24">
                   <path
                     d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
-                <span>+91 98765 43211</span>
+                <span>+91 84990 98999</span>
               </a>
             </p>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
   <!-- =========================================================================
@@ -558,6 +677,154 @@
           </div>
         </div>
 
+        <!-- Event Details & Logistics Block (Directly after Task & Challenge) -->
+        <div class="modal-block modal-block-logistics">
+          <h3 class="modal-block-title">
+            <svg class="tf-icon" viewBox="0 0 24 24">
+              <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+              <line x1="16" x2="16" y1="2" y2="6" />
+              <line x1="8" x2="8" y1="2" y2="6" />
+              <line x1="3" x2="21" y1="10" y2="10" />
+              <path d="m9 16 2 2 4-4" />
+            </svg>
+            <span>Event Details &amp; Logistics</span>
+          </h3>
+
+          <!-- Part 1: Two Columns (Prelims vs Mains) -->
+          <div class="modal-rounds-grid">
+            <!-- Prelims Column -->
+            <div class="round-card round-prelims">
+              <div class="round-card-header">
+                <span class="round-badge">STAGE 01</span>
+                <h4 class="round-title">Prelims Round</h4>
+              </div>
+              <div class="round-card-body">
+                <div class="round-detail-row">
+                  <span class="round-detail-label">
+                    <svg class="tf-icon" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    Timing
+                  </span>
+                  <span class="round-detail-val" id="modalPrelimsTime">8:00 AM - 12:00 PM</span>
+                </div>
+                <div class="round-detail-row">
+                  <span class="round-detail-label">
+                    <svg class="tf-icon" viewBox="0 0 24 24">
+                      <path d="m9 11 3 3L22 4" />
+                      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                    </svg>
+                    Questions / Format
+                  </span>
+                  <span class="round-detail-val" id="modalPrelimsQuestions">15 MCQs (General Reasoning &amp;
+                    Programming)</span>
+                </div>
+                <div class="round-detail-row">
+                  <span class="round-detail-label">
+                    <svg class="tf-icon" viewBox="0 0 24 24">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                    </svg>
+                    Time Limit
+                  </span>
+                  <span class="round-detail-val" id="modalPrelimsTimeLimit">10 Minutes</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mains Column -->
+            <div class="round-card round-mains">
+              <div class="round-card-header">
+                <span class="round-badge round-badge-accent">STAGE 02</span>
+                <h4 class="round-title">Mains Round</h4>
+              </div>
+              <div class="round-card-body">
+                <div class="round-detail-row">
+                  <span class="round-detail-label">
+                    <svg class="tf-icon" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    Timing
+                  </span>
+                  <span class="round-detail-val" id="modalMainsTime">1:00 PM - 4:00 PM</span>
+                </div>
+                <div class="round-detail-row">
+                  <span class="round-detail-label">
+                    <svg class="tf-icon" viewBox="0 0 24 24">
+                      <path d="m9 11 3 3L22 4" />
+                      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                    </svg>
+                    Questions / Challenge
+                  </span>
+                  <span class="round-detail-val" id="modalMainsQuestions">4 Specialized Rounds</span>
+                </div>
+                <div class="round-detail-row">
+                  <span class="round-detail-label">
+                    <svg class="tf-icon" viewBox="0 0 24 24">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                    </svg>
+                    Time Limit
+                  </span>
+                  <span class="round-detail-val" id="modalMainsTimeLimit">3 Hours</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Part 2: Horizontal Row Grid (Eligibility, Venue & Date, Prizes) -->
+          <div class="modal-info-row-grid">
+            <div class="info-card">
+              <span class="info-card-label">
+                <svg class="tf-icon" viewBox="0 0 24 24">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <polyline points="16 11 18 13 22 9" />
+                </svg>
+                Eligibility &amp; Team
+              </span>
+              <div class="info-card-meta-tag" id="modalTeamSize">2 Members</div>
+              <span class="info-card-val" id="modalEligibility">Open to college students participating as a two-member
+                team from the same college.</span>
+            </div>
+
+            <div class="info-card">
+              <span class="info-card-label">
+                <svg class="tf-icon" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <circle cx="12" cy="12" r="6" />
+                  <circle cx="12" cy="12" r="2" />
+                </svg>
+                Venue &amp; Date
+              </span>
+              <div class="info-card-meta-tag" id="modalDate">9th Oct, 2026</div>
+              <span class="info-card-val" id="modalVenue">Cyber Block Labs</span>
+            </div>
+
+            <div class="info-card info-card-prizes">
+              <span class="info-card-label">
+                <svg class="tf-icon" viewBox="0 0 24 24">
+                  <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+                  <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+                  <path d="M4 22h16" />
+                  <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+                  <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+                  <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+                </svg>
+                Prize &amp; Recognition
+              </span>
+              <div class="prize-lines-list" id="modalPrizesList">
+                <div class="prize-line prize-gold"><span class="prize-rank">1st Prize</span><span
+                    class="prize-amount">₹3,000</span></div>
+                <div class="prize-line prize-silver"><span class="prize-rank">2nd Prize</span><span
+                    class="prize-amount">₹2,000</span></div>
+                <div class="prize-line prize-bronze"><span class="prize-rank">3rd Prize</span><span
+                    class="prize-amount">₹1,000</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Rules Block -->
         <div class="modal-block">
           <h3 class="modal-block-title">
@@ -585,46 +852,6 @@
             <!-- Dynamically populated -->
           </ul>
         </div>
-
-        <!-- Quick Event Details Grid -->
-        <div class="modal-block">
-          <h3 class="modal-block-title">
-            <svg class="tf-icon" viewBox="0 0 24 24">
-              <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
-              <line x1="16" x2="16" y1="2" y2="6" />
-              <line x1="8" x2="8" y1="2" y2="6" />
-              <line x1="3" x2="21" y1="10" y2="10" />
-              <path d="m9 16 2 2 4-4" />
-            </svg>
-            <span>Event Details &amp; Logistics</span>
-          </h3>
-          <div class="modal-details-grid">
-            <div class="detail-item">
-              <span class="detail-label">Team Size</span>
-              <span class="detail-val" id="modalTeamSize">2 - 3 Members</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Eligibility</span>
-              <span class="detail-val" id="modalEligibility">All B.Tech / MCA</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Date</span>
-              <span class="detail-val" id="modalDate">9th October 2026</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Time</span>
-              <span class="detail-val" id="modalTime">10:00 AM - 04:00 PM</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Venue</span>
-              <span class="detail-val" id="modalVenue">CSE Lab Complex</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Prize &amp; Recognition</span>
-              <span class="detail-val" id="modalPrizes">Cash Awards + Certificates</span>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- Modal Footer with Google Form Registration CTA -->
@@ -636,7 +863,7 @@
           <span>Official Registration:</span> No fee required. Opens Google Form in new tab.
         </div>
 
-        <a href="#" class="btn-modal-register" id="modalRegisterBtn" target="_blank" rel="noopener noreferrer">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe9-mhq9XDyUetCXr59xetVPYxJNYrNnYoRZjwy2LaULjMBTQ/viewform" class="btn-modal-register" id="modalRegisterBtn" target="_blank" rel="noopener noreferrer">
           <span>REGISTER NOW</span>
           <svg class="tf-icon" viewBox="0 0 24 24">
             <path d="M15 3h6v6" />
