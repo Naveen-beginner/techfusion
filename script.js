@@ -153,7 +153,7 @@ const eventsData = [
     prizes: "1st Prize: ₹3,000 | 2nd Prize: ₹2,000 | 3rd Prize: ₹1,000",
     coordinators: [
       { name: "P. Sampath Vinayak", phone: "+91 9392515992", role: "Student Coordinator" },
-      { name: "Y. Lokesh Babu", phone: "+91 8639465554", role: "Student Coordinator" }
+      // { name: "Y. Lokesh Babu", phone: "+91 8639465554", role: "Student Coordinator" }
     ],
     formUrl: eventForms.event1
   },
@@ -223,8 +223,8 @@ const eventsData = [
     ],
     prizes: "1st Prize - Best Meme Magician: ₹3,000 | 2nd Prize - Humor Hacker: ₹2,000 | 3rd Prize - Creative Catalyst: ₹1,000",
     coordinators: [
-      { name: "P. Bharath", phone: "+91 7569063286", role: "Student Coordinator" },
-      { name: "A. Reddy Charan", phone: "+91 9346555753", role: "Student Coordinator" }
+      { name: "N. Uttej", phone: "+91 6300537352", role: "Student Coordinator" },
+      // { name: "P. Bharath", phone: "+91 7569063286", role: "Student Coordinator" }
     ],
     formUrl: eventForms.event3
   }
@@ -341,7 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavbarScroll();
   initMobileMenu();
   initThemeToggle();
-  initCustomCursor();
+
   initAiAgent();
   initButtonClickHighlight();
 });
@@ -560,6 +560,7 @@ function openEventModal(eventId) {
     modal.setAttribute("open", "");
   }
 
+
   // Prevent background body scroll
   document.body.style.overflow = "hidden";
 }
@@ -567,6 +568,7 @@ function openEventModal(eventId) {
 function closeEventModal() {
   const modal = document.getElementById("eventModal");
   if (!modal) return;
+
 
   if (typeof modal.close === "function") {
     modal.close();
@@ -1061,7 +1063,7 @@ function initScrollReveal() {
     if (el.closest('footer')) return;
 
     if (!el.classList.contains('reveal-up') && !el.classList.contains('reveal-left') &&
-        !el.classList.contains('reveal-right') && !el.classList.contains('reveal-fade')) {
+      !el.classList.contains('reveal-right') && !el.classList.contains('reveal-fade')) {
       el.classList.add('reveal-up');
     }
   });
@@ -1095,159 +1097,6 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
   document.addEventListener('DOMContentLoaded', initScrollReveal);
 }
 
-// =============================================================================
-// 12. CANVA-STYLE COLLABORATIVE CUSTOM CURSOR
-// =============================================================================
-function initCustomCursor() {
-  // Gracefully skip on touch devices
-  if (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) return;
-
-  const cursor = document.getElementById("canvaCursor");
-  const pointer = document.getElementById("canvaCursorPointer");
-  const badge = document.getElementById("canvaCursorBadge");
-  const badgeText = document.getElementById("canvaBadgeText");
-
-  if (!cursor || !badge || !badgeText) return;
-
-  let mouseX = -100;
-  let mouseY = -100;
-  let prevMouseX = -100;
-  let prevMouseY = -100;
-  let badgeLagX = 0;
-  let badgeLagY = 0;
-  let isVisible = false;
-  let isPressed = false;
-  let currentHoverText = "You";
-
-  // Dynamic Hover Target Mapping
-  const hoverSelectors = [
-    { sel: ".event-card", text: "✨ Explore" },
-    { sel: "a.btn-nav-register, a.btn-hero-primary, a.btn-modal-register, a[href*='docs.google.com'], .btn-action-register", text: "🚀 Register" },
-    { sel: ".btn-hero-secondary", text: "⚡ Explore" },
-    { sel: ".btn-back-innovex", text: "↩️ INNOVEX" },
-    { sel: ".theme-toggle-btn", text: "🌓 Theme" },
-    { sel: ".ai-launcher-btn", text: "🤖 TechFusion AI" },
-    { sel: ".ai-chip", text: "💡 Ask Prompt" },
-    { sel: ".ai-action-btn", text: "⚡ Action" },
-    { sel: ".modal-close-btn", text: "✕ Close" },
-    { sel: "a[href^='tel:']", text: "📞 Call Coordinator" },
-    { sel: ".social-pill", text: "🌐 Follow" },
-    { sel: "input, textarea", text: "✍️ Type" },
-    { sel: "button, a, [role='button'], .timeline-card, .coordinator-card", text: "👆 Click" }
-  ];
-
-  function getHoverText(target) {
-    if (!target || !(target instanceof Element)) return "You";
-    for (const rule of hoverSelectors) {
-      if (target.closest && target.closest(rule.sel)) {
-        return rule.text;
-      }
-    }
-    return "You";
-  }
-
-  // Pointer Move Handler
-  window.addEventListener("pointermove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-
-    if (!isVisible) {
-      isVisible = true;
-      cursor.classList.add("canva-cursor-visible");
-      prevMouseX = mouseX;
-      prevMouseY = mouseY;
-    }
-
-    // Direct tip tracking for instant zero-latency response
-    cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-
-    // Detect target element
-    const hoverText = getHoverText(e.target);
-    if (hoverText !== currentHoverText) {
-      currentHoverText = hoverText;
-      badgeText.textContent = hoverText;
-      if (hoverText !== "You") {
-        cursor.classList.add("canva-cursor-hover");
-      } else {
-        cursor.classList.remove("canva-cursor-hover");
-      }
-    }
-  }, { passive: true });
-
-  // Spring badge trailing physics
-  function updateBadgePhysics() {
-    if (isVisible) {
-      const vx = mouseX - prevMouseX;
-      const vy = mouseY - prevMouseY;
-      prevMouseX = mouseX;
-      prevMouseY = mouseY;
-
-      // Inertial lag effect on badge
-      badgeLagX += (-vx * 0.35 - badgeLagX) * 0.25;
-      badgeLagY += (-vy * 0.35 - badgeLagY) * 0.25;
-
-      const tilt = Math.max(-15, Math.min(15, -vx * 0.4));
-      badge.style.transform = `translate3d(${badgeLagX.toFixed(2)}px, ${badgeLagY.toFixed(2)}px, 0) rotate(${tilt.toFixed(1)}deg)`;
-    }
-    requestAnimationFrame(updateBadgePhysics);
-  }
-  requestAnimationFrame(updateBadgePhysics);
-
-  // Pointer Down (Squash & Press)
-  window.addEventListener("pointerdown", () => {
-    isPressed = true;
-    cursor.classList.add("canva-cursor-pressed");
-  }, { passive: true });
-
-  window.addEventListener("pointerup", () => {
-    isPressed = false;
-    cursor.classList.remove("canva-cursor-pressed");
-  }, { passive: true });
-
-  // Click Feedback: Canva Expanding Ripple & Sparkle Particles
-  window.addEventListener("click", (e) => {
-    createCanvaClickEffect(e.clientX, e.clientY);
-  }, { passive: true });
-
-  function createCanvaClickEffect(x, y) {
-    // 1. Expanding Ripple
-    const ripple = document.createElement("div");
-    ripple.className = "canva-click-ripple";
-    ripple.style.left = `${x}px`;
-    ripple.style.top = `${y}px`;
-    document.body.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 600);
-
-    // 2. Canva Sparkles
-    const colors = ["#00f2fe", "#7d2ae8", "#ff3366", "#facc15", "#38bdf8"];
-    const count = 6;
-    for (let i = 0; i < count; i++) {
-      const sparkle = document.createElement("div");
-      sparkle.className = "canva-sparkle";
-      sparkle.style.left = `${x}px`;
-      sparkle.style.top = `${y}px`;
-      const angle = (i * (2 * Math.PI / count)) + (Math.random() * 0.5);
-      const dist = 18 + Math.random() * 22;
-      sparkle.style.setProperty("--sparkle-x", `${Math.cos(angle) * dist}px`);
-      sparkle.style.setProperty("--sparkle-y", `${Math.sin(angle) * dist}px`);
-      sparkle.style.background = colors[i % colors.length];
-      sparkle.style.boxShadow = `0 0 6px ${colors[i % colors.length]}`;
-      document.body.appendChild(sparkle);
-      setTimeout(() => sparkle.remove(), 650);
-    }
-  }
-
-  // Handle cursor exit & re-entry
-  document.addEventListener("mouseleave", () => {
-    isVisible = false;
-    cursor.classList.remove("canva-cursor-visible");
-  });
-
-  document.addEventListener("mouseenter", () => {
-    isVisible = true;
-    cursor.classList.add("canva-cursor-visible");
-  });
-}
 
 // =============================================================================
 // 13. TECHFUSION AI AGENT — SITE INTELLIGENCE ENGINE
@@ -1287,7 +1136,7 @@ function initAiAgent() {
       gain.connect(ctx.destination);
       osc.start();
       osc.stop(ctx.currentTime + 0.25);
-    } catch (_) {}
+    } catch (_) { }
   }
 
   // Toggle Chat Window
@@ -1477,7 +1326,7 @@ function initAiAgent() {
             <li><strong>Team:</strong> 2 Members (UG &amp; PG students from the same college)</li>
             <li><strong>Venue:</strong> Cyber Block, ACC Lab</li>
             <li><strong>Prizes:</strong> 1st: ₹3,000 &bull; 2nd: ₹2,000 &bull; 3rd: ₹1,000</li>
-            <li><strong>Coordinators:</strong> P. Sampath Vinayak (<a href="tel:+919392515992">+91 93925 15992</a>), Y. Lokesh Babu (<a href="tel:+918639465554">+91 86394 65554</a>)</li>
+            <li><strong>Coordinators:</strong> P. Sampath Vinayak (<a href="tel:+919392515992">+91 93925 15992</a>)</li>
           </ul>
         `,
         actions: [
@@ -1535,7 +1384,7 @@ function initAiAgent() {
                 <li>🥉 3rd: ₹1,000 (Creative Catalyst)</li>
               </ul>
             </li>
-            <li><strong>Coordinators:</strong> P. Bharath (<a href="tel:+917569063286">+91 75690 63286</a>), A. Reddy Charan (<a href="tel:+919346555753">+91 93465 55753</a>)</li>
+            <li><strong>Coordinators:</strong>N. Uttej (<a href="tel:+91 6300537352">+91 6300537352</a>)</li>
           </ul>
         `,
         actions: [
