@@ -342,6 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initThemeToggle();
   initCustomCursor();
+  initAiAgent();
   initButtonClickHighlight();
 });
 
@@ -1093,5 +1094,676 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 } else {
   document.addEventListener('DOMContentLoaded', initScrollReveal);
 }
+
+// =============================================================================
+// 12. CANVA-STYLE COLLABORATIVE CUSTOM CURSOR
+// =============================================================================
+function initCustomCursor() {
+  // Gracefully skip on touch devices
+  if (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) return;
+
+  const cursor = document.getElementById("canvaCursor");
+  const pointer = document.getElementById("canvaCursorPointer");
+  const badge = document.getElementById("canvaCursorBadge");
+  const badgeText = document.getElementById("canvaBadgeText");
+
+  if (!cursor || !badge || !badgeText) return;
+
+  let mouseX = -100;
+  let mouseY = -100;
+  let prevMouseX = -100;
+  let prevMouseY = -100;
+  let badgeLagX = 0;
+  let badgeLagY = 0;
+  let isVisible = false;
+  let isPressed = false;
+  let currentHoverText = "You";
+
+  // Dynamic Hover Target Mapping
+  const hoverSelectors = [
+    { sel: ".event-card", text: "✨ Explore" },
+    { sel: "a.btn-nav-register, a.btn-hero-primary, a.btn-modal-register, a[href*='docs.google.com'], .btn-action-register", text: "🚀 Register" },
+    { sel: ".btn-hero-secondary", text: "⚡ Explore" },
+    { sel: ".btn-back-innovex", text: "↩️ INNOVEX" },
+    { sel: ".theme-toggle-btn", text: "🌓 Theme" },
+    { sel: ".ai-launcher-btn", text: "🤖 TechFusion AI" },
+    { sel: ".ai-chip", text: "💡 Ask Prompt" },
+    { sel: ".ai-action-btn", text: "⚡ Action" },
+    { sel: ".modal-close-btn", text: "✕ Close" },
+    { sel: "a[href^='tel:']", text: "📞 Call Coordinator" },
+    { sel: ".social-pill", text: "🌐 Follow" },
+    { sel: "input, textarea", text: "✍️ Type" },
+    { sel: "button, a, [role='button'], .timeline-card, .coordinator-card", text: "👆 Click" }
+  ];
+
+  function getHoverText(target) {
+    if (!target || !(target instanceof Element)) return "You";
+    for (const rule of hoverSelectors) {
+      if (target.closest && target.closest(rule.sel)) {
+        return rule.text;
+      }
+    }
+    return "You";
+  }
+
+  // Pointer Move Handler
+  window.addEventListener("pointermove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    if (!isVisible) {
+      isVisible = true;
+      cursor.classList.add("canva-cursor-visible");
+      prevMouseX = mouseX;
+      prevMouseY = mouseY;
+    }
+
+    // Direct tip tracking for instant zero-latency response
+    cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+
+    // Detect target element
+    const hoverText = getHoverText(e.target);
+    if (hoverText !== currentHoverText) {
+      currentHoverText = hoverText;
+      badgeText.textContent = hoverText;
+      if (hoverText !== "You") {
+        cursor.classList.add("canva-cursor-hover");
+      } else {
+        cursor.classList.remove("canva-cursor-hover");
+      }
+    }
+  }, { passive: true });
+
+  // Spring badge trailing physics
+  function updateBadgePhysics() {
+    if (isVisible) {
+      const vx = mouseX - prevMouseX;
+      const vy = mouseY - prevMouseY;
+      prevMouseX = mouseX;
+      prevMouseY = mouseY;
+
+      // Inertial lag effect on badge
+      badgeLagX += (-vx * 0.35 - badgeLagX) * 0.25;
+      badgeLagY += (-vy * 0.35 - badgeLagY) * 0.25;
+
+      const tilt = Math.max(-15, Math.min(15, -vx * 0.4));
+      badge.style.transform = `translate3d(${badgeLagX.toFixed(2)}px, ${badgeLagY.toFixed(2)}px, 0) rotate(${tilt.toFixed(1)}deg)`;
+    }
+    requestAnimationFrame(updateBadgePhysics);
+  }
+  requestAnimationFrame(updateBadgePhysics);
+
+  // Pointer Down (Squash & Press)
+  window.addEventListener("pointerdown", () => {
+    isPressed = true;
+    cursor.classList.add("canva-cursor-pressed");
+  }, { passive: true });
+
+  window.addEventListener("pointerup", () => {
+    isPressed = false;
+    cursor.classList.remove("canva-cursor-pressed");
+  }, { passive: true });
+
+  // Click Feedback: Canva Expanding Ripple & Sparkle Particles
+  window.addEventListener("click", (e) => {
+    createCanvaClickEffect(e.clientX, e.clientY);
+  }, { passive: true });
+
+  function createCanvaClickEffect(x, y) {
+    // 1. Expanding Ripple
+    const ripple = document.createElement("div");
+    ripple.className = "canva-click-ripple";
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+    document.body.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+
+    // 2. Canva Sparkles
+    const colors = ["#00f2fe", "#7d2ae8", "#ff3366", "#facc15", "#38bdf8"];
+    const count = 6;
+    for (let i = 0; i < count; i++) {
+      const sparkle = document.createElement("div");
+      sparkle.className = "canva-sparkle";
+      sparkle.style.left = `${x}px`;
+      sparkle.style.top = `${y}px`;
+      const angle = (i * (2 * Math.PI / count)) + (Math.random() * 0.5);
+      const dist = 18 + Math.random() * 22;
+      sparkle.style.setProperty("--sparkle-x", `${Math.cos(angle) * dist}px`);
+      sparkle.style.setProperty("--sparkle-y", `${Math.sin(angle) * dist}px`);
+      sparkle.style.background = colors[i % colors.length];
+      sparkle.style.boxShadow = `0 0 6px ${colors[i % colors.length]}`;
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 650);
+    }
+  }
+
+  // Handle cursor exit & re-entry
+  document.addEventListener("mouseleave", () => {
+    isVisible = false;
+    cursor.classList.remove("canva-cursor-visible");
+  });
+
+  document.addEventListener("mouseenter", () => {
+    isVisible = true;
+    cursor.classList.add("canva-cursor-visible");
+  });
+}
+
+// =============================================================================
+// 13. TECHFUSION AI AGENT — SITE INTELLIGENCE ENGINE
+// =============================================================================
+function initAiAgent() {
+  const widget = document.getElementById("tfAiWidget");
+  const launcher = document.getElementById("aiLauncherBtn");
+  const chatWindow = document.getElementById("aiChatWindow");
+  const messagesList = document.getElementById("aiMessagesList");
+  const inputForm = document.getElementById("aiInputForm");
+  const inputField = document.getElementById("aiInputText");
+  const clearBtn = document.getElementById("aiClearBtn");
+  const minimizeBtn = document.getElementById("aiMinimizeBtn");
+  const unreadDot = document.getElementById("aiUnreadDot");
+  const chips = document.querySelectorAll(".ai-chip");
+
+  if (!widget || !launcher || !chatWindow || !messagesList || !inputForm || !inputField) return;
+
+  let isOpen = false;
+  let hasGreeted = false;
+  let isTyping = false;
+
+  // Sound synthesis via Web Audio API (graceful optional feedback)
+  function playAgentChime() {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+      osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.12); // A5
+      gain.gain.setValueAtTime(0.04, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.25);
+    } catch (_) {}
+  }
+
+  // Toggle Chat Window
+  function toggleChat(forceOpen = null) {
+    isOpen = forceOpen !== null ? forceOpen : !isOpen;
+    if (isOpen) {
+      widget.classList.add("ai-open");
+      launcher.setAttribute("aria-expanded", "true");
+      unreadDot.classList.remove("active");
+      if (!hasGreeted && messagesList.children.length === 0) {
+        hasGreeted = true;
+        sendGreeting();
+      }
+      setTimeout(() => inputField.focus(), 300);
+    } else {
+      widget.classList.remove("ai-open");
+      launcher.setAttribute("aria-expanded", "false");
+    }
+  }
+
+  launcher.addEventListener("click", () => toggleChat());
+  if (minimizeBtn) minimizeBtn.addEventListener("click", () => toggleChat(false));
+
+  // Close on Escape key
+  window.addEventListener("keydown", (e) => {
+    if (isOpen && e.key === "Escape") {
+      toggleChat(false);
+    }
+  });
+
+  // Clear chat
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      messagesList.innerHTML = "";
+      hasGreeted = false;
+      sendGreeting();
+    });
+  }
+
+  // Suggestion Chips
+  chips.forEach(chip => {
+    chip.addEventListener("click", () => {
+      const query = chip.getAttribute("data-query");
+      if (!query) return;
+      handleUserSubmit(query);
+    });
+  });
+
+  // Input Form Submit
+  inputForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const text = inputField.value.trim();
+    if (!text || isTyping) return;
+    inputField.value = "";
+    handleUserSubmit(text);
+  });
+
+  function handleUserSubmit(query) {
+    appendMessage("user", query);
+    playAgentChime();
+    isTyping = true;
+    showTypingIndicator();
+
+    setTimeout(() => {
+      removeTypingIndicator();
+      const response = generateAiResponse(query);
+      appendMessage("assistant", response.text, response.actions);
+      playAgentChime();
+      isTyping = false;
+    }, 450);
+  }
+
+  function appendMessage(sender, text, actions = null) {
+    const msg = document.createElement("div");
+    msg.className = `ai-msg ${sender}`;
+
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
+    let actionsHtml = "";
+    if (actions && actions.length > 0) {
+      actionsHtml = `<div class="ai-action-btn-row">
+        ${actions.map(act => act.html).join("")}
+      </div>`;
+    }
+
+    msg.innerHTML = `
+      <div class="ai-msg-bubble">
+        ${text}
+        ${actionsHtml}
+      </div>
+      <span class="ai-msg-time">${timeStr}</span>
+    `;
+
+    messagesList.appendChild(msg);
+    messagesList.scrollTop = messagesList.scrollHeight;
+
+    // Attach listeners to freshly created action buttons
+    msg.querySelectorAll(".ai-action-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const actionType = btn.getAttribute("data-action");
+        if (actionType === "open-modal") {
+          const eventId = parseInt(btn.getAttribute("data-id"), 10);
+          openEventModal(eventId);
+        } else if (actionType === "scroll-to") {
+          const target = btn.getAttribute("data-target");
+          const el = document.querySelector(target);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        } else if (actionType === "ask-prompt") {
+          const prompt = btn.getAttribute("data-prompt");
+          if (prompt) handleUserSubmit(prompt);
+        }
+      });
+    });
+
+    if (!isOpen) {
+      unreadDot.classList.add("active");
+    }
+  }
+
+  function showTypingIndicator() {
+    const ind = document.createElement("div");
+    ind.id = "aiTypingInd";
+    ind.className = "ai-typing-indicator";
+    ind.innerHTML = `
+      <span class="ai-typing-dot"></span>
+      <span class="ai-typing-dot"></span>
+      <span class="ai-typing-dot"></span>
+    `;
+    messagesList.appendChild(ind);
+    messagesList.scrollTop = messagesList.scrollHeight;
+  }
+
+  function removeTypingIndicator() {
+    const ind = document.getElementById("aiTypingInd");
+    if (ind) ind.remove();
+  }
+
+  function sendGreeting() {
+    const greetingText = `
+      <p>👋 Hello! I'm <strong>TechFusion AI</strong>, your official guide to <strong>TECHFUSION 2026</strong> — the flagship CSE &amp; IoT symposium of <strong>INNOVEX 2026</strong> at R.V.R. &amp; J.C. College of Engineering.</p>
+      <p>I have comprehensive knowledge of all <strong>3 flagship events</strong>, rules, timelines, <strong>free registrations</strong>, prize pools, and coordinators. How can I help you today?</p>
+    `;
+    const actions = [
+      { html: `<button type="button" class="ai-action-btn" data-action="ask-prompt" data-prompt="Tell me about the 3 flagship events">🎯 3 Flagship Events</button>` },
+      { html: `<button type="button" class="ai-action-btn" data-action="ask-prompt" data-prompt="Is there any registration fee?">💰 Free Registration?</button>` },
+      { html: `<button type="button" class="ai-action-btn" data-action="ask-prompt" data-prompt="What is the full schedule for Oct 9?">🕒 Full Schedule</button>` },
+      { html: `<button type="button" class="ai-action-btn" data-action="ask-prompt" data-prompt="Who are the coordinators?">👥 Coordinators</button>` }
+    ];
+    appendMessage("assistant", greetingText, actions);
+  }
+
+  // ===========================================================================
+  // KNOWLEDGE BASE & NATURAL LANGUAGE PROCESSOR
+  // ===========================================================================
+  function generateAiResponse(input) {
+    const q = input.toLowerCase().trim();
+
+    // 1. REGISTRATION FEE / IS IT FREE?
+    if (q.includes("fee") || q.includes("free") || q.includes("cost") || q.includes("price") || q.includes("pay") || q.includes("ticket") || q.includes("charge")) {
+      return {
+        text: `
+          <p>🎉 <strong>NO REGISTRATION FEE AT ALL!</strong></p>
+          <p>Registration for <strong>TECHFUSION 2026</strong> is completely <strong>100% FREE</strong> for all college students across all 3 flagship events as part of the INNOVEX 2026 National Tech Fest.</p>
+          <ul>
+            <li>✅ <strong>Zero Entry Fee</strong> for all rounds</li>
+            <li>✅ <strong>E-Certificates</strong> for all registered participants</li>
+            <li>✅ <strong>Cash Prizes</strong> awarded to 1st, 2nd, and 3rd place winners</li>
+          </ul>
+        `,
+        actions: [
+          { html: `<a href="${eventForms.event1}" target="_blank" rel="noopener noreferrer" class="ai-action-btn btn-action-register">🚀 Register on Google Form</a>` },
+          { html: `<button type="button" class="ai-action-btn" data-action="ask-prompt" data-prompt="Tell me about the 3 flagship events">🎯 Explore Events</button>` }
+        ]
+      };
+    }
+
+    // 2. META MATRIX (EVENT 02 - CODING)
+    if (q.includes("meta") || q.includes("matrix") || q.includes("event 2") || (q.includes("coding") && !q.includes("event")) || q.includes("programming challenge")) {
+      return {
+        text: `
+          <p>💻 <strong>EVENT 02: META MATRIX</strong> (Technical Challenge)</p>
+          <p>A flagship competitive coding challenge evaluating algorithms, core computer science concepts, and analytical problem solving.</p>
+          <ul>
+            <li><strong>Prelims:</strong> 8:00 AM – 12:00 PM &bull; 20 MCQs on programming &amp; CS fundamentals (10 mins)</li>
+            <li><strong>Mains:</strong> 1:00 PM – 4:00 PM &bull; 5 coding problems of varying difficulty evaluated against automated test cases (2 hours)</li>
+            <li><strong>Team:</strong> 2 Members (UG &amp; PG students from the same college)</li>
+            <li><strong>Venue:</strong> Cyber Block, ACC Lab</li>
+            <li><strong>Prizes:</strong> 1st: ₹3,000 &bull; 2nd: ₹2,000 &bull; 3rd: ₹1,000</li>
+            <li><strong>Coordinators:</strong> P. Sampath Vinayak (<a href="tel:+919392515992">+91 93925 15992</a>), Y. Lokesh Babu (<a href="tel:+918639465554">+91 86394 65554</a>)</li>
+          </ul>
+        `,
+        actions: [
+          { html: `<button type="button" class="ai-action-btn" data-action="open-modal" data-id="2">🔍 View Meta Matrix Details</button>` },
+          { html: `<a href="${eventForms.event1}" target="_blank" rel="noopener noreferrer" class="ai-action-btn btn-action-register">🚀 Register for Meta Matrix</a>` }
+        ]
+      };
+    }
+
+    // 3. MICRO MISSION (EVENT 01 - QUIZ / REASONING / ROUNDS)
+    if (q.includes("micro") || q.includes("mission") || q.includes("event 1") || q.includes("quiz") || q.includes("byte talk") || q.includes("charades") || q.includes("think n sync") || q.includes("racking brains")) {
+      return {
+        text: `
+          <p>⚡ <strong>EVENT 01: MICRO MISSION</strong> (Technical Quest)</p>
+          <p>An engaging technical quest testing reasoning, technical communication, teamwork, and problem-solving through 4 dynamic rounds.</p>
+          <ul>
+            <li><strong>Prelims:</strong> 8:00 AM – 12:00 PM &bull; 15 MCQs on general reasoning &amp; basic programming (10 mins). Top 6 teams qualify!</li>
+            <li><strong>Mains Rounds:</strong> 1:00 PM – 4:00 PM
+              <ul>
+                <li>1. <em>Think N Sync:</em> Coding question + logo identification (40 mins)</li>
+                <li>2. <em>Tech Charades:</em> Non-verbal technical word guessing (2 words, roles switch)</li>
+                <li>3. <em>Racking Brains:</em> Pool-selected question, 10 ordered questions (20 mins)</li>
+                <li>4. <em>Byte Talks:</em> Lucky dip speech without using forbidden taboo keywords!</li>
+              </ul>
+            </li>
+            <li><strong>Team:</strong> 2 Members (from same college)</li>
+            <li><strong>Venue:</strong> Cyber Block Labs</li>
+            <li><strong>Prizes:</strong> 1st: ₹3,000 &bull; 2nd: ₹2,000 &bull; 3rd: ₹1,000</li>
+            <li><strong>Coordinator:</strong> Revtish Muthineni (<a href="tel:+917675890406">+91 76758 90406</a>)</li>
+          </ul>
+        `,
+        actions: [
+          { html: `<button type="button" class="ai-action-btn" data-action="open-modal" data-id="1">🔍 View Micro Mission Details</button>` },
+          { html: `<a href="${eventForms.event2}" target="_blank" rel="noopener noreferrer" class="ai-action-btn btn-action-register">🚀 Register for Micro Mission</a>` }
+        ]
+      };
+    }
+
+    // 4. MEME MAGIC (EVENT 03 - CREATIVE / MEMES)
+    if (q.includes("meme") || q.includes("magic") || q.includes("event 3") || q.includes("video meme") || q.includes("deadline") || q.includes("6th oct")) {
+      return {
+        text: `
+          <p>🎭 <strong>EVENT 03: MEME MAGIC</strong> (Meme Design Challenge)</p>
+          <p>A witty and creative digital challenge celebrating visual storytelling, humor, and tech culture.</p>
+          <ul>
+            <li><strong>Prelims (Online Submission):</strong> Submit 1 static meme by <strong>6th October 2026 (11:59 PM IST)</strong>. Themes:
+              <em>Developers vs Bugs</em>, <em>Technology vs Reality</em>, or <em>The Life of Software Professionals With AI</em>.
+              Top 25 teams qualify for on-campus mains!</li>
+            <li><strong>Mains (On Campus):</strong> 9th Oct, 1:00 PM – 4:00 PM &bull; Create a 10–15s Video Meme based on a surprise theme revealed on the spot! Plus a tie-breaker dialogue guessing round.</li>
+            <li><strong>Mandatory Requirement:</strong> All participants <strong>must bring earphones</strong>!</li>
+            <li><strong>Prizes:</strong>
+              <ul>
+                <li>🥇 1st: ₹3,000 (Best Meme Magician)</li>
+                <li>🥈 2nd: ₹2,000 (Humor Hacker)</li>
+                <li>🥉 3rd: ₹1,000 (Creative Catalyst)</li>
+              </ul>
+            </li>
+            <li><strong>Coordinators:</strong> P. Bharath (<a href="tel:+917569063286">+91 75690 63286</a>), A. Reddy Charan (<a href="tel:+919346555753">+91 93465 55753</a>)</li>
+          </ul>
+        `,
+        actions: [
+          { html: `<button type="button" class="ai-action-btn" data-action="open-modal" data-id="3">🔍 View Meme Magic Details</button>` },
+          { html: `<a href="${eventForms.event3}" target="_blank" rel="noopener noreferrer" class="ai-action-btn btn-action-register">🚀 Register for Meme Magic</a>` }
+        ]
+      };
+    }
+
+    // 5. ALL 3 EVENTS SUMMARY
+    if (q.includes("event") || q.includes("flagship") || q.includes("competition") || q.includes("arena") || q.includes("what can i join") || q.includes("list")) {
+      return {
+        text: `
+          <p>🚀 <strong>TECHFUSION 2026 — 3 FLAGSHIP EVENTS:</strong></p>
+          <ul>
+            <li>⚡ <strong>EVENT 01: MICRO MISSION</strong> &bull; Technical Quest &bull; 15 MCQs Prelims, 4 Mains rounds (Think N Sync, Charades, Racking Brains, Byte Talks).</li>
+            <li>💻 <strong>EVENT 02: META MATRIX</strong> &bull; Coding Challenge &bull; 20 MCQs Prelims, 5 competitive coding problems Mains evaluated by automated test cases.</li>
+            <li>🎭 <strong>EVENT 03: MEME MAGIC</strong> &bull; Creative Meme Design &bull; Online static meme prelims (Deadline: Oct 6), On-campus 10–15s video meme mains.</li>
+          </ul>
+          <p><em>All events are for teams of 2 students from the same college, with zero registration fees and ₹6,000 in cash prizes per event!</em></p>
+        `,
+        actions: [
+          { html: `<button type="button" class="ai-action-btn" data-action="open-modal" data-id="1">⚡ Event 01</button>` },
+          { html: `<button type="button" class="ai-action-btn" data-action="open-modal" data-id="2">💻 Event 02</button>` },
+          { html: `<button type="button" class="ai-action-btn" data-action="open-modal" data-id="3">🎭 Event 03</button>` },
+          { html: `<a href="${eventForms.event1}" target="_blank" rel="noopener noreferrer" class="ai-action-btn btn-action-register">🚀 Free Registration</a>` }
+        ]
+      };
+    }
+
+    // 6. SCHEDULE & TIMINGS
+    if (q.includes("schedule") || q.includes("time") || q.includes("timing") || q.includes("timeline") || q.includes("when") || q.includes("date") || q.includes("october 9") || q.includes("oct 9") || q.includes("journey")) {
+      return {
+        text: `
+          <p>🕒 <strong>TECHFUSION 2026 ITINERARY (OCTOBER 9, 2026):</strong></p>
+          <ul>
+            <li><strong>08:00 AM – 12:00 PM &bull; Prelims Phase:</strong>
+              <br>• Meta Matrix: Online MCQ round (Programming &amp; CS concepts)
+              <br>• Micro Mission: 15 MCQs (Reasoning to basic coding)
+              <br>• Meme Magic: Shortlisting evaluation of online submissions
+            </li>
+            <li><strong>01:00 PM – 04:00 PM &bull; Mains Phase:</strong>
+              <br>• Meta Matrix: 5 Coding challenges across Cyber Block ACC Lab
+              <br>• Micro Mission: Think N Sync, Tech Charades, Racking Brains, Byte Talks
+              <br>• Meme Magic: 10–15s On-Campus Video Meme creation
+            </li>
+            <li><strong>04:00 PM – 05:00 PM &bull; Grand Valedictory:</strong>
+              <br>Final demos, announcement of winners, distribution of cash prizes and merit certificates!
+            </li>
+          </ul>
+        `,
+        actions: [
+          { html: `<button type="button" class="ai-action-btn" data-action="scroll-to" data-target="#schedule">📅 Jump to Schedule Section</button>` },
+          { html: `<a href="${eventForms.event1}" target="_blank" rel="noopener noreferrer" class="ai-action-btn btn-action-register">🚀 Register Your Team</a>` }
+        ]
+      };
+    }
+
+    // 7. CASH PRIZES & REWARDS
+    if (q.includes("prize") || q.includes("cash") || q.includes("award") || q.includes("reward") || q.includes("win") || q.includes("amount") || q.includes("money")) {
+      return {
+        text: `
+          <p>🏆 <strong>CASH PRIZES &amp; RECOGNITION:</strong></p>
+          <p>Every flagship event features a dedicated prize pool:</p>
+          <ul>
+            <li>🥇 <strong>1st Prize:</strong> ₹3,000 Cash + Certificate of Merit</li>
+            <li>🥈 <strong>2nd Prize:</strong> ₹2,000 Cash + Certificate of Merit</li>
+            <li>🥉 <strong>3rd Prize:</strong> ₹1,000 Cash + Certificate of Merit</li>
+          </ul>
+          <p><em>Plus: Official Participation E-Certificates for all registered attendees who participate in the Prelims round!</em></p>
+        `,
+        actions: [
+          { html: `<a href="${eventForms.event1}" target="_blank" rel="noopener noreferrer" class="ai-action-btn btn-action-register">🚀 Register Free to Win</a>` },
+          { html: `<button type="button" class="ai-action-btn" data-action="open-modal" data-id="2">💻 Meta Matrix</button>` }
+        ]
+      };
+    }
+
+    // 8. COORDINATORS & CONTACTS
+    if (q.includes("coord") || q.includes("contact") || q.includes("phone") || q.includes("call") || q.includes("number") || q.includes("kalyan") || q.includes("poshitha") || q.includes("sampath") || q.includes("lokesh") || q.includes("bharath") || q.includes("charan") || q.includes("revtish") || q.includes("faculty") || q.includes("dean") || q.includes("hod") || q.includes("convener")) {
+      return {
+        text: `
+          <p>📞 <strong>TECHFUSION LEADERSHIP &amp; COORDINATORS:</strong></p>
+          <p><strong>Faculty Leadership:</strong></p>
+          <ul>
+            <li>Dr. M. Sreelatha &bull; Dean, Dept. of CSE (Advisory Committee)</li>
+            <li>Dr. N. Nagamalleswara Rao &bull; HOD, Dept. of CSE &amp; IoT (Advisory Committee)</li>
+            <li>Dr. M. Srikanth &bull; Professor, Dept. of CSE (Staff Convener)</li>
+          </ul>
+          <p><strong>Lead Student Coordinators:</strong></p>
+          <ul>
+            <li>K. Kalyan: <a href="tel:+917569292106">+91 75692 92106</a></li>
+            <li>B. Poshitha: <a href="tel:+918499098999">+91 84990 98999</a></li>
+          </ul>
+          <p><strong>Event Coordinators:</strong></p>
+          <ul>
+            <li>Micro Mission: Revtish Muthineni (<a href="tel:+917675890406">+91 76758 90406</a>)</li>
+            <li>Meta Matrix: P. Sampath Vinayak (<a href="tel:+919392515992">+91 93925 15992</a>), Y. Lokesh Babu (<a href="tel:+918639465554">+91 86394 65554</a>)</li>
+            <li>Meme Magic: P. Bharath (<a href="tel:+917569063286">+91 75690 63286</a>), A. Reddy Charan (<a href="tel:+919346555753">+91 93465 55753</a>)</li>
+          </ul>
+        `,
+        actions: [
+          { html: `<button type="button" class="ai-action-btn" data-action="scroll-to" data-target="#coordinators">👥 View Coordinators Section</button>` }
+        ]
+      };
+    }
+
+    // 9. VENUE / LOCATION / HOW TO REACH
+    if (q.includes("venue") || q.includes("location") || q.includes("where") || q.includes("college") || q.includes("address") || q.includes("cyber block") || q.includes("acc lab") || q.includes("rvr") || q.includes("r.v.r") || q.includes("guntur")) {
+      return {
+        text: `
+          <p>📍 <strong>CAMPUS &amp; VENUE DETAILS:</strong></p>
+          <ul>
+            <li><strong>Institution:</strong> R.V.R. &amp; J.C. College of Engineering (Autonomous)</li>
+            <li><strong>Department:</strong> Department of Computer Science &amp; Engineering (CSE) and Internet of Things (IoT)</li>
+            <li><strong>Location:</strong> Chandramoulipuram, Chowdavaram, Guntur, Andhra Pradesh &ndash; 522019</li>
+            <li><strong>Event Arenas:</strong> Cyber Block Labs &amp; ACC Lab</li>
+          </ul>
+          <p>All participants must report at the Cyber Block 10 minutes prior to event timings with their valid college ID card.</p>
+        `,
+        actions: [
+          { html: `<button type="button" class="ai-action-btn" data-action="scroll-to" data-target="#schedule">🕒 View Schedule</button>` },
+          { html: `<a href="${eventForms.event1}" target="_blank" rel="noopener noreferrer" class="ai-action-btn btn-action-register">🚀 Register Now</a>` }
+        ]
+      };
+    }
+
+    // 10. HOW TO REGISTER
+    if (q.includes("register") || q.includes("registration") || q.includes("form") || q.includes("apply") || q.includes("sign up") || q.includes("how to")) {
+      return {
+        text: `
+          <p>🚀 <strong>HOW TO REGISTER:</strong></p>
+          <ol>
+            <li>1. Form a team of <strong>2 members</strong> from the same college.</li>
+            <li>2. Choose your preferred event(s): Micro Mission, Meta Matrix, or Meme Magic.</li>
+            <li>3. Fill out the official Google Form (no fee required).</li>
+            <li>4. Carry your valid college ID card on the day of the event (Oct 9, 2026).</li>
+            <li>5. <em>Note:</em> For Meme Magic, submit your static meme before <strong>6th Oct 11:59 PM</strong>.</li>
+          </ol>
+        `,
+        actions: [
+          { html: `<a href="${eventForms.event1}" target="_blank" rel="noopener noreferrer" class="ai-action-btn btn-action-register">🚀 Open Google Form</a>` },
+          { html: `<button type="button" class="ai-action-btn" data-action="scroll-to" data-target="#events">🎯 Browse Events</button>` }
+        ]
+      };
+    }
+
+    // 11. ELIGIBILITY / TEAM SIZE / ID / RULES
+    if (q.includes("eligib") || q.includes("rule") || q.includes("team") || q.includes("member") || q.includes("solo") || q.includes("single") || q.includes("alone") || q.includes("id card") || q.includes("earphone") || q.includes("who can")) {
+      return {
+        text: `
+          <p>📋 <strong>ELIGIBILITY &amp; GENERAL RULES:</strong></p>
+          <ul>
+            <li><strong>Eligibility:</strong> Open to all undergraduate (UG) and postgraduate (PG) students from any recognized college.</li>
+            <li><strong>Team Size:</strong> Teams must consist of <strong>2 members from the same college</strong>. Solo entries or replacing members after registration is not permitted.</li>
+            <li><strong>Mandatory ID:</strong> All participants must carry a valid physical College ID card.</li>
+            <li><strong>Earphones:</strong> Required for Event 03 (Meme Magic).</li>
+            <li><strong>Reporting Time:</strong> Report at least 10 minutes before the scheduled time at the Cyber Block.</li>
+          </ul>
+        `,
+        actions: [
+          { html: `<a href="${eventForms.event1}" target="_blank" rel="noopener noreferrer" class="ai-action-btn btn-action-register">🚀 Register Team for Free</a>` }
+        ]
+      };
+    }
+
+    // 12. INNOVEX 2026 / PARENT FEST
+    if (q.includes("innovex") || q.includes("fest") || q.includes("symposium") || q.includes("parent")) {
+      return {
+        text: `
+          <p>🌐 <strong>ABOUT INNOVEX 2026:</strong></p>
+          <p><strong>INNOVEX 2026</strong> is the premier national-level technical festival of R.V.R. &amp; J.C. College of Engineering. <strong>TECHFUSION 2026</strong> is the flagship CSE &amp; IoT departmental event block within INNOVEX.</p>
+          <p>You can return to the main INNOVEX portal at any time using the navigation button.</p>
+        `,
+        actions: [
+          { html: `<a href="https://rvrjcce.ac.in/innovex2026/" class="ai-action-btn">↩️ Visit INNOVEX 2026 Portal</a>` }
+        ]
+      };
+    }
+
+    // 13. GREETINGS & SMALL TALK
+    if (q.includes("hello") || q.includes("hi") || q.includes("hey") || q.includes("good morning") || q.includes("good afternoon") || q.includes("yo") || q === "hi" || q === "hey") {
+      return {
+        text: `
+          <p>👋 Hello! Great to have you here! I'm your dedicated <strong>TechFusion AI Assistant</strong>. What would you like to know about TECHFUSION 2026?</p>
+        `,
+        actions: [
+          { html: `<button type="button" class="ai-action-btn" data-action="ask-prompt" data-prompt="Tell me about the 3 flagship events">🎯 3 Flagship Events</button>` },
+          { html: `<button type="button" class="ai-action-btn" data-action="ask-prompt" data-prompt="Is there any registration fee?">💰 Registration Fee</button>` },
+          { html: `<button type="button" class="ai-action-btn" data-action="ask-prompt" data-prompt="What is the full schedule for Oct 9?">🕒 Schedule</button>` }
+        ]
+      };
+    }
+
+    if (q.includes("thank") || q.includes("thanks") || q.includes("cool") || q.includes("awesome") || q.includes("great") || q.includes("good")) {
+      return {
+        text: `
+          <p>You're very welcome! 😊 Feel free to ask if you have more questions. See you at TECHFUSION 2026 on <strong>October 9th</strong>!</p>
+        `,
+        actions: [
+          { html: `<a href="${eventForms.event1}" target="_blank" rel="noopener noreferrer" class="ai-action-btn btn-action-register">🚀 Register Now (Free)</a>` }
+        ]
+      };
+    }
+
+    // 14. FALLBACK / GENERAL HELPER
+    return {
+      text: `
+        <p>I can help you with anything related to <strong>TECHFUSION 2026</strong>!</p>
+        <p>Here are some popular topics you can explore:</p>
+        <ul>
+          <li>🎯 <strong>The 3 Events:</strong> Micro Mission, Meta Matrix, Meme Magic</li>
+          <li>💰 <strong>Registration:</strong> 100% Free entry (No fee)</li>
+          <li>🕒 <strong>Schedule:</strong> Prelims (8 AM - 12 PM), Mains (1 PM - 4 PM) on Oct 9</li>
+          <li>🏆 <strong>Cash Prizes:</strong> ₹3,000 (1st), ₹2,000 (2nd), ₹1,000 (3rd)</li>
+          <li>📞 <strong>Coordinators:</strong> Faculty &amp; Student phone contacts</li>
+          <li>📍 <strong>Venue:</strong> Cyber Block &amp; ACC Lab at RVR&JC Campus</li>
+        </ul>
+      `,
+      actions: [
+        { html: `<button type="button" class="ai-action-btn" data-action="ask-prompt" data-prompt="Tell me about the 3 flagship events">🎯 3 Flagship Events</button>` },
+        { html: `<button type="button" class="ai-action-btn" data-action="ask-prompt" data-prompt="Is there any registration fee?">💰 Is it Free?</button>` },
+        { html: `<button type="button" class="ai-action-btn" data-action="ask-prompt" data-prompt="What is the full schedule for Oct 9?">🕒 Full Schedule</button>` },
+        { html: `<button type="button" class="ai-action-btn" data-action="ask-prompt" data-prompt="Who are the coordinators?">📞 Coordinators</button>` }
+      ]
+    };
+  }
+}
+
 
 
