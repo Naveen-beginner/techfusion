@@ -169,29 +169,20 @@ const eventsData = [
     about: "Meme Magic is a creative and humorous competition designed to test participants' meme-making skills, wit, visual storytelling, and digital design abilities. The event consists of an Online Prelims Submission followed by an On-Campus Video Meme Challenge. Teams of two will create engaging, theme-based memes while demonstrating originality, humor, creativity, and ethical digital expression.",
     task: "Create original, creative, humorous, and impactful memes based on the given themes. In the Prelims, teams must submit one static meme online. The shortlisted teams will participate in the On-Campus Mains Video Meme Challenge, where they will create a 10–15 second video meme based on a surprise theme.",
     rules: [
-      "All participants must carry their valid college ID card and earphones.",
-      "Registration must be completed before the event begins.",
       "Memes must not target any individual or group and must not contain objectionable content.",
       "Plagiarism, offensive content, or suspicious activity will result in disqualification.",
       "All memes must adhere to the given theme and ethical guidelines.",
       "Memes should be original and creative, use minimal yet effective text, and communicate humor clearly.",
-      "Political, abusive, sensitive, or explicit material is not permitted.",
       "Prelims participation is limited to teams of two members from the same college.",
       "Each team must submit one static meme based on one of the given themes: Developers vs Bugs, Technology vs Reality, or The Life of Software Professionals With AI.",
       "Prelims submissions must be in PNG or JPG format with a maximum file size of 10 MB.",
       "The file name must follow the format teamname_themename. Example: PixelKings_Technology vs Reality.",
-      "Prelims memes must be submitted through the official submission form by scanning the provided QR code.",
       "The Prelims submission deadline is 6th October 2026 at 11:59 PM IST.",
-      "The Top 25 teams will be shortlisted based on Creativity & Originality (50%) and Humor & Theme Relevance (50%).",
-      "Shortlisted participants will be notified through email.",
       "The Mains Round will be conducted on campus and will consist of a Surprise Theme Reveal, Video Meme Creation, Submission & Verification, and Judging & Presentation.",
       "The Video Meme created during the Mains Round must be 10–15 seconds long.",
-      "The Mains Round will have a duration of 3 hours.",
-      "In the Tie-Breaker Round, teams must guess the missing dialogue from a displayed meme image.",
       "E-certificates will be issued to all participants."
     ],
     requirements: [
-      "Valid college ID card is mandatory for all participants.",
       "Participants must carry earphones for the event.",
       "Each team must consist of two members from the same college.",
       "Prelims submissions must be in PNG or JPG format and must not exceed 10 MB.",
@@ -224,7 +215,6 @@ const eventsData = [
     prizes: "1st Prize - Best Meme Magician: ₹3,000 | 2nd Prize - Humor Hacker: ₹2,000 | 3rd Prize - Creative Catalyst: ₹1,000",
     coordinators: [
       { name: "N. Uttej", phone: "+91 6300537352", role: "Student Coordinator" },
-      // { name: "P. Bharath", phone: "+91 7569063286", role: "Student Coordinator" }
     ],
     formUrl: eventForms.event3
   }
