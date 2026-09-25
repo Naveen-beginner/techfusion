@@ -1051,11 +1051,15 @@ function initButtonClickHighlight() {
 // 11. SCROLL REVEAL OBSERVER
 // =============================================================================
 function initScrollReveal() {
-  // Automatically apply reveal-up to major structural and text elements across the entire website
-  const autoRevealElements = document.querySelectorAll('h1, h2, h3, p, .timeline-node, .coordinator-card, .event-card, .countdown-box, .footer-brand, .footer-fest, .social-links, .footer-copy, .section-header, .no-fee-track, .hero-cta-group, .hero-meta-row');
-  
+  // Automatically apply reveal-up to major structural elements across the site.
+  // Skip anything inside <footer> — the footer itself animates as one block.
+  const autoRevealElements = document.querySelectorAll('h1, h2, h3, p, .timeline-node, .coordinator-card, .event-card, .countdown-box, .section-header, .no-fee-track, .hero-cta-group, .hero-meta-row');
+
   autoRevealElements.forEach(el => {
-    if (!el.classList.contains('reveal-up') && !el.classList.contains('reveal-left') && 
+    // Don't individually animate elements that live inside the footer
+    if (el.closest('footer')) return;
+
+    if (!el.classList.contains('reveal-up') && !el.classList.contains('reveal-left') &&
         !el.classList.contains('reveal-right') && !el.classList.contains('reveal-fade')) {
       el.classList.add('reveal-up');
     }
@@ -1063,7 +1067,7 @@ function initScrollReveal() {
 
   const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-fade');
   if (revealElements.length === 0) return;
-  
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1079,7 +1083,7 @@ function initScrollReveal() {
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-  
+
   revealElements.forEach(el => observer.observe(el));
 }
 
