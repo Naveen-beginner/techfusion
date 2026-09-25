@@ -340,7 +340,11 @@ document.addEventListener("DOMContentLoaded", () => {
   init3DCardTilt();
   initNavbarScroll();
   initMobileMenu();
+  initThemeToggle();
+  initCustomCursor();
+  initButtonClickHighlight();
 });
+
 
 // =============================================================================
 // 5. RENDER THREE EVENT CARDS DYNAMICALLY
@@ -361,7 +365,7 @@ function renderEventCards() {
   if (!container) return;
 
   container.innerHTML = eventsData.map(event => `
-    <article class="event-card" data-theme="${event.theme}" data-id="${event.id}" tabindex="0" role="button" aria-label="View details for ${event.title}">
+    <article class="event-card reveal-up" data-theme="${event.theme}" data-id="${event.id}" tabindex="0" role="button" aria-label="View details for ${event.title}">
       <!-- Card Image & Media -->
       <div class="card-media-wrap">
         <img src="${event.image}" alt="${event.title}" class="card-img" loading="lazy" />
@@ -976,3 +980,114 @@ function initIntroSplash() {
 
   requestAnimationFrame(updateProgress);
 }
+
+// =============================================================================
+// 11b. THEME TOGGLE — LIGHT / DARK MODE
+// =============================================================================
+
+function initThemeToggle() {
+  const btn = document.getElementById("themeToggleBtn");
+  if (!btn) return;
+
+  // Restore saved preference
+  const savedTheme = localStorage.getItem("tf-theme");
+  if (savedTheme === "light") {
+    document.body.classList.add("light-mode");
+  }
+
+  btn.addEventListener("click", () => {
+    const isLight = document.body.classList.toggle("light-mode");
+    localStorage.setItem("tf-theme", isLight ? "light" : "dark");
+
+    // Add click flash to the toggle button itself
+    btn.classList.remove("btn-click-flash");
+    void btn.offsetWidth; // reflow to restart animation
+    btn.classList.add("btn-click-flash");
+    btn.addEventListener("animationend", () => btn.classList.remove("btn-click-flash"), { once: true });
+  });
+}
+
+
+
+// =============================================================================
+// 11d. BUTTON CLICK BOX HIGHLIGHT
+// =============================================================================
+
+function initButtonClickHighlight() {
+  const selector = [
+    "button",
+    "a.btn-nav-register",
+    "a.btn-back-innovex",
+    "a.btn-hero-primary",
+    "a.btn-hero-secondary",
+    "a.btn-modal-register",
+    "a.social-pill",
+    ".btn-card-action",
+    ".intro-skip-btn",
+    ".modal-close-btn",
+    ".mobile-toggle",
+    ".theme-toggle-btn",
+    ".event-card"
+  ].join(", ");
+
+  document.addEventListener("click", (e) => {
+    const target = e.target.closest(selector);
+    if (!target) return;
+
+    // Remove existing flash class (to restart animation)
+    target.classList.remove("btn-click-flash");
+    void target.offsetWidth; // force reflow to restart CSS animation
+
+    target.classList.add("btn-click-flash");
+
+    target.addEventListener("animationend", () => {
+      target.classList.remove("btn-click-flash");
+    }, { once: true });
+  });
+}
+
+
+// =============================================================================
+// 11. SCROLL REVEAL OBSERVER
+// =============================================================================
+function initScrollReveal() {
+  // Automatically apply reveal-up to major structural and text elements across the entire website
+  const autoRevealElements = document.querySelectorAll('h1, h2, h3, p, .timeline-node, .coordinator-card, .event-card, .countdown-box, .footer-brand, .footer-fest, .social-links, .footer-copy, .section-header, .no-fee-track, .hero-cta-group, .hero-meta-row');
+  
+  autoRevealElements.forEach(el => {
+    if (!el.classList.contains('reveal-up') && !el.classList.contains('reveal-left') && 
+        !el.classList.contains('reveal-right') && !el.classList.contains('reveal-fade')) {
+      el.classList.add('reveal-up');
+    }
+  });
+
+  const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-fade');
+  if (revealElements.length === 0) return;
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = entry.target.getAttribute('data-delay');
+        if (delay) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, parseInt(delay, 10));
+        } else {
+          entry.target.classList.add('visible');
+        }
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  
+  revealElements.forEach(el => observer.observe(el));
+}
+
+// Manually initialize if DOM is already loaded
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  initScrollReveal();
+} else {
+  document.addEventListener('DOMContentLoaded', initScrollReveal);
+}
+
+

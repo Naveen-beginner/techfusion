@@ -1,4 +1,4 @@
-# TECHFUSION 2026 — Flagship CSE & IoT Event Platform
+♦# TECHFUSION 2026 — Flagship CSE & IoT Event Platform
 ### Official Technical Symposium of INNOVEX 2026
 **R.V.R. & J.C. College of Engineering (Autonomous), Guntur**
 
