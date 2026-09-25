@@ -1083,14 +1083,14 @@ function initScrollReveal() {
         if (delay) {
           setTimeout(() => {
             entry.target.classList.add('visible');
-          }, parseInt(delay, 10));
+          }, Math.min(Math.round(parseInt(delay, 10) * 0.4), 150));
         } else {
           entry.target.classList.add('visible');
         }
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px 0px 40px 0px' });
 
   revealElements.forEach(el => observer.observe(el));
 }

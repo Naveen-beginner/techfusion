@@ -4548,23 +4548,24 @@ body.light-mode .hero-dept-subline {
 .reveal-right,
 .reveal-fade {
   opacity: 0;
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.35s cubic-bezier(0.2, 0.8, 0.25, 1), transform 0.35s cubic-bezier(0.2, 0.8, 0.25, 1);
+  will-change: opacity, transform;
 }
 
 .reveal-up {
-  transform: translateY(45px);
+  transform: translateY(22px);
 }
 
 .reveal-left {
-  transform: translateX(-45px);
+  transform: translateX(-22px);
 }
 
 .reveal-right {
-  transform: translateX(45px);
+  transform: translateX(22px);
 }
 
 .reveal-fade {
-  transform: scale(0.95);
+  transform: scale(0.97);
 }
 
 .reveal-up.visible,
@@ -4580,31 +4581,31 @@ body.light-mode .hero-dept-subline {
 }
 
 [data-delay="100"] {
-  transition-delay: 0.1s;
+  transition-delay: 0.05s;
 }
 
 [data-delay="180"] {
-  transition-delay: 0.18s;
+  transition-delay: 0.09s;
 }
 
 [data-delay="260"] {
-  transition-delay: 0.26s;
+  transition-delay: 0.13s;
 }
 
 [data-delay="340"] {
-  transition-delay: 0.34s;
+  transition-delay: 0.17s;
 }
 
 [data-delay="400"] {
-  transition-delay: 0.4s;
+  transition-delay: 0.2s;
 }
 
 [data-delay="480"] {
-  transition-delay: 0.48s;
+  transition-delay: 0.24s;
 }
 
 [data-delay="560"] {
-  transition-delay: 0.56s;
+  transition-delay: 0.28s;
 }
 
 /* 6. DARK MODE GLASSMORPHISM */
