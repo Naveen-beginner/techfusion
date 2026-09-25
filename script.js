@@ -415,9 +415,31 @@ function renderEventCards() {
 // 5. EVENT DETAILS MODAL CONTROLLER
 // =============================================================================
 
+function resetModalScroll(modalEl) {
+  if (!modalEl) return;
+  const targets = [
+    modalEl.querySelector(".modal-body"),
+    modalEl.querySelector(".modal-container"),
+    modalEl
+  ];
+  targets.forEach(el => {
+    if (el) {
+      el.scrollTop = 0;
+      if (typeof el.scrollTo === "function") {
+        try {
+          el.scrollTo({ top: 0, left: 0, behavior: "instant" });
+        } catch (_) {
+          el.scrollTop = 0;
+        }
+      }
+    }
+  });
+}
+
 function initEventModal() {
   const modal = document.getElementById("eventModal");
   const closeBtn = document.getElementById("modalCloseBtn");
+  const dismissBtn = document.getElementById("modalDismissBtn");
 
   if (!modal) return;
 
@@ -427,6 +449,19 @@ function initEventModal() {
       closeEventModal();
     });
   }
+
+  // Close on footer dismiss button
+  if (dismissBtn) {
+    dismissBtn.addEventListener("click", () => {
+      closeEventModal();
+    });
+  }
+
+  // Native close event (handles ESC, programmatic close, etc.)
+  modal.addEventListener("close", () => {
+    document.body.style.overflow = "";
+    resetModalScroll(modal);
+  });
 
   // Close on clicking backdrop outside container
   modal.addEventListener("click", (e) => {
@@ -539,15 +574,14 @@ function openEventModal(eventId) {
 
   // Set Google Form CTA
   const registerBtn = document.getElementById("modalRegisterBtn");
-  registerBtn.href = event.formUrl;
-  registerBtn.setAttribute("target", "_blank");
-  registerBtn.setAttribute("rel", "noopener noreferrer");
-
-  // Reset scroll position to top
-  const modalBody = modal.querySelector(".modal-body");
-  if (modalBody) {
-    modalBody.scrollTop = 0;
+  if (registerBtn) {
+    registerBtn.href = event.formUrl;
+    registerBtn.setAttribute("target", "_blank");
+    registerBtn.setAttribute("rel", "noopener noreferrer");
   }
+
+  // Pre-reset scroll position before opening
+  resetModalScroll(modal);
 
   // Open native dialog
   if (typeof modal.showModal === "function") {
@@ -558,12 +592,30 @@ function openEventModal(eventId) {
 
   // Prevent background body scroll
   document.body.style.overflow = "hidden";
+
+  // Prevent browser from scrolling down to any focused descendant
+  const closeBtn = document.getElementById("modalCloseBtn");
+  if (closeBtn) {
+    try {
+      closeBtn.focus({ preventScroll: true });
+    } catch (_) {
+      closeBtn.focus();
+    }
+  }
+
+  // Guarantee scroll position is freshly reset to top across all rendering cycles
+  resetModalScroll(modal);
+  requestAnimationFrame(() => {
+    resetModalScroll(modal);
+  });
+  setTimeout(() => {
+    resetModalScroll(modal);
+  }, 40);
 }
 
 function closeEventModal() {
   const modal = document.getElementById("eventModal");
   if (!modal) return;
-
 
   if (typeof modal.close === "function") {
     modal.close();
@@ -572,6 +624,7 @@ function closeEventModal() {
   }
 
   document.body.style.overflow = "";
+  resetModalScroll(modal);
 }
 
 // =============================================================================
@@ -1141,6 +1194,9 @@ function initAiAgent() {
       widget.classList.add("ai-open");
       launcher.setAttribute("aria-expanded", "true");
       unreadDot.classList.remove("active");
+      if (window.innerWidth <= 768) {
+        document.body.classList.add("ai-chat-open-mobile");
+      }
       if (!hasGreeted && messagesList.children.length === 0) {
         hasGreeted = true;
         sendGreeting();
@@ -1149,11 +1205,47 @@ function initAiAgent() {
     } else {
       widget.classList.remove("ai-open");
       launcher.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("ai-chat-open-mobile");
     }
   }
 
   launcher.addEventListener("click", () => toggleChat());
   if (minimizeBtn) minimizeBtn.addEventListener("click", () => toggleChat(false));
+
+  // Sync mobile scroll lock on window resize / orientation change
+  window.addEventListener("resize", () => {
+    if (!isOpen || window.innerWidth > 768) {
+      document.body.classList.remove("ai-chat-open-mobile");
+    } else if (isOpen && window.innerWidth <= 768) {
+      document.body.classList.add("ai-chat-open-mobile");
+    }
+  });
+
+  // Stop mouse wheel chaining to background page
+  chatWindow.addEventListener("wheel", (e) => {
+    e.stopPropagation();
+  }, { passive: true });
+
+  // Mobile touch scrolling containment: isolate touches inside the chat window
+  chatWindow.addEventListener("touchmove", (e) => {
+    if (messagesList.contains(e.target) || e.target.closest(".ai-chips-container")) {
+      e.stopPropagation();
+    } else {
+      if (e.cancelable) e.preventDefault();
+    }
+  }, { passive: false });
+
+  // Prevent iOS / mobile rubberband scroll pass-through on messages list
+  messagesList.addEventListener("touchstart", () => {
+    const top = messagesList.scrollTop;
+    const total = messagesList.scrollHeight;
+    const current = top + messagesList.offsetHeight;
+    if (top <= 0) {
+      messagesList.scrollTop = 1;
+    } else if (current >= total) {
+      messagesList.scrollTop = top - 1;
+    }
+  }, { passive: true });
 
   // Close on Escape key
   window.addEventListener("keydown", (e) => {
@@ -1227,7 +1319,14 @@ function initAiAgent() {
     `;
 
     messagesList.appendChild(msg);
-    messagesList.scrollTop = messagesList.scrollHeight;
+    try {
+      messagesList.scrollTo({
+        top: messagesList.scrollHeight,
+        behavior: "smooth"
+      });
+    } catch (_) {
+      messagesList.scrollTop = messagesList.scrollHeight;
+    }
 
     // Attach listeners to freshly created action buttons
     msg.querySelectorAll(".ai-action-btn").forEach(btn => {
@@ -1262,7 +1361,14 @@ function initAiAgent() {
       <span class="ai-typing-dot"></span>
     `;
     messagesList.appendChild(ind);
-    messagesList.scrollTop = messagesList.scrollHeight;
+    try {
+      messagesList.scrollTo({
+        top: messagesList.scrollHeight,
+        behavior: "smooth"
+      });
+    } catch (_) {
+      messagesList.scrollTop = messagesList.scrollHeight;
+    }
   }
 
   function removeTypingIndicator() {
