@@ -1,5 +1,5 @@
 /**
- * TECHFUSION 2026 — Flagship CSE & IoT Event Platform
+ * TECHFUSION 2026 — Flagship CSE & CSO Event Platform
  * Official Technical Symposium of INNOVEX 2026
  * R.V.R. & J.C. College of Engineering (Autonomous), Guntur
  */
@@ -20,7 +20,7 @@ const FESTIVAL_CONFIG = {
   name: "TECHFUSION",
   parentFest: "INNOVEX 2026",
   college: "R.V.R. & J.C. College of Engineering",
-  department: "Department of CSE & IoT",
+  department: "Department of CSE & CSO",
   eventDateDisplay: "9th October 2026",
   countdownTarget: "2026-10-09T09:00:00+05:30",
   innovexUrl: "https://rvrjcce.ac.in/innovex2026/"
@@ -135,7 +135,7 @@ const eventsData = [
     mainsTime: "Mains: 1:00 PM - 4:00 PM",
     prelims: {
       timing: "8:00 AM - 12:00 PM",
-      questions: "20 MCQs (Basic Programming Concepts & CS Fundamentals)",
+      questions: "20 MCQs (DataStructures, Algorithms, and Analysis of Algorithms, time and space complexity)",
       timeLimit: "10 Minutes"
     },
     mains: {
@@ -553,13 +553,18 @@ function openEventModal(eventId) {
   registerBtn.setAttribute("target", "_blank");
   registerBtn.setAttribute("rel", "noopener noreferrer");
 
+  // Reset scroll position to top
+  const modalBody = modal.querySelector(".modal-body");
+  if (modalBody) {
+    modalBody.scrollTop = 0;
+  }
+
   // Open native dialog
   if (typeof modal.showModal === "function") {
     modal.showModal();
   } else {
     modal.setAttribute("open", "");
   }
-
 
   // Prevent background body scroll
   document.body.style.overflow = "hidden";
@@ -1059,8 +1064,8 @@ function initScrollReveal() {
   const autoRevealElements = document.querySelectorAll('h1, h2, h3, p, .timeline-node, .coordinator-card, .event-card, .countdown-box, .section-header, .no-fee-track, .hero-cta-group, .hero-meta-row');
 
   autoRevealElements.forEach(el => {
-    // Don't individually animate elements that live inside the footer
-    if (el.closest('footer')) return;
+    // Don't individually animate elements that live inside modals, dialogs, footer, chat, or splash
+    if (el.closest('footer') || el.closest('dialog') || el.closest('.event-modal') || el.closest('.ai-chat-window') || el.closest('.intro-splash-screen')) return;
 
     if (!el.classList.contains('reveal-up') && !el.classList.contains('reveal-left') &&
       !el.classList.contains('reveal-right') && !el.classList.contains('reveal-fade')) {
@@ -1277,7 +1282,7 @@ function initAiAgent() {
 
   function sendGreeting() {
     const greetingText = `
-      <p>👋 Hello! I'm <strong>TechFusion AI</strong>, your official guide to <strong>TECHFUSION 2026</strong> — the flagship CSE &amp; IoT symposium of <strong>INNOVEX 2026</strong> at R.V.R. &amp; J.C. College of Engineering.</p>
+      <p>👋 Hello! I'm <strong>TechFusion AI</strong>, your official guide to <strong>TECHFUSION 2026</strong> — the flagship CSE &amp; CSO symposium of <strong>INNOVEX 2026</strong> at R.V.R. &amp; J.C. College of Engineering.</p>
       <p>I have comprehensive knowledge of all <strong>3 flagship events</strong>, rules, timelines, <strong>free registrations</strong>, prize pools, and coordinators. How can I help you today?</p>
     `;
     const actions = [
@@ -1355,7 +1360,7 @@ function initAiAgent() {
             <li><strong>Team:</strong> 2 Members (from same college)</li>
             <li><strong>Venue:</strong> Cyber Block Labs</li>
             <li><strong>Prizes:</strong> 1st: ₹3,000 &bull; 2nd: ₹2,000 &bull; 3rd: ₹1,000</li>
-            <li><strong>Coordinator:</strong> Revtish Muthineni (<a href="tel:+917675890406">+91 76758 90406</a>)</li>
+            <li><strong>Coordinators:</strong> Revtish Muthineni (<a href="tel:+917675890406">+91 76758 90406</a>)</li>
           </ul>
         `,
         actions: [
@@ -1384,7 +1389,7 @@ function initAiAgent() {
                 <li>🥉 3rd: ₹1,000 (Creative Catalyst)</li>
               </ul>
             </li>
-            <li><strong>Coordinators:</strong>N. Uttej (<a href="tel:+91 6300537352">+91 6300537352</a>)</li>
+            <li><strong>Coordinators:</strong> N. Uttej (<a href="tel:+916300537352">+91 63005 37352</a>)</li>
           </ul>
         `,
         actions: [
@@ -1464,26 +1469,26 @@ function initAiAgent() {
     }
 
     // 8. COORDINATORS & CONTACTS
-    if (q.includes("coord") || q.includes("contact") || q.includes("phone") || q.includes("call") || q.includes("number") || q.includes("kalyan") || q.includes("poshitha") || q.includes("sampath") || q.includes("lokesh") || q.includes("bharath") || q.includes("charan") || q.includes("revtish") || q.includes("faculty") || q.includes("dean") || q.includes("hod") || q.includes("convener")) {
+    if (q.includes("coord") || q.includes("contact") || q.includes("phone") || q.includes("call") || q.includes("number") || q.includes("kalyan") || q.includes("poshitha") || q.includes("sampath") || q.includes("uttej") || q.includes("revtish") || q.includes("faculty") || q.includes("sreelatha") || q.includes("nagamalleswara") || q.includes("srikanth") || q.includes("dean") || q.includes("hod") || q.includes("convener") || q.includes("lead") || q.includes("student coordinator") || q.includes("faculty coordinator")) {
       return {
         text: `
           <p>📞 <strong>TECHFUSION LEADERSHIP &amp; COORDINATORS:</strong></p>
           <p><strong>Faculty Leadership:</strong></p>
           <ul>
-            <li>Dr. M. Sreelatha &bull; Dean, Dept. of CSE (Advisory Committee)</li>
-            <li>Dr. N. Nagamalleswara Rao &bull; HOD, Dept. of CSE &amp; IoT (Advisory Committee)</li>
-            <li>Dr. M. Srikanth &bull; Professor, Dept. of CSE (Staff Convener)</li>
+            <li>Dr. M. Sreelatha &bull; Professor &amp; Dean, Dept. of CSE (Advisory Committee)</li>
+            <li>Dr. N. Nagamalleswara Rao &bull; Professor &amp; HOD, Dept. of CSE &amp; CSO (Advisory Committee)</li>
+            <li>Dr. M. Srikanth &bull; Professor, Dept. of CSE (Staff Convener (CSE))</li>
           </ul>
-          <p><strong>Lead Student Coordinators:</strong></p>
+          <p><strong>Student Coordinators:</strong></p>
           <ul>
             <li>K. Kalyan: <a href="tel:+917569292106">+91 75692 92106</a></li>
-            <li>B. Poshitha: <a href="tel:+918499098999">+91 84990 98999</a></li>
+            <li>B. Poshitha Sri: <a href="tel:+918499098999">+91 84990 98999</a></li>
           </ul>
           <p><strong>Event Coordinators:</strong></p>
           <ul>
             <li>Micro Mission: Revtish Muthineni (<a href="tel:+917675890406">+91 76758 90406</a>)</li>
-            <li>Meta Matrix: P. Sampath Vinayak (<a href="tel:+919392515992">+91 93925 15992</a>), Y. Lokesh Babu (<a href="tel:+918639465554">+91 86394 65554</a>)</li>
-            <li>Meme Magic: P. Bharath (<a href="tel:+917569063286">+91 75690 63286</a>), A. Reddy Charan (<a href="tel:+919346555753">+91 93465 55753</a>)</li>
+            <li>Meta Matrix: P. Sampath Vinayak (<a href="tel:+919392515992">+91 93925 15992</a>)</li>
+            <li>Meme Magic: N. Uttej (<a href="tel:+916300537352">+91 63005 37352</a>)</li>
           </ul>
         `,
         actions: [
@@ -1499,7 +1504,7 @@ function initAiAgent() {
           <p>📍 <strong>CAMPUS &amp; VENUE DETAILS:</strong></p>
           <ul>
             <li><strong>Institution:</strong> R.V.R. &amp; J.C. College of Engineering (Autonomous)</li>
-            <li><strong>Department:</strong> Department of Computer Science &amp; Engineering (CSE) and Internet of Things (IoT)</li>
+            <li><strong>Department:</strong> Department of Computer Science &amp; Engineering (CSE) and Internet of Things (CSO)</li>
             <li><strong>Location:</strong> Chandramoulipuram, Chowdavaram, Guntur, Andhra Pradesh &ndash; 522019</li>
             <li><strong>Event Arenas:</strong> Cyber Block Labs &amp; ACC Lab</li>
           </ul>
@@ -1556,7 +1561,7 @@ function initAiAgent() {
       return {
         text: `
           <p>🌐 <strong>ABOUT INNOVEX 2026:</strong></p>
-          <p><strong>INNOVEX 2026</strong> is the premier national-level technical festival of R.V.R. &amp; J.C. College of Engineering. <strong>TECHFUSION 2026</strong> is the flagship CSE &amp; IoT departmental event block within INNOVEX.</p>
+          <p><strong>INNOVEX 2026</strong> is the premier national-level technical festival of R.V.R. &amp; J.C. College of Engineering. <strong>TECHFUSION 2026</strong> is the flagship CSE &amp; CSO departmental event block within INNOVEX.</p>
           <p>You can return to the main INNOVEX portal at any time using the navigation button.</p>
         `,
         actions: [
