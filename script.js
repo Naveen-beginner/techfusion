@@ -1719,7 +1719,7 @@ function initAiAgent() {
 
 const marquee = document.getElementById("marquee");
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 10) {
+  if (window.scrollY > 5) {
     document.getElementById("mainNavbar").style.top = "0px"
   } else if (window.scrollY < 10) {
     document.getElementById("mainNavbar").style.top = "40px"
