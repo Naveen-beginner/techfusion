@@ -2082,7 +2082,37 @@ dialog.event-modal .reveal-fade {
   }
 }
 
-/* Modal Event Coordinators Grid (1 Row 2 Cards) */
+/* Modal Dual Coordinators Section (Left: Staff Coordinators, Right: Event Coordinators) */
+.modal-block-coords-dual {
+  width: 100%;
+}
+
+.modal-coords-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.modal-coords-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-coords-col .modal-block-title {
+  margin-bottom: 2px;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.modal-coords-grid-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
 .modal-coords-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -2094,23 +2124,61 @@ dialog.event-modal .reveal-fade {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 14px 18px;
+  padding: 13px 16px;
   border-radius: var(--radius-md);
-  background: rgba(14, 20, 48, 0.75);
+  background: rgba(14, 20, 48, 0.85);
   border: 1px solid var(--border-subtle);
   transition: all 0.3s var(--ease-spring);
+  position: relative;
+  overflow: hidden;
 }
 
 .modal-coord-card:hover {
-  background: rgba(20, 28, 64, 0.9);
+  background: rgba(20, 28, 64, 0.95);
   border-color: rgba(0, 242, 254, 0.4);
   box-shadow: 0 6px 20px rgba(0, 242, 254, 0.15);
   transform: translateY(-2px);
 }
 
+/* Staff Coordinator Card Accent (Left Column) */
+.modal-coord-card.staff-card {
+  border-left: 3px solid #c084fc;
+}
+
+.modal-coord-card.staff-card .modal-coord-avatar {
+  background: rgba(192, 132, 252, 0.12);
+  border-color: rgba(192, 132, 252, 0.35);
+  color: #c084fc;
+}
+
+.modal-coord-card.staff-card .modal-coord-role {
+  color: #c084fc;
+}
+
+.modal-coord-card.staff-card:hover {
+  border-color: rgba(192, 132, 252, 0.4);
+  border-left-color: #c084fc;
+  box-shadow: 0 6px 20px rgba(192, 132, 252, 0.18);
+}
+
+/* Event Coordinator Card Accent (Right Column) */
+.modal-coord-card.event-card-coord {
+  border-left: 3px solid var(--accent-cyan);
+}
+
+.modal-coord-card.event-card-coord .modal-coord-avatar {
+  background: rgba(0, 242, 254, 0.1);
+  border-color: rgba(0, 242, 254, 0.3);
+  color: var(--accent-cyan);
+}
+
+.modal-coord-card.event-card-coord .modal-coord-role {
+  color: var(--accent-cyan);
+}
+
 .modal-coord-avatar {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: rgba(0, 242, 254, 0.1);
   border: 1px solid rgba(0, 242, 254, 0.3);
@@ -2132,31 +2200,41 @@ dialog.event-modal .reveal-fade {
   flex-direction: column;
   gap: 2px;
   min-width: 0;
+  flex: 1;
 }
 
 .modal-coord-role {
   font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   color: var(--accent-cyan);
 }
 
 .modal-coord-name {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 700;
   color: #ffffff;
   margin: 0;
+  line-height: 1.3;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.modal-coord-dept {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 500;
+  line-height: 1.3;
+  margin-top: 1px;
 }
 
 .modal-coord-phone {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   font-weight: 600;
   color: #cbd5e1;
   text-decoration: none;
@@ -2171,18 +2249,82 @@ dialog.event-modal .reveal-fade {
   flex-shrink: 0;
 }
 
+.modal-coord-card.staff-card .modal-coord-phone .tf-icon {
+  stroke: #c084fc;
+}
+
 .modal-coord-phone:hover {
   color: var(--accent-cyan);
 }
 
-@media (max-width: 640px) {
+.modal-coord-card.staff-card .modal-coord-phone:hover {
+  color: #c084fc;
+}
+
+/* Light Mode Adaptations */
+body.light-mode .modal-coord-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+body.light-mode .modal-coord-card:hover {
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .modal-coord-name {
+  color: #0f172a;
+}
+
+body.light-mode .modal-coord-dept {
+  color: #64748b;
+}
+
+body.light-mode .modal-coord-phone {
+  color: #334155;
+}
+
+body.light-mode .modal-coord-card.staff-card {
+  border-left-color: #9333ea;
+}
+
+body.light-mode .modal-coord-card.staff-card .modal-coord-avatar {
+  background: rgba(147, 51, 234, 0.1);
+  border-color: rgba(147, 51, 234, 0.3);
+  color: #9333ea;
+}
+
+body.light-mode .modal-coord-card.staff-card .modal-coord-role {
+  color: #9333ea;
+}
+
+body.light-mode .modal-coord-card.event-card-coord {
+  border-left-color: #0284c7;
+}
+
+body.light-mode .modal-coord-card.event-card-coord .modal-coord-avatar {
+  background: rgba(2, 132, 199, 0.1);
+  border-color: rgba(2, 132, 199, 0.3);
+  color: #0284c7;
+}
+
+body.light-mode .modal-coord-card.event-card-coord .modal-coord-role {
+  color: #0284c7;
+}
+
+@media (max-width: 768px) {
+  .modal-coords-columns {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
   .modal-coords-grid {
     grid-template-columns: 1fr;
     gap: 10px;
   }
 
   .modal-coord-card {
-    padding: 12px 14px;
+    padding: 11px 14px;
   }
 }
 
@@ -6086,6 +6228,92 @@ body.light-mode .ai-input-field:focus {
     right: 0;
     bottom: 64px;
     height: 480px;
+  }
+}
+
+/* ==========================================================================
+   ULTRA-SMOOTH MOBILE SCROLLING & GPU PERFORMANCE ENGINE
+   ========================================================================== */
+@media (max-width: 768px), (pointer: coarse) {
+  /* 1. Eliminate Background Re-rasterization on Mobile Touch Scrolling */
+  html,
+  body,
+  body.light-mode {
+    background-attachment: scroll !important;
+    scroll-behavior: auto !important; /* Native 120Hz/60Hz touch momentum */
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+
+  body.light-mode::before {
+    display: none !important; /* Disable fixed repeating gradients during mobile scroll */
+  }
+
+  /* 2. Remove GPU Fill-rate bottleneck (heavy backdrop-filters) on mobile */
+  .navbar,
+  .navbar.scrolled {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #060814 !important;
+  }
+
+  body.light-mode .navbar,
+  body.light-mode .navbar.scrolled {
+    background: #ffffff !important;
+  }
+
+  .event-card,
+  .coordinator-card,
+  .timeline-card,
+  .hero-glass-card,
+  .info-card,
+  .modal-coord-card,
+  .countdown-segment {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transform: translateZ(0); /* Hardware accelerate composite layer */
+  }
+
+  /* 3. Disable continuous GPU repaint animations on mobile cards */
+  body:not(.light-mode) .event-card {
+    animation: none !important;
+    background: rgba(14, 20, 48, 0.95) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  body.light-mode .event-card {
+    background: #ffffff !important;
+    border-color: rgba(148, 163, 184, 0.28) !important;
+  }
+
+  body:not(.light-mode) .coordinator-card,
+  body:not(.light-mode) .timeline-card {
+    background: rgba(14, 20, 48, 0.92) !important;
+  }
+
+  body.light-mode .coordinator-card,
+  body.light-mode .timeline-card {
+    background: #ffffff !important;
+    border-color: rgba(148, 163, 184, 0.28) !important;
+  }
+
+  /* 4. Instant Zero-Stutter Reveal on Mobile */
+  .reveal-up,
+  .reveal-left,
+  .reveal-right,
+  .reveal-fade {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+
+  /* 5. Smooth touch container scrolling */
+  .modal-body,
+  .ai-messages-list,
+  .ai-chips-container {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
   }
 }
 

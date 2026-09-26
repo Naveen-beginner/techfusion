@@ -40,47 +40,44 @@ const eventsData = [
     title: "MICRO MISSION",
     badgeLabel: "TECHNICAL QUEST",
     image: "assets/event1d.jpeg",
-    shortDesc: "A multi-round technical challenge designed to test reasoning, programming knowledge, teamwork, communication, and technical creativity.",
-    about: "Micro Mission is a captivating technical quest that evaluates and enriches participants' expertise across a broad spectrum of technical subjects. The event covers areas ranging from general reasoning and basic programming to technical communication, creative thinking, and problem-solving.",
-    task: "Complete the multi-stage Micro Mission challenge, beginning with a prelims round and progressing through four mains rounds: Think N Sync, Tech Charades, Racking Brains, and Byte Talks.",
+    shortDesc: "An inter-collegiate technical challenge where knowledge, creativity, teamwork, and quick thinking come together to solve missions, decode tech, and think under pressure.",
+    about: "Discover the thrill of “Micro Mission,” an inter-collegiate technical challenge where knowledge, creativity, teamwork, and quick thinking come together. Designed as a series of engaging missions, the event challenges participants to solve problems, decode technology, think under pressure, communicate creatively, and apply their technical knowledge beyond conventional boundaries. With every round bringing a new challenge, Micro Mission offers an exciting platform to test skills, discover strengths, and experience technology in a whole new way.",
+    task: "Complete the multi-stage Micro Mission challenge, beginning with a 15-MCQ Prelims Round and progressing through four specialized Mains Rounds: Think N Sync (40 min), Tech Charades (40 min), Racking Brains (20 min), and Byte Talks (20 min).",
     rules: [
       "All participants must carry their valid college ID card.",
       "Registration must be completed before the commencement of the event.",
-      "Any suspicious activity or misconduct may lead to immediate disqualification.",
-      "Prelims will be conducted for teams of two members from the same college.",
-      "The Prelims Round consists of 15 MCQs covering general reasoning to basic-level programming, with a time limit of 10 minutes.",
-      "Six teams will be selected from the Prelims Round for the Mains Round.",
-      "Participants who attend the Prelims Round will receive an e-certificate.",
-      "In Think N Sync, each team will receive two questions, one coding-related and one involving a logo, to be answered within 40 minutes.",
-      "In Tech Charades, one team member must act and describe the given word while the other teammate guesses it. Two words will be given per team, with members switching positions after the first word.",
-      "In Racking Brains, teams must select their main question from a pool. Once a question is selected, it cannot be changed.",
-      "In Racking Brains, 10 questions will be presented to each participant at a time and must be answered in order within the allotted 20-minute time limit.",
-      "The number of questions answered correctly and in order within the given time will determine qualification.",
-      "In Byte Talks, each team will select a topic through a lucky dip and must deliver a speech without using the restricted keywords associated with the topic.",
-      "Teams will be provided preparation time before delivering their Byte Talks speech."
+      "Any suspicious activity or misconduct will lead to immediate disqualification.",
+      "A team of two members from the same college must attend the Prelims test on general reasoning to basic level of programming.",
+      "The Prelims test consists of 15 MCQs with a time limit of 10 minutes.",
+      "Six (06) student teams will be selected from the Prelims Round for the Mains Round.",
+      "All students participating in the Prelims will receive an official e-certificate.",
+      "Round 1: Think N Sync (40 Minutes) — Every team will receive two questions, one coding-related and one involving a logo, which must be answered within the allotted time.",
+      "Round 2: Tech Charades (40 Minutes) — One team member acts and describes the given word while the other teammate guesses. Two words per team, with members switching positions after one word.",
+      "Round 3: Racking Brains (20 Minutes) — Players choose their main question from a pool (cannot change once chosen). 10 questions will be fired at each participant at a time and must be answered in order at a stretch; qualification is determined by number of questions answered correctly in order.",
+      "Round 4: Byte Talks (20 Minutes) — Each team selects a random topic via lucky dip with a set of restricted keywords that cannot be used. Preparation time is provided before delivering the speech."
     ],
     requirements: [
       "Valid College ID card is mandatory for all participants.",
-      "Registration must be completed before the event begins.",
+      "Registration must be completed before the commencement of the event.",
       "Each team must consist of two members from the same college."
     ],
     teamSize: "2 Members",
     eligibility: "Open to college students participating as a two-member team from the same college.",
     date: "9th Oct, 2026",
-    time: "Prelims: 8:00 AM - 12:00 PM | Mains: 1:00 PM - 4:00 PM",
+    time: "Prelims: 8:00 AM - 12:00 PM | Mains: 1:30 PM - 4:00 PM",
     prelimsTime: "Prelims: 8:00 AM - 12:00 PM",
-    mainsTime: "Mains: 1:00 PM - 4:00 PM",
+    mainsTime: "Mains: 1:30 PM - 4:00 PM",
     prelims: {
       timing: "8:00 AM - 12:00 PM",
       questions: "15 MCQs (General Reasoning to basic-level programming)",
       timeLimit: "10 Minutes"
     },
     mains: {
-      timing: "1:00 PM - 4:00 PM",
+      timing: "1:30 PM - 4:00 PM",
       questions: "4 Specialized Rounds (Think N Sync, Tech Charades, Racking Brains, Byte Talks)",
-      timeLimit: "3 Hours"
+      timeLimit: "2.5 Hours"
     },
-    venue: "Cyber Block Labs",
+    venue: "Cyber Block Seminar Hall",
     entryFee: "[NO REGISTRATION FEE]",
     prizesList: [
       { rank: "1st Prize", amount: "₹3,000" },
@@ -88,8 +85,19 @@ const eventsData = [
       { rank: "3rd Prize", amount: "₹1,000" }
     ],
     prizes: "1st Prize: ₹3,000 | 2nd Prize: ₹2,000 | 3rd Prize: ₹1,000",
+    staffCoordinators: [
+      { name: "Dr. T. Anuradha", role: "Associate Professor", dept: "Dept. of CSE" },
+      { name: "Sri N. Chandra Sekhar", role: "Assistant Professor", dept: "Dept. of CSE" },
+      { name: "Sri M. Koteswara Rao", role: "Assistant Professor", dept: "Dept. of CSE" },
+      { name: "Smt. T. Madhavi Latha", role: "Assistant Professor", dept: "Dept. of CSE" }
+    ],
+    eventCoordinators: [
+      { name: "Revtish Muthineni", phone: "+91 76758 90406", role: "Student Coordinator (Y24CS294)" },
+      { name: "Shaik Mohaseen", phone: "+91 63049 22424", role: "Student Coordinator" }
+    ],
     coordinators: [
-      { name: "Revtish Muthineni", phone: "+91 7675890406", role: "Student Coordinator" },
+      { name: "Revtish Muthineni", phone: "+91 76758 90406", role: "Student Coordinator (Y24CS294)" },
+      { name: "Shaik Mohaseen", phone: "+91 63049 22424", role: "Student Coordinator" }
     ],
     formUrl: eventForms.event2
   },
@@ -150,8 +158,17 @@ const eventsData = [
       { rank: "3rd Prize", amount: "₹1,000" }
     ],
     prizes: "1st Prize: ₹3,000 | 2nd Prize: ₹2,000 | 3rd Prize: ₹1,000",
+    staffCoordinators: [
+      { name: "Dr. Bhagya Lakshmi Nandipati", role: "Associate Professor", dept: "Dept. of CSE" },
+      { name: "Mrs. M. Vasavi", role: "Assistant Professor", dept: "Dept. of CSE" }
+    ],
+    eventCoordinators: [
+      { name: "P. Sampath Vinayak", phone: "+91 93925 15992", role: "Student Coordinator" },
+      { name: "B. Pavani", phone: "+91 78937 34720", role: "Student Coordinator" }
+    ],
     coordinators: [
-      { name: "P. Sampath Vinayak", phone: "+91 9392515992", role: "Student Coordinator" },
+      { name: "P. Sampath Vinayak", phone: "+91 93925 15992", role: "Student Coordinator" },
+      { name: "B. Pavani", phone: "+91 78937 34720", role: "Student Coordinator" }
     ],
     formUrl: eventForms.event1
   },
@@ -169,6 +186,8 @@ const eventsData = [
     rules: [
       "Memes must not target any individual or group and must not contain objectionable content.",
       "Plagiarism, offensive content, or suspicious activity will result in disqualification.",
+      "Use only Picsart, Canva, and Clipchamp for all event-related design and video editing.",
+      "No other editing tools or software are allowed; participants must use these platforms only.",
       "All memes must adhere to the given theme and ethical guidelines.",
       "Memes should be original and creative, use minimal yet effective text, and communicate humor clearly.",
       "Prelims participation is limited to teams of two members from the same college.",
@@ -177,7 +196,7 @@ const eventsData = [
       "The file name must follow the format teamname_themename. Example: PixelKings_Technology vs Reality.",
       "The Prelims submission deadline is 6th October 2026 at 11:59 PM IST.",
       "The Mains Round will be conducted on campus and will consist of a Surprise Theme Reveal, Video Meme Creation, Submission & Verification, and Judging & Presentation.",
-      "The Video Meme created during the Mains Round must be 10–15 seconds long.",
+      "The Video Meme created during the Mains Round must be 15–30 seconds long.",
       "E-certificates will be issued to all participants."
     ],
     requirements: [
@@ -200,7 +219,7 @@ const eventsData = [
     },
     mains: {
       timing: "1:00 PM - 4:00 PM",
-      questions: "10–15s Video Meme (Surprise Theme) + Tie-Breaker Dialogue Round",
+      questions: "15–30s Video Meme (Surprise Theme) + Tie-Breaker Dialogue Round",
       timeLimit: "3 Hours"
     },
     venue: "Cyber Block",
@@ -211,8 +230,17 @@ const eventsData = [
       { rank: "3rd Prize", title: "Creative Catalyst", amount: "₹1,000" }
     ],
     prizes: "1st Prize - Best Meme Magician: ₹3,000 | 2nd Prize - Humor Hacker: ₹2,000 | 3rd Prize - Creative Catalyst: ₹1,000",
+    staffCoordinators: [
+      { name: "Dr. Z. Sunitha Bai", role: "Associate Professor", dept: "Dept. of CSE" },
+      { name: "Smt. S. Udaya Lakshmi", role: "Assistant Professor", dept: "Dept. of CSE" }
+    ],
+    eventCoordinators: [
+      { name: "N. Uttej", phone: "+91 63005 37352", role: "Student Coordinator" },
+      { name: "T. Varshitha", phone: "+91 9391861657", role: "Student Coordinator" }
+    ],
     coordinators: [
-      { name: "N. Uttej", phone: "+91 6300537352", role: "Student Coordinator" },
+      { name: "N. Uttej", phone: "+91 63005 37352", role: "Student Coordinator" },
+      { name: "T. Varshitha", phone: "+91 9391861657", role: "Student Coordinator" }
     ],
     formUrl: eventForms.event3
   }
@@ -545,25 +573,69 @@ function openEventModal(eventId) {
     }).join("");
   }
 
-  // Populate Event Coordinators (1 Row 2 Cards)
-  const coordsGridEl = document.getElementById("modalCoordsGrid");
-  if (coordsGridEl && event.coordinators) {
-    coordsGridEl.innerHTML = event.coordinators.map(coord => {
-      const cleanPhone = coord.phone.replace(/[^+\d]/g, "");
+  // Populate Staff Coordinators (Left Column, 2 Names)
+  const staffCoordsGridEl = document.getElementById("modalStaffCoordsGrid");
+  const staffList = event.staffCoordinators || [
+    { name: "Dr. M. Srikanth", role: "Staff Convener (CSE)", dept: "Professor, Dept. of CSE" },
+    { name: "Dr. N. Nagamalleswara Rao", role: "Staff Coordinator", dept: "HOD, Dept. of CSE & CSO" }
+  ];
+  if (staffCoordsGridEl) {
+    staffCoordsGridEl.innerHTML = staffList.map(coord => {
+      const cleanPhone = coord.phone ? coord.phone.replace(/[^+\d]/g, "") : "";
+      const contactHtml = coord.phone
+        ? `<a href="tel:${cleanPhone}" class="modal-coord-phone" title="Call ${coord.name}">
+            <svg class="tf-icon" viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            <span>${coord.phone}</span>
+          </a>`
+        : (coord.dept ? `<span class="modal-coord-dept">${coord.dept}</span>` : "");
+
       return `
-        <div class="modal-coord-card">
+        <div class="modal-coord-card staff-card">
           <div class="modal-coord-avatar">
-            ${ICONS.users}
+            <svg class="tf-icon" viewBox="0 0 24 24">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </div>
+          <div class="modal-coord-info">
+            <span class="modal-coord-role">${coord.role || "Staff Coordinator"}</span>
+            <h4 class="modal-coord-name" title="${coord.name}">${coord.name}</h4>
+            ${contactHtml}
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  // Populate Event Coordinators (Right Column, 2 Names)
+  const eventCoordsGridEl = document.getElementById("modalEventCoordsGrid") || document.getElementById("modalCoordsGrid");
+  const eventCoordList = event.eventCoordinators || event.coordinators || [];
+  if (eventCoordsGridEl) {
+    eventCoordsGridEl.innerHTML = eventCoordList.map(coord => {
+      const cleanPhone = coord.phone ? coord.phone.replace(/[^+\d]/g, "") : "";
+      const contactHtml = coord.phone
+        ? `<a href="tel:${cleanPhone}" class="modal-coord-phone" title="Call ${coord.name}">
+            <svg class="tf-icon" viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            <span>${coord.phone}</span>
+          </a>`
+        : (coord.dept ? `<span class="modal-coord-dept">${coord.dept}</span>` : "");
+
+      return `
+        <div class="modal-coord-card event-card-coord">
+          <div class="modal-coord-avatar">
+            <svg class="tf-icon" viewBox="0 0 24 24">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+              <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+            </svg>
           </div>
           <div class="modal-coord-info">
             <span class="modal-coord-role">${coord.role || "Event Coordinator"}</span>
-            <h4 class="modal-coord-name">${coord.name}</h4>
-            <a href="tel:${cleanPhone}" class="modal-coord-phone" title="Call ${coord.name}">
-              <svg class="tf-icon" viewBox="0 0 24 24">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-              </svg>
-              <span>${coord.phone}</span>
-            </a>
+            <h4 class="modal-coord-name" title="${coord.name}">${coord.name}</h4>
+            ${contactHtml}
           </div>
         </div>
       `;
@@ -670,6 +742,10 @@ function initCountdown() {
 // 7. HIGH-PERFORMANCE LIGHTWEIGHT CANVAS BACKGROUND
 // =============================================================================
 
+// =============================================================================
+// 7. HIGH-PERFORMANCE LIGHTWEIGHT CANVAS BACKGROUND
+// =============================================================================
+
 function initCanvasBackground() {
   const canvas = document.getElementById("heroCanvas");
   if (!canvas) return;
@@ -677,41 +753,46 @@ function initCanvasBackground() {
   const ctx = canvas.getContext("2d");
   let width, height;
   let particles = [];
-  let mouse = { x: null, y: null, radius: 120 };
+  let mouse = { x: null, y: null, radius: 100 };
+  let animId = null;
+  let isVisible = true;
+
+  const isMobile = window.innerWidth <= 768 || ('ontouchstart' in window);
 
   function resize() {
     const rect = canvas.getBoundingClientRect();
-    width = canvas.width = rect.width;
-    height = canvas.height = rect.height;
+    width = canvas.width = rect.width || window.innerWidth;
+    height = canvas.height = rect.height || window.innerHeight;
     createParticles();
   }
 
   function createParticles() {
     particles = [];
-    const count = Math.min(Math.floor((width * height) / 16000), 55);
+    const maxCount = isMobile ? 18 : 50;
+    const count = Math.min(Math.floor((width * height) / (isMobile ? 26000 : 16000)), maxCount);
 
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.45,
-        vy: (Math.random() - 0.5) * 0.45,
-        radius: Math.random() * 2 + 1,
+        vx: (Math.random() - 0.5) * (isMobile ? 0.3 : 0.45),
+        vy: (Math.random() - 0.5) * (isMobile ? 0.3 : 0.45),
+        radius: Math.random() * 1.8 + 1,
         color: Math.random() > 0.4 ? "rgba(0, 242, 254, 0.45)" : "rgba(168, 85, 247, 0.4)"
       });
     }
   }
 
   function draw() {
-    if (document.hidden) {
-      requestAnimationFrame(draw);
+    if (!isVisible || document.hidden) {
+      animId = null;
       return;
     }
 
     ctx.clearRect(0, 0, width, height);
 
-    // Update & draw particles
-    for (let i = 0; i < particles.length; i++) {
+    const pLen = particles.length;
+    for (let i = 0; i < pLen; i++) {
       const p = particles[i];
       p.x += p.vx;
       p.y += p.vy;
@@ -719,12 +800,13 @@ function initCanvasBackground() {
       if (p.x < 0 || p.x > width) p.vx *= -1;
       if (p.y < 0 || p.y > height) p.vy *= -1;
 
-      // Mouse subtle repulsion
-      if (mouse.x !== null) {
+      // Mouse subtle repulsion (desktop only)
+      if (!isMobile && mouse.x !== null) {
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < mouse.radius) {
+        const distSq = dx * dx + dy * dy;
+        if (distSq < 14400) {
+          const dist = Math.sqrt(distSq);
           p.x += (dx / dist) * 0.8;
           p.y += (dy / dist) * 0.8;
         }
@@ -736,48 +818,72 @@ function initCanvasBackground() {
       ctx.fill();
 
       // Connect nearby particles
-      for (let j = i + 1; j < particles.length; j++) {
+      const maxConnDist = isMobile ? 75 : 105;
+      const maxConnSq = maxConnDist * maxConnDist;
+      for (let j = i + 1; j < pLen; j++) {
         const p2 = particles[j];
         const dx = p.x - p2.x;
         const dy = p.y - p2.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
+        const distSq = dx * dx + dy * dy;
 
-        if (dist < 110) {
+        if (distSq < maxConnSq) {
+          const dist = Math.sqrt(distSq);
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = `rgba(0, 242, 254, ${0.18 * (1 - dist / 110)})`;
-          ctx.lineWidth = 0.8;
+          ctx.strokeStyle = `rgba(0, 242, 254, ${0.16 * (1 - dist / maxConnDist)})`;
+          ctx.lineWidth = 0.7;
           ctx.stroke();
         }
       }
     }
 
-    requestAnimationFrame(draw);
+    animId = requestAnimationFrame(draw);
   }
 
-  // Listeners
-  window.addEventListener("resize", resize);
-  window.addEventListener("mousemove", (e) => {
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
+  // IntersectionObserver: Pause canvas when Hero is scrolled out of view to free CPU & GPU
+  const heroSection = document.getElementById("hero") || canvas.parentElement;
+  if (heroSection && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isVisible = entry.isIntersecting;
+        if (isVisible && !animId) {
+          animId = requestAnimationFrame(draw);
+        }
+      });
+    }, { threshold: 0.05 });
+    observer.observe(heroSection);
+  }
 
-  window.addEventListener("mouseleave", () => {
-    mouse.x = null;
-    mouse.y = null;
-  });
+  // Passive listeners
+  window.addEventListener("resize", resize, { passive: true });
+
+  if (!isMobile) {
+    window.addEventListener("mousemove", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    }, { passive: true });
+
+    window.addEventListener("mouseleave", () => {
+      mouse.x = null;
+      mouse.y = null;
+    }, { passive: true });
+  }
 
   resize();
-  draw();
+  animId = requestAnimationFrame(draw);
 }
 
 // =============================================================================
-// 8. 3D CARD TILT MICRO-INTERACTION
+// 8. 3D CARD TILT MICRO-INTERACTION (DESKTOP POINTER ONLY)
 // =============================================================================
 
 function init3DCardTilt() {
+  if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    return; // Completely bypass on mobile touch devices
+  }
+
   const tiltElements = document.querySelectorAll(".event-card, .symposium-banner-card");
 
   tiltElements.forEach(el => {
@@ -793,29 +899,36 @@ function init3DCardTilt() {
       const rotateY = ((x - centerX) / centerX) * 4;
 
       el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-    });
+    }, { passive: true });
 
     el.addEventListener("mouseleave", () => {
       el.style.transform = "";
-    });
+    }, { passive: true });
   });
 }
 
 // =============================================================================
-// 9. NAVBAR SCROLL EFFECT & ACTIVE SPY
+// 9. NAVBAR SCROLL EFFECT & ACTIVE SPY (PASSIVE & RAF THROTTLED)
 // =============================================================================
 
 function initNavbarScroll() {
   const navbar = document.getElementById("mainNavbar");
   if (!navbar) return;
 
+  let ticking = false;
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 40) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (window.scrollY > 40) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
-  });
+  }, { passive: true });
 
   // Active link spy
   const sections = document.querySelectorAll("section[id], header[id]");
@@ -834,7 +947,7 @@ function initNavbarScroll() {
         });
       }
     });
-  }, { threshold: 0.35 });
+  }, { threshold: 0.3 });
 
   sections.forEach(sec => observer.observe(sec));
 }
@@ -1425,7 +1538,8 @@ function initAiAgent() {
             <li><strong>Team:</strong> 2 Members (UG &amp; PG students from the same college)</li>
             <li><strong>Venue:</strong> Cyber Block, ACC Lab</li>
             <li><strong>Prizes:</strong> 1st: ₹3,000 &bull; 2nd: ₹2,000 &bull; 3rd: ₹1,000</li>
-            <li><strong>Coordinators:</strong> P. Sampath Vinayak (<a href="tel:+919392515992">+91 93925 15992</a>)</li>
+            <li><strong>Staff Coordinators:</strong> Dr. M. Srikanth, Dr. M. Sreelatha</li>
+            <li><strong>Event Coordinators:</strong> P. Sampath Vinayak (<a href="tel:+919392515992">+91 93925 15992</a>), B. Poshitha Sri (<a href="tel:+918499098999">+91 84990 98999</a>)</li>
           </ul>
         `,
         actions: [
@@ -1454,7 +1568,8 @@ function initAiAgent() {
             <li><strong>Team:</strong> 2 Members (from same college)</li>
             <li><strong>Venue:</strong> Cyber Block Labs</li>
             <li><strong>Prizes:</strong> 1st: ₹3,000 &bull; 2nd: ₹2,000 &bull; 3rd: ₹1,000</li>
-            <li><strong>Coordinators:</strong> Revtish Muthineni (<a href="tel:+917675890406">+91 76758 90406</a>)</li>
+            <li><strong>Staff Coordinators:</strong> Dr. M. Srikanth, Dr. N. Nagamalleswara Rao</li>
+            <li><strong>Event Coordinators:</strong> Revtish Muthineni (<a href="tel:+917675890406">+91 76758 90406</a>), K. Kalyan (<a href="tel:+917569292106">+91 75692 92106</a>)</li>
           </ul>
         `,
         actions: [
@@ -1483,7 +1598,8 @@ function initAiAgent() {
                 <li>🥉 3rd: ₹1,000 (Creative Catalyst)</li>
               </ul>
             </li>
-            <li><strong>Coordinators:</strong> N. Uttej (<a href="tel:+916300537352">+91 63005 37352</a>)</li>
+            <li><strong>Staff Coordinators:</strong> Dr. M. Srikanth, Dr. N. Nagamalleswara Rao</li>
+            <li><strong>Event Coordinators:</strong> N. Uttej (<a href="tel:+916300537352">+91 63005 37352</a>), K. Kalyan (<a href="tel:+917569292106">+91 75692 92106</a>)</li>
           </ul>
         `,
         actions: [
@@ -1580,9 +1696,9 @@ function initAiAgent() {
           </ul>
           <p><strong>Event Coordinators:</strong></p>
           <ul>
-            <li>Micro Mission: Revtish Muthineni (<a href="tel:+917675890406">+91 76758 90406</a>)</li>
-            <li>Meta Matrix: P. Sampath Vinayak (<a href="tel:+919392515992">+91 93925 15992</a>)</li>
-            <li>Meme Magic: N. Uttej (<a href="tel:+916300537352">+91 63005 37352</a>)</li>
+            <li>Micro Mission: Revtish Muthineni (<a href="tel:+917675890406">+91 76758 90406</a>), K. Kalyan (<a href="tel:+917569292106">+91 75692 92106</a>)</li>
+            <li>Meta Matrix: P. Sampath Vinayak (<a href="tel:+919392515992">+91 93925 15992</a>), B. Poshitha Sri (<a href="tel:+918499098999">+91 84990 98999</a>)</li>
+            <li>Meme Magic: N. Uttej (<a href="tel:+916300537352">+91 63005 37352</a>), K. Kalyan (<a href="tel:+917569292106">+91 75692 92106</a>)</li>
           </ul>
         `,
         actions: [
