@@ -266,21 +266,45 @@ body.light-mode .glow-bottom-right {
 }
 
 @keyframes floatOrb1 {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(45px, 35px) scale(1.08); }
-  100% { transform: translate(-30px, 20px) scale(0.95); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(45px, 35px) scale(1.08);
+  }
+
+  100% {
+    transform: translate(-30px, 20px) scale(0.95);
+  }
 }
 
 @keyframes floatOrb2 {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-40px, 40px) scale(1.1); }
-  100% { transform: translate(25px, -20px) scale(0.96); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-40px, 40px) scale(1.1);
+  }
+
+  100% {
+    transform: translate(25px, -20px) scale(0.96);
+  }
 }
 
 @keyframes floatOrb3 {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(30px, -35px) scale(1.06); }
-  100% { transform: translate(-25px, 25px) scale(0.94); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(30px, -35px) scale(1.06);
+  }
+
+  100% {
+    transform: translate(-25px, 25px) scale(0.94);
+  }
 }
 
 /* Interactive Background Canvas */
@@ -361,7 +385,7 @@ body.light-mode .glow-bottom-right {
    Sticky Navigation Bar
    -------------------------------------------------------------------------- */
 .navbar {
-  position: sticky;
+  position: fixed;
   top: var(--ticker-height);
   z-index: 999;
   width: 100%;

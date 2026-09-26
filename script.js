@@ -90,7 +90,6 @@ const eventsData = [
     prizes: "1st Prize: ₹3,000 | 2nd Prize: ₹2,000 | 3rd Prize: ₹1,000",
     coordinators: [
       { name: "Revtish Muthineni", phone: "+91 7675890406", role: "Student Coordinator" },
-      // { name: "B. Poshitha", phone: "+91 84990 98999", role: "Student Coordinator" }
     ],
     formUrl: eventForms.event2
   },
@@ -153,7 +152,6 @@ const eventsData = [
     prizes: "1st Prize: ₹3,000 | 2nd Prize: ₹2,000 | 3rd Prize: ₹1,000",
     coordinators: [
       { name: "P. Sampath Vinayak", phone: "+91 9392515992", role: "Student Coordinator" },
-      // { name: "Y. Lokesh Babu", phone: "+91 8639465554", role: "Student Coordinator" }
     ],
     formUrl: eventForms.event1
   },
