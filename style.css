@@ -349,9 +349,17 @@ body.light-mode .glow-bottom-right {
 }
 
 @keyframes floatOrb4 {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-35px, -25px) scale(1.07); }
-  100% { transform: translate(30px, 35px) scale(0.95); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-35px, -25px) scale(1.07);
+  }
+
+  100% {
+    transform: translate(30px, 35px) scale(0.95);
+  }
 }
 
 /* Interactive Background Canvas */
@@ -368,8 +376,6 @@ body.light-mode .glow-bottom-right {
    Top Announcement Marquee
    -------------------------------------------------------------------------- */
 .no-fee-announcement {
-  position: sticky;
-  top: 0;
   z-index: 1000;
   overflow: hidden;
   width: 100%;
@@ -433,7 +439,7 @@ body.light-mode .glow-bottom-right {
    -------------------------------------------------------------------------- */
 .navbar {
   position: fixed;
-  top: var(--ticker-height);
+  top: 40px;
   z-index: 999;
   width: 100%;
   height: var(--header-height);
@@ -1077,6 +1083,10 @@ body.light-mode .glow-bottom-right {
   max-width: var(--container-max);
   margin: 0 auto 90px;
   padding: 0 24px;
+}
+
+header {
+  padding-top: 60px;
 }
 
 .section-header {
