@@ -15,42 +15,68 @@
   <meta name="author" content="Department of CSE &amp; CSO, R.V.R. &amp; J.C. College of Engineering" />
   <link rel="shortcut icon" href="assets/favicon.jpg" type="image/x-icon">
 
-  <!-- Google Fonts: Poppins -->
+  <!-- Google Fonts: Poppins (Optimized Asynchronous Loading, Non-blocking) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" />
+  </noscript>
 
-  <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="style.css" />
+  <!-- Core Stylesheet (Optimized & Minified) -->
+  <link rel="stylesheet" href="style.min.css" />
 </head>
 
-<body class="intro-active">
+<body>
 
-  <!-- Universal Ambient Atmospheric Glow System -->
-  <div class="ambient-glow" aria-hidden="true">
-    <div class="ambient-glow-circle glow-top-left"></div>
-    <div class="ambient-glow-circle glow-top-right"></div>
-    <div class="ambient-glow-circle glow-mid-center"></div>
-    <div class="ambient-glow-circle glow-bottom-right"></div>
+  <!-- High-End Intelligent Cyber Background System -->
+  <div class="site-bg-canvas" aria-hidden="true">
+    <!-- Intelligent Global Neural Matrix Canvas -->
+    <canvas id="siteBgCanvas"></canvas>
+
+    <!-- Deep Ambient Cyber Auroras & Glows -->
+    <div class="site-bg-beam"></div>
+    <div class="site-bg-ambient"></div>
+    <div class="site-bg-nebula"></div>
+
+    <!-- Dual-Tier High-Precision Technical Matrix Grid -->
+    <div class="site-bg-grid"></div>
+    <div class="site-bg-subgrid"></div>
+
+    <!-- Pure CSS GPU-Accelerated Circuit Data Packet Streams -->
+    <div class="cyber-data-stream stream-h stream-h1"></div>
+    <div class="cyber-data-stream stream-h stream-h2"></div>
+    <div class="cyber-data-stream stream-v stream-v1"></div>
+    <div class="cyber-data-stream stream-v stream-v2"></div>
+
+    <!-- High-Tech Telemetry HUD Overlays -->
+    <div class="hud-telemetry hud-tl">
+      <span class="hud-dot"></span>
+      <span class="hud-mono">SYS::CSE_MATRIX // v2.6 [ONLINE]</span>
+    </div>
+    <div class="hud-telemetry hud-tr">
+      <span class="hud-mono">CORE_NET::INNOVEX_2026</span>
+    </div>
+    <div class="hud-telemetry hud-bl">
+      <span class="hud-mono">GEO::16.321°N, 80.441°E // RVRJC</span>
+    </div>
+    <div class="hud-telemetry hud-br">
+      <span class="hud-mono">CORE_STATE::OPTIMAL // 60FPS</span>
+    </div>
   </div>
 
-  <!-- Cinematic TECHFUSION 2K26 Opening Splash Animation -->
+  <!-- Cinematic TECHFUSION 2K26 Opening Experience (CSE & CSO Department Showcase) -->
   <div class="intro-splash-screen" id="introSplash" role="dialog" aria-modal="true"
     aria-label="TECHFUSION 2K26 Opening Experience">
-    <div class="intro-bg-canvas-wrap">
-      <canvas id="introCanvas"></canvas>
-      <div class="intro-grid-overlay"></div>
-      <div class="intro-glow-orb orb-1"></div>
-      <div class="intro-glow-orb orb-2"></div>
-    </div>
+    <div class="intro-grid-overlay"></div>
 
     <!-- Skip Intro Button -->
     <button type="button" class="intro-skip-btn" id="introSkipBtn" aria-label="Skip Intro Animation">
       <span>SKIP INTRO</span>
-      <svg class="tf-icon" viewBox="0 0 24 24">
-        <polygon points="5 4 15 12 5 20 5 4" />
-        <line x1="19" x2="19" y1="5" y2="19" />
+      <svg class="tf-icon" viewBox="0 0 24 24" width="14" height="14">
+        <polygon points="5 4 15 12 5 20 5 4" fill="currentColor" />
+        <line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2" />
       </svg>
     </button>
 
@@ -63,12 +89,12 @@
 
       <!-- Main TECHFUSION 2K26 Title -->
       <div class="intro-title-wrap" id="introTitleWrap">
-        <div class="intro-dept-tag">DEPT. OF CSE &amp; CSO PRESENTS</div>
+        <div class="intro-dept-tag">DEPT. OF COMPUTER SCIENCE &amp; ENGINEERING PRESENTS</div>
         <h1 class="intro-main-title">
           <span class="title-tech">TECHFUSION</span>
           <span class="title-year">2K26</span>
         </h1>
-        <p class="intro-subline">TECHFUSION &bull; 9<sup>TH</sup> OCTOBER 2026</p>
+        <p class="intro-subline">FLAGSHIP TECHNICAL SYMPOSIUM &bull; INNOVEX 2026 &bull; 9<sup>TH</sup> OCTOBER 2026</p>
       </div>
 
       <!-- Phase 2: Cascading 3 Flagship Event Arenas -->
@@ -103,10 +129,10 @@
         </div>
       </div>
 
-      <!-- Phase 3: High-tech Progress / Status Bar -->
+      <!-- Phase 3: High-tech Matrix Progress Bar -->
       <div class="intro-loader-wrap" id="introLoaderWrap">
         <div class="intro-status-row">
-          <span class="intro-status-text" id="introStatusText">INITIALIZING MATRIX MODULES...</span>
+          <span class="intro-status-text" id="introStatusText">INITIALIZING CSE MATRIX MODULES...</span>
           <span class="intro-percent-text" id="introPercentText">0%</span>
         </div>
         <div class="intro-progress-bar">
@@ -114,13 +140,6 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- Ambient Cosmic Lighting Orbs -->
-  <div class="ambient-glow" aria-hidden="true">
-    <div class="ambient-glow-circle glow-top-left"></div>
-    <div class="ambient-glow-circle glow-top-right"></div>
-    <div class="ambient-glow-circle glow-mid-center"></div>
   </div>
 
   <!-- Top Announcement Marquee (Matching INNOVEX Style) -->
@@ -236,14 +255,6 @@
   <!-- Hero Section -->
   <header>
     <section class="hero" id="home">
-      <!-- High-Performance Interactive Particle Canvas -->
-      <canvas id="heroCanvas"></canvas>
-      <!-- Hero Grid Background (both modes) -->
-      <div class="hero-grid-bg" aria-hidden="true"></div>
-      <!-- Decorative floating orbs -->
-      <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
-      <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
-      <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
 
       <div class="hero-container">
         <!-- Open Grid Layout — no box wrapper -->
@@ -1233,8 +1244,8 @@
     </div>
   </aside>
 
-  <!-- Application Controller -->
-  <script src="script.js"></script>
+  <!-- Application Controller (Deferred & Minified for Production Performance) -->
+  <script src="script.min.js" defer></script>
 </body>
 
 </html>

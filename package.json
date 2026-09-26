@@ -4,6 +4,7 @@
   "description": "TECHFUSION 2026 — Flagship CSE & IoT Event Platform for INNOVEX 2026 at R.V.R. & J.C. College of Engineering",
   "main": "index.html",
   "scripts": {
+    "build": "npx esbuild style.css --minify --outfile=style.min.css && npx esbuild script.js --minify --outfile=script.min.js",
     "start": "npx serve -l 3000 .",
     "dev": "npx serve -l 3000 ."
   },
