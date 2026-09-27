@@ -5059,6 +5059,24 @@ body.light-mode .hero-dept-subline {
   filter: none;
 }
 
+/* Zero-delay immediate visibility for Hero above-the-fold content (Critical for LCP < 1.0s) */
+.hero,
+.hero-container,
+.hero-content-grid,
+.hero-college-badge,
+.hero-title,
+.hero-dept-subline,
+.hero-meta-row,
+.hero-meta-pill,
+.hero-tagline,
+.hero-description,
+.hero-cta-group,
+.countdown-box {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
 /* 5. SCROLL REVEAL ANIMATIONS */
 .reveal-up,
 .reveal-left,
@@ -6221,11 +6239,27 @@ body.light-mode .ai-input-field:focus {
     /* Disable fixed repeating gradients during mobile scroll */
   }
 
-  /* 2. Remove GPU Fill-rate bottleneck (heavy backdrop-filters) on mobile */
-  .navbar,
-  .navbar.scrolled {
+  /* 2. Global Mobile GPU Fill-rate Elimination: Remove all expensive blur passes */
+  *,
+  *::before,
+  *::after {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+  }
+
+  /* Disable dynamic canvas and animation streams on mobile for 0% CPU strain */
+  .site-bg-canvas canvas,
+  #siteBgCanvas,
+  .cyber-data-stream,
+  .site-bg-beam,
+  .site-bg-ambient,
+  .site-bg-nebula {
+    display: none !important;
+  }
+
+  /* Clean high-contrast solid backgrounds for key mobile components */
+  .navbar,
+  .navbar.scrolled {
     background: #060814 !important;
   }
 
@@ -6234,20 +6268,6 @@ body.light-mode .ai-input-field:focus {
     background: #ffffff !important;
   }
 
-  .event-card,
-  .coordinator-card,
-  .timeline-card,
-  .hero-glass-card,
-  .info-card,
-  .modal-coord-card,
-  .countdown-segment {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    transform: translateZ(0);
-    /* Hardware accelerate composite layer */
-  }
-
-  /* 3. Disable continuous GPU repaint animations on mobile cards */
   body:not(.light-mode) .event-card {
     animation: none !important;
     background: rgba(14, 20, 48, 0.95) !important;
@@ -6270,7 +6290,36 @@ body.light-mode .ai-input-field:focus {
     border-color: rgba(148, 163, 184, 0.28) !important;
   }
 
-  /* 4. Instant Zero-Stutter Reveal on Mobile */
+  /* 3. Mobile Typography Performance: Standard left-alignment eliminates multi-pass layout engine reflows */
+  .about-desc,
+  .about-card-desc,
+  .about-quote-box p,
+  .rule-desc,
+  .card-desc,
+  .event-card-desc,
+  .timeline-desc,
+  .modal-desc,
+  .modal-section p,
+  .modal-rule-item,
+  .modal-rules-list li,
+  .modal-req-list li,
+  .modal-about-text,
+  .modal-task-text,
+  .guidelines-card p,
+  .info-card p,
+  .info-card-val,
+  .ai-msg-bubble p,
+  .ai-msg-bubble li,
+  .faq-desc,
+  .eligibility-note,
+  .alert-box p,
+  .rule-content,
+  .event-details p {
+    text-align: left !important;
+    text-justify: auto !important;
+  }
+
+  /* 4. Instant Zero-Stutter Visibility on Mobile */
   .reveal-up,
   .reveal-left,
   .reveal-right,
@@ -6279,6 +6328,32 @@ body.light-mode .ai-input-field:focus {
     transform: none !important;
     transition: none !important;
     will-change: auto !important;
+  }
+
+  .hero,
+  .hero-container,
+  .hero-content-grid,
+  .hero-college-badge,
+  .hero-title,
+  .hero-dept-subline,
+  .hero-meta-row,
+  .hero-meta-pill,
+  .hero-tagline,
+  .hero-description,
+  .hero-cta-group,
+  .countdown-box {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    visibility: visible !important;
+  }
+
+  /* Simplified GPU-friendly filters for mobile text */
+  body:not(.light-mode) .hero-title {
+    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.7)) !important;
+  }
+  body:not(.light-mode) .hero-dept-subline {
+    filter: drop-shadow(0 2px 8px rgba(0, 242, 254, 0.3)) !important;
   }
 
   /* 5. Smooth touch container scrolling */
