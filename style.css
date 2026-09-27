@@ -56,7 +56,7 @@
   --radius-lg: 22px;
   --radius-full: 9999px;
   --header-height: 74px;
-  --ticker-height: 40px;
+  --ticker-height: 0px;
 
   /* Transitions */
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
@@ -132,7 +132,7 @@ body.light-mode {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-height) + var(--ticker-height) + 16px);
+  scroll-padding-top: calc(var(--header-height) + 16px);
   background-color: var(--bg-primary);
   color: var(--text-main);
 }
@@ -616,7 +616,7 @@ body.light-mode .hud-dot {
    -------------------------------------------------------------------------- */
 .navbar {
   position: fixed;
-  top: 40px;
+  top: 0;
   z-index: 999;
   width: 100%;
   height: var(--header-height);
@@ -797,7 +797,7 @@ body.light-mode .hud-dot {
    -------------------------------------------------------------------------- */
 .hero {
   position: relative;
-  min-height: calc(100vh - var(--header-height) - var(--ticker-height));
+  min-height: calc(100vh - var(--header-height));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1263,7 +1263,7 @@ body.light-mode .hud-dot {
 }
 
 header {
-  padding-top: 60px;
+  padding-top: var(--header-height);
 }
 
 .section-header {
@@ -1874,13 +1874,7 @@ dialog.event-modal[open]::backdrop {
 }
 
 .modal-badge-cat {
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  background: rgba(14, 22, 48, 0.8);
-  color: #cbd5e1;
-  border: 1px solid var(--border-subtle);
+  display: none;
 }
 
 .modal-title {
@@ -4211,9 +4205,21 @@ body.light-mode .mobile-toggle:hover {
 }
 
 body.light-mode .nav-links {
-  background: rgba(248, 250, 255, 0.99);
-  border-bottom-color: rgba(148, 163, 184, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 9999px;
+  padding: 4px 6px 4px 20px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 768px) {
+  body.light-mode .nav-links {
+    border-radius: 0 0 20px 20px;
+    padding: 24px 20px 28px;
+    border: none;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
 }
 
 body.light-mode .hero {

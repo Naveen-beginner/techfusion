@@ -28,6 +28,14 @@
 
   <!-- Core Stylesheet (Optimized & Minified) -->
   <link rel="stylesheet" href="style.min.css" />
+
+  <!-- Reset Scroll to Top on Refresh -->
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
 </head>
 
 <body>
@@ -52,17 +60,6 @@
     <div class="cyber-data-stream stream-v stream-v1"></div>
     <div class="cyber-data-stream stream-v stream-v2"></div>
 
-    <!-- High-Tech Telemetry HUD Overlays -->
-    <div class="hud-telemetry hud-tl">
-      <span class="hud-dot"></span>
-      <span class="hud-mono">SYS::CSE_MATRIX // v2.6 [ONLINE]</span>
-    </div>
-    <div class="hud-telemetry hud-tr">
-      <span class="hud-mono">CORE_NET::INNOVEX_2026</span>
-    </div>
-    <div class="hud-telemetry hud-br">
-      <span class="hud-mono">CORE_STATE::OPTIMAL // 60FPS</span>
-    </div>
   </div>
 
   <!-- Cinematic TECHFUSION 2K26 Opening Experience (CSE & IOT Department Showcase) -->
@@ -141,43 +138,6 @@
     </div>
   </div>
 
-  <!-- Top Announcement Marquee (Matching INNOVEX Style) -->
-  <aside class="no-fee-announcement" id="marquee" role="status" aria-label="Registration announcement">
-    <div class="no-fee-track">
-      <span class="no-fee-text">
-        <svg class="tf-icon" viewBox="0 0 24 24">
-          <path d="m3 11 18-5v12L3 14v-3z" />
-          <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
-        </svg>
-        No registration fee for any event &bull; Join TECHFUSION (CSE &amp; IOT) &bull; INNOVEX 2026 National Tech Fest!
-        <span class="no-fee-dot">&middot;</span>
-      </span>
-      <span class="no-fee-text" aria-hidden="true">
-        <svg class="tf-icon" viewBox="0 0 24 24">
-          <path d="m3 11 18-5v12L3 14v-3z" />
-          <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
-        </svg>
-        No registration fee for any event &bull; Join TECHFUSION (CSE &amp; IOT) &bull; INNOVEX 2026 National Tech Fest!
-        <span class="no-fee-dot">&middot;</span>
-      </span>
-      <span class="no-fee-text" aria-hidden="true">
-        <svg class="tf-icon" viewBox="0 0 24 24">
-          <path d="m3 11 18-5v12L3 14v-3z" />
-          <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
-        </svg>
-        No registration fee for any event &bull; Join TECHFUSION (CSE &amp; IOT) &bull; INNOVEX 2026 National Tech Fest!
-        <span class="no-fee-dot">&middot;</span>
-      </span>
-      <span class="no-fee-text" aria-hidden="true">
-        <svg class="tf-icon" viewBox="0 0 24 24">
-          <path d="m3 11 18-5v12L3 14v-3z" />
-          <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
-        </svg>
-        No registration fee for any event &bull; Join TECHFUSION (CSE &amp; IOT) &bull; INNOVEX 2026 National Tech Fest!
-        <span class="no-fee-dot">&middot;</span>
-      </span>
-    </div>
-  </aside>
 
   <!-- Sticky Glassmorphic Navigation -->
   <nav class="navbar" id="mainNavbar">
@@ -564,8 +524,9 @@
             </span>
             <h3 class="timeline-title">Prelims</h3>
             <p class="timeline-desc">
-              <strong>Meta Matrix:</strong> Online MCQ round covering basic programming and core computer science
-              fundamentals.<br>
+              <strong>Meta Matrix:</strong> Online MCQ round consisting of 20 questions covering Data Structures,
+              Algorithms, and Analysis of Algorithms, including fundamental concepts, time and space complexity,
+              algorithmic techniques, and basic problem-solving.<br>
               <strong>Micro Mission:</strong> 15 MCQs covering general reasoning and basic-level programming, followed
               by selection of six teams for the Mains.<br>
               <strong>Meme Magic:</strong> Online submission of original static memes based on the given themes. Top 25
@@ -728,6 +689,22 @@
             <p class="coord-contact">Professor, Dept. of CSE</p>
           </div>
         </div>
+
+
+        <!-- Faculty Coordinator 3 -->
+        <div class="coordinator-card reveal-up">
+          <div class="coord-avatar">
+            <svg class="tf-icon" viewBox="0 0 24 24">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </div>
+          <div class="coord-info">
+            <span class="coord-role">co-convenor</span>
+            <h3 class="coord-name">Sri. Eluri Ramesh</h3>
+            <p class="coord-contact">Assistant Professor, Dept. of CSE</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -811,7 +788,6 @@
         <div>
           <div class="modal-header-meta">
             <span class="modal-badge-num" id="modalEventNum">EVENT 01</span>
-            <span class="modal-badge-cat" id="modalCategory">TECH / DEVELOPMENT</span>
           </div>
           <h2 class="modal-title" id="modalTitle">[EVENT NAME]</h2>
         </div>

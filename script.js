@@ -4,6 +4,20 @@
  * R.V.R. & J.C. College of Engineering (Autonomous), Guntur
  */
 
+// Force browser to always start from the top on page refresh or reload
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
+window.addEventListener('beforeunload', () => {
+  window.scrollTo(0, 0);
+});
+
+window.addEventListener('pageshow', () => {
+  window.scrollTo(0, 0);
+});
+
 // =============================================================================
 // 1. CENTRAL GOOGLE FORMS & FESTIVAL CONFIGURATION
 // Organizers: Update your Google Form URLs and festival details here!
@@ -36,7 +50,6 @@ const eventsData = [
     id: 1,
     number: "EVENT 01",
     theme: "cyan",
-    category: "TECH / QUIZ",
     title: "MICRO MISSION",
     badgeLabel: "TECHNICAL QUEST",
     image: "assets/event1d.webp",
@@ -90,12 +103,12 @@ const eventsData = [
       { name: "Sri N. Chandra Sekhar", role: "Assistant Professor", dept: "Dept. of CSE" }
     ],
     eventCoordinators: [
-      { name: "Revtish Muthineni", phone: "+91 76758 90406", role: "Student Coordinator (Y24CS294)" }
+      { name: "Revtish Muthineni", phone: "+91 76758 90406", role: "Student Coordinator" }
     ],
     coordinators: [
       {
         name: "Revtish Muthineni", phone: "+91 76758 90406"
-        , role: "Student Coordinator (Y24CS294)"
+        , role: "Student Coordinator"
       }
     ],
     formUrl: eventForms.event2
@@ -104,13 +117,12 @@ const eventsData = [
     id: 2,
     number: "EVENT 02",
     theme: "cyan",
-    category: "TECH / DEVELOPMENT",
     title: "META MATRIX",
     badgeLabel: "TECHNICAL CHALLENGE",
     image: "assets/metamatrix.webp",
     shortDesc: "An exciting technical challenge featuring Prelims and Mains rounds designed to test programming knowledge, core computer science fundamentals, analytical thinking, and problem-solving ability.",
-    about: "META Matrix is a technical challenge consisting of Prelims and Mains rounds. The event begins with an online MCQ round covering basic programming concepts and core computer science fundamentals, followed by a competitive coding-based Mains Round featuring questions of varying difficulty levels.",
-    task: "Participate in the Prelims online MCQ round and qualify for the Mains Round, where participants must solve five coding and analytical problems within the allotted time. Solutions will be evaluated using predefined test cases for accuracy, logic, and robustness.",
+    about: "META Matrix is a technical challenge consisting of Prelims and Mains rounds. The event begins with an online MCQ Prelims round consisting of 20 questions covering Data Structures, Algorithms, and Analysis of Algorithms (including fundamental concepts, time and space complexity, algorithmic techniques, and basic problem-solving), followed by a competitive coding-based Mains Round featuring questions of varying difficulty levels.",
+    task: "Participate in the Prelims online MCQ round (20 questions covering Data Structures, Algorithms, and Analysis of Algorithms, including fundamental concepts, time and space complexity, algorithmic techniques, and basic problem-solving) and qualify for the Mains Round, where participants must solve five coding and analytical problems within the allotted time. Solutions will be evaluated using predefined test cases for accuracy, logic, and robustness.",
     rules: [
       "All UG and PG students are eligible to participate.",
       "Only team entries are allowed, with a maximum of two participants from the same college per team.",
@@ -120,7 +132,7 @@ const eventsData = [
       "Any misconduct or malpractice will result in disqualification.",
       "Participants must follow all instructions provided by the event coordinators.",
       "Use of electronic gadgets may be restricted unless explicitly permitted by the event coordinators.",
-      "The Prelims Round is an online MCQ round consisting of 20 questions covering basic programming concepts and core computer science fundamentals.",
+      "The Prelims Round is an online MCQ round consisting of 20 questions covering Data Structures, Algorithms, and Analysis of Algorithms, including fundamental concepts, time and space complexity, algorithmic techniques, and basic problem-solving.",
       "The Prelims Round has a duration of 10 minutes.",
       "The Mains Round consists of five coding questions with varying levels of difficulty.",
       "The Mains Round includes analytical and technical questions designed to assess understanding and problem-solving ability.",
@@ -141,7 +153,7 @@ const eventsData = [
     mainsTime: "Mains: 1:00 PM - 3:00 PM",
     prelims: {
       timing: "8:00 AM - 12:00 PM",
-      questions: "20 MCQs (DataStructures, Algorithms, and Analysis of Algorithms, time and space complexity)",
+      questions: "20 MCQs (Data Structures, Algorithms, Analysis of Algorithms, time & space complexity, algorithmic techniques, and basic problem-solving)",
       timeLimit: "10 Minutes"
     },
     mains: {
@@ -175,26 +187,26 @@ const eventsData = [
     id: 3,
     number: "EVENT 03",
     theme: "cyan",
-    category: "CREATIVE / DESIGN",
     title: "MEME MAGIC",
     badgeLabel: "MEME DESIGN CHALLENGE",
     image: "assets/event3d.webp",
     shortDesc: "A creative and humorous meme-making challenge testing wit, visual storytelling, originality, and digital design skills through online and on-campus meme challenges.",
     about: "Meme Magic is a creative and humorous competition designed to test participants' meme-making skills, wit, visual storytelling, and digital design abilities. The event consists of an Online Prelims Submission followed by an On-Campus Video Meme Challenge. Teams of two will create engaging, theme-based memes while demonstrating originality, humor, creativity, and ethical digital expression.",
-    task: "Create original, creative, humorous, and impactful memes based on the given themes. In the Prelims, teams must submit one static meme online. The shortlisted teams will participate in the On-Campus Mains Video Meme Challenge, where they will create a 10–15 second video meme based on a surprise theme.",
+    task: "Create original, creative, humorous, and impactful memes based on the given themes. In the Prelims, teams must submit one static meme online. The shortlisted teams will participate in the On-Campus Mains Video Meme Challenge, where they will create a 15–30 second video meme based on a surprise theme.",
     rules: [
+      "AI generated memes will not be evaluated ",
       "Memes must not target any individual or group and must not contain objectionable content.",
-      "Plagiarism, offensive content, or suspicious activity will result in disqualification.",
-      "Use only Picsart, Canva, and Clipchamp for all event-related design and video editing.",
-      "No other editing tools or software are allowed; participants must use these platforms only.",
+      "Plagiarism, offensive content, or suspicious activity will result in disqualification",
       "All memes must adhere to the given theme and ethical guidelines.",
       "Memes should be original and creative, use minimal yet effective text, and communicate humor clearly.",
       "Prelims participation is limited to teams of two members from the same college.",
       "Each team must submit one static meme based on one of the given themes: Developers vs Bugs, Technology vs Reality, or The Life of Software Professionals With AI.",
       "Prelims submissions must be in PNG or JPG format with a maximum file size of 10 MB.",
-      "The file name must follow the format teamname_themename. Example: PixelKings_Technology vs Reality.",
+      "The file name must follow the format Team_leadname.jpg Example: PixelKings_Technology vs Reality.",
       "The Prelims submission deadline is 6th October 2026 at 11:59 PM IST.",
       "The Mains Round will be conducted on campus and will consist of a Surprise Theme Reveal, Video Meme Creation, Submission & Verification, and Judging & Presentation.",
+      "The Mains Round theme will be revealed on the spot. Participants must create their meme/video based on the given theme.",
+      "Canva, Clip Champ, and Picsart will be provided as the available editing tools. One editing tool to be used for video generation will also be announced on the spot for Mains Round .",
       "The Video Meme created during the Mains Round must be 15–30 seconds long.",
       "E-certificates will be issued to all participants."
     ],
@@ -231,7 +243,7 @@ const eventsData = [
     prizes: "1st Prize - Best Meme Magician: ₹3,000 | 2nd Prize - Humor Hacker: ₹2,000 | 3rd Prize - Creative Catalyst: ₹1,000",
     staffCoordinators: [
       { name: "Dr. Z. Sunitha Bai", role: "Associate Professor", dept: "Dept. of CSE" },
-      { name: "Smt. S. Udaya Lakshmi", role: "Assistant Professor", dept: "Dept. of CSE" }
+      { name: "Dr. T. Srilatha", role: "Associate Professor", dept: "Dept. of IOT" }
     ],
     eventCoordinators: [
       { name: "N. Uttej", phone: "+91 63005 37352", role: "Student Coordinator" },
@@ -349,6 +361,16 @@ function replaceFaWithSvg() {
 // =============================================================================
 
 document.addEventListener("DOMContentLoaded", () => {
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+
+  // If a URL hash was saved from previous scroll, remove hash so browser doesn't anchor jump
+  if (window.location.hash) {
+    history.replaceState(null, null, window.location.pathname + window.location.search);
+  }
+
   replaceFaWithSvg();
   initIntroSplash();
   renderEventCards();
@@ -524,7 +546,6 @@ function openEventModal(eventId) {
 
   // Populate Header
   document.getElementById("modalEventNum").textContent = event.number;
-  document.getElementById("modalCategory").textContent = event.category;
   document.getElementById("modalTitle").textContent = event.title;
 
   // Populate About & Task
@@ -1083,7 +1104,7 @@ function initNavbarScroll() {
   window.addEventListener("scroll", () => {
     if (!ticking) {
       window.requestAnimationFrame(() => {
-        if (window.scrollY > 40) {
+        if (window.scrollY > 20) {
           navbar.classList.add("scrolled");
         } else {
           navbar.classList.remove("scrolled");
@@ -1645,7 +1666,7 @@ function initAiAgent() {
           <p>💻 <strong>EVENT 02: META MATRIX</strong> (Technical Challenge)</p>
           <p>A flagship competitive coding challenge evaluating algorithms, core computer science concepts, and analytical problem solving.</p>
           <ul>
-            <li><strong>Prelims:</strong> 8:00 AM – 12:00 PM &bull; 20 MCQs on programming &amp; CS fundamentals (10 mins)</li>
+            <li><strong>Prelims:</strong> 8:00 AM – 12:00 PM &bull; 20 MCQs covering Data Structures, Algorithms, and Analysis of Algorithms, including fundamental concepts, time and space complexity, algorithmic techniques, and basic problem-solving (10 mins)</li>
             <li><strong>Mains:</strong> 1:00 PM – 3:00 PM &bull; 5 coding problems of varying difficulty evaluated against automated test cases (2 hours)</li>
             <li><strong>Team:</strong> 2 Members (UG &amp; PG students from the same college)</li>
             <li><strong>Venue:</strong> Cyber Block, ACC Lab</li>
@@ -1710,7 +1731,7 @@ function initAiAgent() {
                 <li>🥉 3rd: ₹1,000 (Creative Catalyst)</li>
               </ul>
             </li>
-            <li><strong>Staff Coordinators:</strong> Dr. Z. Sunitha Bai (Associate Professor), Smt. S. Udaya Lakshmi (Assistant Professor)</li>
+            <li><strong>Staff Coordinators:</strong> Dr. Z. Sunitha Bai (Associate Professor, Dept. of CSE), Dr. T. Srilatha (Associate Professor, Dept. of IOT)</li>
             <li><strong>Student Coordinators:</strong> N. Uttej (<a href="tel:+916300537352">+91 63005 37352</a>), P. Bharath (<a href="tel:+917569063286">+91 75690 63286</a>)</li>
           </ul>
         `,
@@ -1749,7 +1770,7 @@ function initAiAgent() {
           <p>🕒 <strong>TECHFUSION 2026 ITINERARY (OCTOBER 9, 2026):</strong></p>
           <ul>
             <li><strong>08:00 AM – 12:00 PM &bull; Prelims Phase:</strong>
-              <br>• Meta Matrix: Online MCQ round (Programming &amp; CS concepts)
+              <br>• Meta Matrix: Online MCQ round (20 questions covering Data Structures, Algorithms, and Analysis of Algorithms, including fundamental concepts, time and space complexity, algorithmic techniques, and basic problem-solving)
               <br>• Micro Mission: 15 MCQs (Reasoning to basic coding)
               <br>• Meme Magic: Shortlisting evaluation of online submissions
             </li>
@@ -1799,7 +1820,7 @@ function initAiAgent() {
       q.includes("uttej") || q.includes("bharath") || q.includes("revtish") ||
       q.includes("anuradha") ||
       q.includes("chandra sekhar") || q.includes("bhagya") || q.includes("vasavi") || q.includes("sunitha") ||
-      q.includes("udaya") || q.includes("srikanth") || q.includes("nagamalleswara") || q.includes("sreelatha")
+      q.includes("udaya") || q.includes("srikanth") || q.includes("nagamalleswara") || q.includes("srilatha")
     ) {
       // 8a. Micro Mission specific coordinator query
       if (q.includes("micro") || q.includes("anuradha") || q.includes("chandra sekhar") || (q.includes("revtish") && !q.includes("kalyan") && !q.includes("chaitanya"))) {
@@ -1847,14 +1868,14 @@ function initAiAgent() {
       }
 
       // 8c. Meme Magic specific coordinator query
-      if (q.includes("meme") || q.includes("magic") || q.includes("sunitha") || q.includes("udaya") || q.includes("uttej") || q.includes("bharath")) {
+      if (q.includes("meme") || q.includes("magic") || q.includes("sunitha") || q.includes("udaya") || q.includes("srilatha") || q.includes("uttej") || q.includes("bharath")) {
         return {
           text: `
             <p>🎭 <strong>MEME MAGIC (EVENT 03) COORDINATORS:</strong></p>
             <p><strong>Staff Coordinators:</strong></p>
             <ul>
               <li><strong>Dr. Z. Sunitha Bai</strong> &bull; Associate Professor, Dept. of CSE</li>
-              <li><strong>Smt. S. Udaya Lakshmi</strong> &bull; Assistant Professor, Dept. of CSE</li>
+              <li><strong>Dr. T. Srilatha</strong> &bull; Associate Professor, Dept. of IOT</li>
             </ul>
             <p><strong>Student Coordinators:</strong></p>
             <ul>
@@ -1886,15 +1907,15 @@ function initAiAgent() {
           <p><strong>Event-wise Staff &amp; Student Coordinators:</strong></p>
           <ul>
             <li>⚡ <strong>Micro Mission (Event 01):</strong>
-              <br>• <em>Staff:</em> Dr. T. Anuradha, Sri N. Chandra Sekhar
+              <br>• <em>Staff:</em> Dr. T. Anuradha (Dept. of CSE), Sri N. Chandra Sekhar (Dept. of CSE)
               <br>• <em>Student:</em> Revtish Muthineni (<a href="tel:+917675890406">+91 76758 90406</a>)
             </li>
             <li>💻 <strong>Meta Matrix (Event 02):</strong>
-              <br>• <em>Staff:</em> Dr. Bhagya Lakshmi Nandipati, Mrs. M. Vasavi
+              <br>• <em>Staff:</em> Dr. Bhagya Lakshmi Nandipati (Dept. of CSE), Mrs. M. Vasavi (Dept. of CSE)
               <br>• <em>Students:</em> P. Sampath Vinayak (<a href="tel:+919392515992">+91 93925 15992</a>), Y. Lokesh (<a href="tel:+918639465554">+91 86394 65554</a>)
             </li>
             <li>🎭 <strong>Meme Magic (Event 03):</strong>
-              <br>• <em>Staff:</em> Dr. Z. Sunitha Bai, Smt. S. Udaya Lakshmi
+              <br>• <em>Staff:</em> Dr. Z. Sunitha Bai (Dept. of CSE), Dr. T. Srilatha (Dept. of IOT)
               <br>• <em>Students:</em> N. Uttej (<a href="tel:+916300537352">+91 63005 37352</a>), P. Bharath (<a href="tel:+917569063286">+91 75690 63286</a>)
             </li>
           </ul>
