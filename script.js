@@ -1,5 +1,5 @@
 /**
- * TECHFUSION 2026 — Flagship CSE & CSO Event Platform
+ * TECHFUSION 2026 — Flagship CSE & IOT Event Platform
  * Official Technical Symposium of INNOVEX 2026
  * R.V.R. & J.C. College of Engineering (Autonomous), Guntur
  */
@@ -20,7 +20,7 @@ const FESTIVAL_CONFIG = {
   name: "TECHFUSION",
   parentFest: "INNOVEX 2026",
   college: "R.V.R. & J.C. College of Engineering",
-  department: "Department of CSE & CSO",
+  department: "Department of CSE & IOT",
   eventDateDisplay: "9th October 2026",
   countdownTarget: "2026-10-09T09:00:00+05:30",
   innovexUrl: "https://rvrjcce.ac.in/innovex2026/"
@@ -64,16 +64,16 @@ const eventsData = [
     teamSize: "2 Members",
     eligibility: "Open to college students participating as a two-member team from the same college.",
     date: "9th Oct, 2026",
-    time: "Prelims: 8:00 AM - 12:00 PM | Mains: 1:30 PM - 4:00 PM",
+    time: "Prelims: 8:00 AM - 12:00 PM | Mains: 1:30 PM - 3:30 PM",
     prelimsTime: "Prelims: 8:00 AM - 12:00 PM",
-    mainsTime: "Mains: 1:30 PM - 4:00 PM",
+    mainsTime: "Mains: 1:00 PM - 3:30 PM",
     prelims: {
       timing: "8:00 AM - 12:00 PM",
-      questions: "15 MCQs (General Reasoning to basic-level programming)",
+      questions: "15 MCQs (General Reasoning to advanced level programming)",
       timeLimit: "10 Minutes"
     },
     mains: {
-      timing: "1:30 PM - 4:00 PM",
+      timing: "1:00 PM - 3:00 PM",
       questions: "4 Specialized Rounds (Think N Sync, Tech Charades, Racking Brains, Byte Talks)",
       timeLimit: "2.5 Hours"
     },
@@ -87,17 +87,16 @@ const eventsData = [
     prizes: "1st Prize: ₹3,000 | 2nd Prize: ₹2,000 | 3rd Prize: ₹1,000",
     staffCoordinators: [
       { name: "Dr. T. Anuradha", role: "Associate Professor", dept: "Dept. of CSE" },
-      { name: "Sri N. Chandra Sekhar", role: "Assistant Professor", dept: "Dept. of CSE" },
-      { name: "Sri M. Koteswara Rao", role: "Assistant Professor", dept: "Dept. of CSE" },
-      { name: "Smt. T. Madhavi Latha", role: "Assistant Professor", dept: "Dept. of CSE" }
+      { name: "Sri N. Chandra Sekhar", role: "Assistant Professor", dept: "Dept. of CSE" }
     ],
     eventCoordinators: [
-      { name: "Revtish Muthineni", phone: "+91 76758 90406", role: "Student Coordinator (Y24CS294)" },
-      { name: "Shaik Mohaseen", phone: "+91 63049 22424", role: "Student Coordinator" }
+      { name: "Revtish Muthineni", phone: "+91 76758 90406", role: "Student Coordinator (Y24CS294)" }
     ],
     coordinators: [
-      { name: "Revtish Muthineni", phone: "+91 76758 90406", role: "Student Coordinator (Y24CS294)" },
-      { name: "Shaik Mohaseen", phone: "+91 63049 22424", role: "Student Coordinator" }
+      {
+        name: "Revtish Muthineni", phone: "+91 76758 90406"
+        , role: "Student Coordinator (Y24CS294)"
+      }
     ],
     formUrl: eventForms.event2
   },
@@ -137,16 +136,16 @@ const eventsData = [
     teamSize: "2 Members",
     eligibility: "Open to all UG and PG students. Each team can have a maximum of two participants from the same college.",
     date: "9th Oct, 2026",
-    time: "Prelims: 8:00 AM - 12:00 PM | Mains: 1:00 PM - 4:00 PM",
+    time: "Prelims: 8:00 AM - 12:00 PM | Mains: 1:00 PM - 3:00 PM",
     prelimsTime: "Prelims: 8:00 AM - 12:00 PM",
-    mainsTime: "Mains: 1:00 PM - 4:00 PM",
+    mainsTime: "Mains: 1:00 PM - 3:00 PM",
     prelims: {
       timing: "8:00 AM - 12:00 PM",
       questions: "20 MCQs (DataStructures, Algorithms, and Analysis of Algorithms, time and space complexity)",
       timeLimit: "10 Minutes"
     },
     mains: {
-      timing: "1:00 PM - 4:00 PM",
+      timing: "1:00 PM - 3:00 PM",
       questions: "5 Coding Questions (Varying difficulty, evaluated against predefined test cases)",
       timeLimit: "2 Hours"
     },
@@ -164,11 +163,11 @@ const eventsData = [
     ],
     eventCoordinators: [
       { name: "P. Sampath Vinayak", phone: "+91 93925 15992", role: "Student Coordinator" },
-      { name: "B. Pavani", phone: "+91 78937 34720", role: "Student Coordinator" }
+      { name: "Y. Lokesh", phone: "+91 86394 65554", role: "Student Coordinator" }
     ],
     coordinators: [
       { name: "P. Sampath Vinayak", phone: "+91 93925 15992", role: "Student Coordinator" },
-      { name: "B. Pavani", phone: "+91 78937 34720", role: "Student Coordinator" }
+      { name: "Y. Lokesh", phone: "+91 86394 65554", role: "Student Coordinator" }
     ],
     formUrl: eventForms.event1
   },
@@ -209,18 +208,18 @@ const eventsData = [
     teamSize: "2 Members",
     eligibility: "Open to student teams consisting of two members from the same college.",
     date: "9th October 2026",
-    time: "Prelims Deadline: 6th Oct 2026 - 11:59 PM IST | Mains: 1:00 PM - 4:00 PM",
+    time: "Prelims Deadline: 6th Oct 2026 - 11:59 PM IST | Mains: 1:00 PM - 3:00 PM",
     prelimsTime: "Prelims Deadline: 6th Oct 2026 - 11:59 PM IST",
-    mainsTime: "Mains: 1:00 PM - 4:00 PM",
+    mainsTime: "Mains: 1:00 PM - 3:00 PM",
     prelims: {
       timing: "Deadline: 6th Oct 2026 - 11:59 PM IST",
       questions: "1 Static Meme (Themes: Developers vs Bugs / Technology vs Reality / Life with AI)",
       timeLimit: "Submission Deadline: 6th Oct 2026"
     },
     mains: {
-      timing: "1:00 PM - 4:00 PM",
+      timing: "1:00 PM - 3:00 PM",
       questions: "15–30s Video Meme (Surprise Theme) + Tie-Breaker Dialogue Round",
-      timeLimit: "3 Hours"
+      timeLimit: "2 Hours"
     },
     venue: "Cyber Block",
     entryFee: "[NO REGISTRATION FEE]",
@@ -236,11 +235,11 @@ const eventsData = [
     ],
     eventCoordinators: [
       { name: "N. Uttej", phone: "+91 63005 37352", role: "Student Coordinator" },
-      { name: "T. Varshitha", phone: "+91 9391861657", role: "Student Coordinator" }
+      { name: "P. Bharath", phone: "+91 75690 63286", role: "Student Coordinator" }
     ],
     coordinators: [
       { name: "N. Uttej", phone: "+91 63005 37352", role: "Student Coordinator" },
-      { name: "T. Varshitha", phone: "+91 9391861657", role: "Student Coordinator" }
+      { name: "P. Bharath", phone: "+91 75690 63286", role: "Student Coordinator" }
     ],
     formUrl: eventForms.event3
   }
@@ -586,7 +585,7 @@ function openEventModal(eventId) {
   const staffCoordsGridEl = document.getElementById("modalStaffCoordsGrid");
   const staffList = event.staffCoordinators || [
     { name: "Dr. M. Srikanth", role: "Staff Convener (CSE)", dept: "Professor, Dept. of CSE" },
-    { name: "Dr. N. Nagamalleswara Rao", role: "Staff Coordinator", dept: "HOD, Dept. of CSE & CSO" }
+    { name: "Dr. N. Nagamalleswara Rao", role: "Staff Coordinator", dept: "HOD, Dept. of CSE & IOT" }
   ];
   if (staffCoordsGridEl) {
     staffCoordsGridEl.innerHTML = staffList.map(coord => {
@@ -1141,7 +1140,7 @@ function initMobileMenu() {
 }
 
 // =============================================================================
-// 11. TECHFUSION 2K26 OPENING INTRO SPLASH CONTROLLER (CSE & CSO SHOWCASE)
+// 11. TECHFUSION 2K26 OPENING INTRO SPLASH CONTROLLER (CSE & IOT SHOWCASE)
 // =============================================================================
 
 function initIntroSplash() {
@@ -1150,8 +1149,8 @@ function initIntroSplash() {
 
   // Automated Audit Detection: Instantly bypass in Lighthouse/PageSpeed to achieve 95-100 Performance & instant LCP
   const isAuditTool = /Lighthouse|Chrome-Lighthouse|PageSpeed|PTST/i.test(navigator.userAgent || "") ||
-                      Boolean(window.__LIGHTHOUSE__) ||
-                      window.location.search.includes("lighthouse");
+    Boolean(window.__LIGHTHOUSE__) ||
+    window.location.search.includes("lighthouse");
 
   if (isAuditTool) {
     introSplash.style.display = "none";
@@ -1593,7 +1592,7 @@ function initAiAgent() {
 
   function sendGreeting() {
     const greetingText = `
-      <p>👋 Hello! I'm <strong>TechFusion AI</strong>, your official guide to <strong>TECHFUSION 2026</strong> — the flagship CSE &amp; CSO symposium of <strong>INNOVEX 2026</strong> at R.V.R. &amp; J.C. College of Engineering.</p>
+      <p>👋 Hello! I'm <strong>TechFusion AI</strong>, your official guide to <strong>TECHFUSION 2026</strong> — the flagship CSE &amp; IOT symposium of <strong>INNOVEX 2026</strong> at R.V.R. &amp; J.C. College of Engineering.</p>
       <p>I have comprehensive knowledge of all <strong>3 flagship events</strong>, rules, timelines, <strong>free registrations</strong>, prize pools, and coordinators. How can I help you today?</p>
     `;
     const actions = [
@@ -1631,19 +1630,19 @@ function initAiAgent() {
     }
 
     // 2. META MATRIX (EVENT 02 - CODING)
-    if (q.includes("meta") || q.includes("matrix") || q.includes("event 2") || (q.includes("coding") && !q.includes("event")) || q.includes("programming challenge")) {
+    if ((q.includes("meta") || q.includes("matrix") || q.includes("event 2") || (q.includes("coding") && !q.includes("event")) || q.includes("programming challenge")) && !q.includes("coord") && !q.includes("staff") && !q.includes("contact")) {
       return {
         text: `
           <p>💻 <strong>EVENT 02: META MATRIX</strong> (Technical Challenge)</p>
           <p>A flagship competitive coding challenge evaluating algorithms, core computer science concepts, and analytical problem solving.</p>
           <ul>
             <li><strong>Prelims:</strong> 8:00 AM – 12:00 PM &bull; 20 MCQs on programming &amp; CS fundamentals (10 mins)</li>
-            <li><strong>Mains:</strong> 1:00 PM – 4:00 PM &bull; 5 coding problems of varying difficulty evaluated against automated test cases (2 hours)</li>
+            <li><strong>Mains:</strong> 1:00 PM – 3:00 PM &bull; 5 coding problems of varying difficulty evaluated against automated test cases (2 hours)</li>
             <li><strong>Team:</strong> 2 Members (UG &amp; PG students from the same college)</li>
             <li><strong>Venue:</strong> Cyber Block, ACC Lab</li>
             <li><strong>Prizes:</strong> 1st: ₹3,000 &bull; 2nd: ₹2,000 &bull; 3rd: ₹1,000</li>
-            <li><strong>Staff Coordinators:</strong> Dr. M. Srikanth, Dr. M. Sreelatha</li>
-            <li><strong>Event Coordinators:</strong> P. Sampath Vinayak (<a href="tel:+919392515992">+91 93925 15992</a>), B. Poshitha Sri (<a href="tel:+918499098999">+91 84990 98999</a>)</li>
+            <li><strong>Staff Coordinators:</strong> Dr. Bhagya Lakshmi Nandipati (Associate Professor), Mrs. M. Vasavi (Assistant Professor)</li>
+            <li><strong>Student Coordinators:</strong> P. Sampath Vinayak (<a href="tel:+919392515992">+91 93925 15992</a>), Y. Lokesh (<a href="tel:+918639465554">+91 86394 65554</a>)</li>
           </ul>
         `,
         actions: [
@@ -1654,14 +1653,14 @@ function initAiAgent() {
     }
 
     // 3. MICRO MISSION (EVENT 01 - QUIZ / REASONING / ROUNDS)
-    if (q.includes("micro") || q.includes("mission") || q.includes("event 1") || q.includes("quiz") || q.includes("byte talk") || q.includes("charades") || q.includes("think n sync") || q.includes("racking brains")) {
+    if ((q.includes("micro") || q.includes("mission") || q.includes("event 1") || q.includes("quiz") || q.includes("byte talk") || q.includes("charades") || q.includes("think n sync") || q.includes("racking brains")) && !q.includes("coord") && !q.includes("staff") && !q.includes("contact")) {
       return {
         text: `
           <p>⚡ <strong>EVENT 01: MICRO MISSION</strong> (Technical Quest)</p>
           <p>An engaging technical quest testing reasoning, technical communication, teamwork, and problem-solving through 4 dynamic rounds.</p>
           <ul>
             <li><strong>Prelims:</strong> 8:00 AM – 12:00 PM &bull; 15 MCQs on general reasoning &amp; basic programming (10 mins). Top 6 teams qualify!</li>
-            <li><strong>Mains Rounds:</strong> 1:00 PM – 4:00 PM
+            <li><strong>Mains Rounds:</strong> 1:00 PM – 3:30 PM (2.5 Hours)
               <ul>
                 <li>1. <em>Think N Sync:</em> Coding question + logo identification (40 mins)</li>
                 <li>2. <em>Tech Charades:</em> Non-verbal technical word guessing (2 words, roles switch)</li>
@@ -1670,10 +1669,10 @@ function initAiAgent() {
               </ul>
             </li>
             <li><strong>Team:</strong> 2 Members (from same college)</li>
-            <li><strong>Venue:</strong> Cyber Block Labs</li>
+            <li><strong>Venue:</strong> Cyber Block Seminar Hall</li>
             <li><strong>Prizes:</strong> 1st: ₹3,000 &bull; 2nd: ₹2,000 &bull; 3rd: ₹1,000</li>
-            <li><strong>Staff Coordinators:</strong> Dr. M. Srikanth, Dr. N. Nagamalleswara Rao</li>
-            <li><strong>Event Coordinators:</strong> Revtish Muthineni (<a href="tel:+917675890406">+91 76758 90406</a>), K. Kalyan (<a href="tel:+917569292106">+91 75692 92106</a>)</li>
+            <li><strong>Staff Coordinators:</strong> Dr. T. Anuradha (Associate Professor), Sri N. Chandra Sekhar (Assistant Professor)</li>
+            <li><strong>Student Coordinator:</strong> Revtish Muthineni (<a href="tel:+917675890406">+91 76758 90406</a>)</li>
           </ul>
         `,
         actions: [
@@ -1684,7 +1683,7 @@ function initAiAgent() {
     }
 
     // 4. MEME MAGIC (EVENT 03 - CREATIVE / MEMES)
-    if (q.includes("meme") || q.includes("magic") || q.includes("event 3") || q.includes("video meme") || q.includes("deadline") || q.includes("6th oct")) {
+    if ((q.includes("meme") || q.includes("magic") || q.includes("event 3") || q.includes("video meme") || q.includes("deadline") || q.includes("6th oct")) && !q.includes("coord") && !q.includes("staff") && !q.includes("contact")) {
       return {
         text: `
           <p>🎭 <strong>EVENT 03: MEME MAGIC</strong> (Meme Design Challenge)</p>
@@ -1693,7 +1692,7 @@ function initAiAgent() {
             <li><strong>Prelims (Online Submission):</strong> Submit 1 static meme by <strong>6th October 2026 (11:59 PM IST)</strong>. Themes:
               <em>Developers vs Bugs</em>, <em>Technology vs Reality</em>, or <em>The Life of Software Professionals With AI</em>.
               Top 25 teams qualify for on-campus mains!</li>
-            <li><strong>Mains (On Campus):</strong> 9th Oct, 1:00 PM – 4:00 PM &bull; Create a 10–15s Video Meme based on a surprise theme revealed on the spot! Plus a tie-breaker dialogue guessing round.</li>
+            <li><strong>Mains (On Campus):</strong> 9th Oct, 1:00 PM – 3:00 PM &bull; Create a 15–30s Video Meme based on a surprise theme revealed on the spot! Plus a tie-breaker dialogue guessing round.</li>
             <li><strong>Mandatory Requirement:</strong> All participants <strong>must bring earphones</strong>!</li>
             <li><strong>Prizes:</strong>
               <ul>
@@ -1702,8 +1701,8 @@ function initAiAgent() {
                 <li>🥉 3rd: ₹1,000 (Creative Catalyst)</li>
               </ul>
             </li>
-            <li><strong>Staff Coordinators:</strong> Dr. M. Srikanth, Dr. N. Nagamalleswara Rao</li>
-            <li><strong>Event Coordinators:</strong> N. Uttej (<a href="tel:+916300537352">+91 63005 37352</a>), K. Kalyan (<a href="tel:+917569292106">+91 75692 92106</a>)</li>
+            <li><strong>Staff Coordinators:</strong> Dr. Z. Sunitha Bai (Associate Professor), Smt. S. Udaya Lakshmi (Assistant Professor)</li>
+            <li><strong>Student Coordinators:</strong> N. Uttej (<a href="tel:+916300537352">+91 63005 37352</a>), P. Bharath (<a href="tel:+917569063286">+91 75690 63286</a>)</li>
           </ul>
         `,
         actions: [
@@ -1719,9 +1718,9 @@ function initAiAgent() {
         text: `
           <p>🚀 <strong>TECHFUSION 2026 — 3 FLAGSHIP EVENTS:</strong></p>
           <ul>
-            <li>⚡ <strong>EVENT 01: MICRO MISSION</strong> &bull; Technical Quest &bull; 15 MCQs Prelims, 4 Mains rounds (Think N Sync, Charades, Racking Brains, Byte Talks).</li>
-            <li>💻 <strong>EVENT 02: META MATRIX</strong> &bull; Coding Challenge &bull; 20 MCQs Prelims, 5 competitive coding problems Mains evaluated by automated test cases.</li>
-            <li>🎭 <strong>EVENT 03: MEME MAGIC</strong> &bull; Creative Meme Design &bull; Online static meme prelims (Deadline: Oct 6), On-campus 10–15s video meme mains.</li>
+            <li>⚡ <strong>EVENT 01: MICRO MISSION</strong> &bull; Technical Quest &bull; Prelims: 8:00 AM - 12:00 PM, Mains: 1:00 PM - 3:30 PM (Think N Sync, Charades, Racking Brains, Byte Talks).</li>
+            <li>💻 <strong>EVENT 02: META MATRIX</strong> &bull; Coding Challenge &bull; Prelims: 8:00 AM - 12:00 PM, Mains: 1:00 PM - 3:00 PM (5 competitive coding problems).</li>
+            <li>🎭 <strong>EVENT 03: MEME MAGIC</strong> &bull; Creative Meme Design &bull; Online static meme prelims (Deadline: Oct 6), Mains: 1:00 PM - 3:00 PM (15–30s video meme).</li>
           </ul>
           <p><em>All events are for teams of 2 students from the same college, with zero registration fees and ₹6,000 in cash prizes per event!</em></p>
         `,
@@ -1745,10 +1744,10 @@ function initAiAgent() {
               <br>• Micro Mission: 15 MCQs (Reasoning to basic coding)
               <br>• Meme Magic: Shortlisting evaluation of online submissions
             </li>
-            <li><strong>01:00 PM – 04:00 PM &bull; Mains Phase:</strong>
-              <br>• Meta Matrix: 5 Coding challenges across Cyber Block ACC Lab
-              <br>• Micro Mission: Think N Sync, Tech Charades, Racking Brains, Byte Talks
-              <br>• Meme Magic: 10–15s On-Campus Video Meme creation
+            <li><strong>01:00 PM – 03:30 PM &bull; Mains Phase:</strong>
+              <br>• Meta Matrix: 5 Coding challenges across Cyber Block ACC Lab (1:00 PM - 3:00 PM)
+              <br>• Micro Mission: Think N Sync, Tech Charades, Racking Brains, Byte Talks (1:00 PM - 3:30 PM)
+              <br>• Meme Magic: 15–30s On-Campus Video Meme creation (1:00 PM - 3:00 PM)
             </li>
             <li><strong>04:00 PM – 05:00 PM &bull; Grand Valedictory:</strong>
               <br>Final demos, announcement of winners, distribution of cash prizes and merit certificates!
@@ -1782,31 +1781,118 @@ function initAiAgent() {
       };
     }
 
-    // 8. COORDINATORS & CONTACTS
-    if (q.includes("coord") || q.includes("contact") || q.includes("phone") || q.includes("call") || q.includes("number") || q.includes("kalyan") || q.includes("poshitha") || q.includes("sampath") || q.includes("uttej") || q.includes("revtish") || q.includes("faculty") || q.includes("sreelatha") || q.includes("nagamalleswara") || q.includes("srikanth") || q.includes("dean") || q.includes("hod") || q.includes("convener") || q.includes("lead") || q.includes("student coordinator") || q.includes("faculty coordinator")) {
+    // 8. COORDINATORS & CONTACTS (OVERALL, STAFF, AND EVENT SPECIFIC)
+    if (
+      q.includes("coord") || q.includes("contact") || q.includes("phone") || q.includes("call") ||
+      q.includes("number") || q.includes("staff") || q.includes("faculty") || q.includes("teacher") ||
+      q.includes("convener") || q.includes("hod") || q.includes("dean") || q.includes("kalyan") ||
+      q.includes("chaitanya") || q.includes("sampath") || q.includes("lokesh") ||
+      q.includes("uttej") || q.includes("bharath") || q.includes("revtish") ||
+      q.includes("anuradha") ||
+      q.includes("chandra sekhar") || q.includes("bhagya") || q.includes("vasavi") || q.includes("sunitha") ||
+      q.includes("udaya") || q.includes("srikanth") || q.includes("nagamalleswara") || q.includes("sreelatha")
+    ) {
+      // 8a. Micro Mission specific coordinator query
+      if (q.includes("micro") || q.includes("anuradha") || q.includes("chandra sekhar") || (q.includes("revtish") && !q.includes("kalyan") && !q.includes("chaitanya"))) {
+        return {
+          text: `
+            <p>⚡ <strong>MICRO MISSION (EVENT 01) COORDINATORS:</strong></p>
+            <p><strong>Staff Coordinators:</strong></p>
+            <ul>
+              <li><strong>Dr. T. Anuradha</strong> &bull; Associate Professor, Dept. of CSE</li>
+              <li><strong>Sri N. Chandra Sekhar</strong> &bull; Assistant Professor, Dept. of CSE</li>
+            </ul>
+            <p><strong>Student Coordinator:</strong></p>
+            <ul>
+              <li><strong>Revtish Muthineni:</strong> <a href="tel:+917675890406">+91 76758 90406</a></li>
+            </ul>
+          `,
+          actions: [
+            { html: `<button type="button" class="ai-action-btn" data-action="open-modal" data-id="1">🔍 View Micro Mission Details</button>` },
+            { html: `<button type="button" class="ai-action-btn" data-action="scroll-to" data-target="#coordinators">👥 All Coordinators</button>` }
+          ]
+        };
+      }
+
+      // 8b. Meta Matrix specific coordinator query
+      if (q.includes("meta") || q.includes("matrix") || q.includes("bhagya") || q.includes("vasavi") || q.includes("sampath") || q.includes("lokesh")) {
+        return {
+          text: `
+            <p>💻 <strong>META MATRIX (EVENT 02) COORDINATORS:</strong></p>
+            <p><strong>Staff Coordinators:</strong></p>
+            <ul>
+              <li><strong>Dr. Bhagya Lakshmi Nandipati</strong> &bull; Associate Professor, Dept. of CSE</li>
+              <li><strong>Mrs. M. Vasavi</strong> &bull; Assistant Professor, Dept. of CSE</li>
+            </ul>
+            <p><strong>Student Coordinators:</strong></p>
+            <ul>
+              <li><strong>P. Sampath Vinayak:</strong> <a href="tel:+919392515992">+91 93925 15992</a></li>
+              <li><strong>Y. Lokesh:</strong> <a href="tel:+918639465554">+91 86394 65554</a></li>
+            </ul>
+          `,
+          actions: [
+            { html: `<button type="button" class="ai-action-btn" data-action="open-modal" data-id="2">🔍 View Meta Matrix Details</button>` },
+            { html: `<button type="button" class="ai-action-btn" data-action="scroll-to" data-target="#coordinators">👥 All Coordinators</button>` }
+          ]
+        };
+      }
+
+      // 8c. Meme Magic specific coordinator query
+      if (q.includes("meme") || q.includes("magic") || q.includes("sunitha") || q.includes("udaya") || q.includes("uttej") || q.includes("bharath")) {
+        return {
+          text: `
+            <p>🎭 <strong>MEME MAGIC (EVENT 03) COORDINATORS:</strong></p>
+            <p><strong>Staff Coordinators:</strong></p>
+            <ul>
+              <li><strong>Dr. Z. Sunitha Bai</strong> &bull; Associate Professor, Dept. of CSE</li>
+              <li><strong>Smt. S. Udaya Lakshmi</strong> &bull; Assistant Professor, Dept. of CSE</li>
+            </ul>
+            <p><strong>Student Coordinators:</strong></p>
+            <ul>
+              <li><strong>N. Uttej:</strong> <a href="tel:+916300537352">+91 63005 37352</a></li>
+              <li><strong>P. Bharath:</strong> <a href="tel:+917569063286">+91 75690 63286</a></li>
+            </ul>
+          `,
+          actions: [
+            { html: `<button type="button" class="ai-action-btn" data-action="open-modal" data-id="3">🔍 View Meme Magic Details</button>` },
+            { html: `<button type="button" class="ai-action-btn" data-action="scroll-to" data-target="#coordinators">👥 All Coordinators</button>` }
+          ]
+        };
+      }
+
+      // 8d. General / Comprehensive Coordinators Response
       return {
         text: `
-          <p>📞 <strong>TECHFUSION LEADERSHIP &amp; COORDINATORS:</strong></p>
-          <p><strong>Faculty Leadership:</strong></p>
+          <p>📞 <strong>TECHFUSION 2026 LEADERSHIP &amp; COORDINATORS:</strong></p>
+          <p><strong>Faculty Leadership &amp; Advisory:</strong></p>
           <ul>
-            <li>Dr. M. Sreelatha &bull; Professor &amp; Dean, Dept. of CSE (Advisory Committee)</li>
-            <li>Dr. N. Nagamalleswara Rao &bull; Professor &amp; HOD, Dept. of CSE &amp; CSO (Advisory Committee)</li>
-            <li>Dr. M. Srikanth &bull; Professor, Dept. of CSE (Staff Convener (CSE))</li>
+            <li><strong>Dr. N. Nagamalleswara Rao</strong> &bull; Professor &amp; HOD, Dept. of CSE &amp; IOT (Advisory Committee)</li>
+            <li><strong>Dr. M. Srikanth</strong> &bull; Professor, Dept. of CSE (Staff Convener)</li>
           </ul>
-          <p><strong>Student Coordinators:</strong></p>
+          <p><strong>Overall Student Coordinators:</strong></p>
           <ul>
-            <li>K. Kalyan: <a href="tel:+917569292106">+91 75692 92106</a></li>
-            <li>B. Poshitha Sri: <a href="tel:+918499098999">+91 84990 98999</a></li>
+            <li><strong>K. Kalyan:</strong> <a href="tel:+917569292106">+91 75692 92106</a></li>
+            <li><strong>N. Chaitanya:</strong> <a href="tel:+919390567394">+91 93905 67394</a></li>
           </ul>
-          <p><strong>Event Coordinators:</strong></p>
+          <p><strong>Event-wise Staff &amp; Student Coordinators:</strong></p>
           <ul>
-            <li>Micro Mission: Revtish Muthineni (<a href="tel:+917675890406">+91 76758 90406</a>), K. Kalyan (<a href="tel:+917569292106">+91 75692 92106</a>)</li>
-            <li>Meta Matrix: P. Sampath Vinayak (<a href="tel:+919392515992">+91 93925 15992</a>), B. Poshitha Sri (<a href="tel:+918499098999">+91 84990 98999</a>)</li>
-            <li>Meme Magic: N. Uttej (<a href="tel:+916300537352">+91 63005 37352</a>), K. Kalyan (<a href="tel:+917569292106">+91 75692 92106</a>)</li>
+            <li>⚡ <strong>Micro Mission (Event 01):</strong>
+              <br>• <em>Staff:</em> Dr. T. Anuradha, Sri N. Chandra Sekhar
+              <br>• <em>Student:</em> Revtish Muthineni (<a href="tel:+917675890406">+91 76758 90406</a>)
+            </li>
+            <li>💻 <strong>Meta Matrix (Event 02):</strong>
+              <br>• <em>Staff:</em> Dr. Bhagya Lakshmi Nandipati, Mrs. M. Vasavi
+              <br>• <em>Students:</em> P. Sampath Vinayak (<a href="tel:+919392515992">+91 93925 15992</a>), Y. Lokesh (<a href="tel:+918639465554">+91 86394 65554</a>)
+            </li>
+            <li>🎭 <strong>Meme Magic (Event 03):</strong>
+              <br>• <em>Staff:</em> Dr. Z. Sunitha Bai, Smt. S. Udaya Lakshmi
+              <br>• <em>Students:</em> N. Uttej (<a href="tel:+916300537352">+91 63005 37352</a>), P. Bharath (<a href="tel:+917569063286">+91 75690 63286</a>)
+            </li>
           </ul>
         `,
         actions: [
-          { html: `<button type="button" class="ai-action-btn" data-action="scroll-to" data-target="#coordinators">👥 View Coordinators Section</button>` }
+          { html: `<button type="button" class="ai-action-btn" data-action="scroll-to" data-target="#coordinators">👥 View Coordinators Section</button>` },
+          { html: `<a href="${eventForms.event1}" target="_blank" rel="noopener noreferrer" class="ai-action-btn btn-action-register">🚀 Register Free</a>` }
         ]
       };
     }
@@ -1818,7 +1904,7 @@ function initAiAgent() {
           <p>📍 <strong>CAMPUS &amp; VENUE DETAILS:</strong></p>
           <ul>
             <li><strong>Institution:</strong> R.V.R. &amp; J.C. College of Engineering (Autonomous)</li>
-            <li><strong>Department:</strong> Department of Computer Science &amp; Engineering (CSE) and Internet of Things (CSO)</li>
+            <li><strong>Department:</strong> Department of Computer Science &amp; Engineering (CSE) and Internet of Things (IOT)</li>
             <li><strong>Location:</strong> Chandramoulipuram, Chowdavaram, Guntur, Andhra Pradesh &ndash; 522019</li>
             <li><strong>Event Arenas:</strong> Cyber Block Labs &amp; ACC Lab</li>
           </ul>
@@ -1875,7 +1961,7 @@ function initAiAgent() {
       return {
         text: `
           <p>🌐 <strong>ABOUT INNOVEX 2026:</strong></p>
-          <p><strong>INNOVEX 2026</strong> is the premier national-level technical festival of R.V.R. &amp; J.C. College of Engineering. <strong>TECHFUSION 2026</strong> is the flagship CSE &amp; CSO departmental event block within INNOVEX.</p>
+          <p><strong>INNOVEX 2026</strong> is the premier national-level technical festival of R.V.R. &amp; J.C. College of Engineering. <strong>TECHFUSION 2026</strong> is the flagship CSE &amp; IOT departmental event block within INNOVEX.</p>
           <p>You can return to the main INNOVEX portal at any time using the navigation button.</p>
         `,
         actions: [
@@ -1917,7 +2003,7 @@ function initAiAgent() {
         <ul>
           <li>🎯 <strong>The 3 Events:</strong> Micro Mission, Meta Matrix, Meme Magic</li>
           <li>💰 <strong>Registration:</strong> 100% Free entry (No fee)</li>
-          <li>🕒 <strong>Schedule:</strong> Prelims (8 AM - 12 PM), Mains (1 PM - 4 PM) on Oct 9</li>
+          <li>🕒 <strong>Schedule:</strong> Prelims (8 AM - 12 PM), Mains (1 PM - 3:30 PM) on Oct 9</li>
           <li>🏆 <strong>Cash Prizes:</strong> ₹3,000 (1st), ₹2,000 (2nd), ₹1,000 (3rd)</li>
           <li>📞 <strong>Coordinators:</strong> Faculty &amp; Student phone contacts</li>
           <li>📍 <strong>Venue:</strong> Cyber Block &amp; ACC Lab at RVR&JC Campus</li>
@@ -1935,4 +2021,4 @@ function initAiAgent() {
 
 
 
-
+

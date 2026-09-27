@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TECHFUSION 2026 — FLAGSHIP CSE & CSO EVENT PLATFORM
+   TECHFUSION 2026 — FLAGSHIP CSE & IOT EVENT PLATFORM
    Official Technical Symposium of INNOVEX 2026
    R.V.R. & J.C. College of Engineering (Autonomous), Guntur
    ========================================================================== */
@@ -147,6 +147,56 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* =============================================================================
+   UNIVERSAL TEXT JUSTIFICATION SYSTEM (Narrative descriptions & card content)
+   ============================================================================= */
+.about-desc,
+.about-card-desc,
+.about-quote-box p,
+.rule-desc,
+.card-desc,
+.event-card-desc,
+.timeline-desc,
+.modal-desc,
+.modal-section p,
+.modal-rule-item,
+.modal-rules-list li,
+.modal-req-list li,
+.modal-about-text,
+.modal-task-text,
+.guidelines-card p,
+.info-card p,
+.info-card-val,
+.ai-msg-bubble p,
+.ai-msg-bubble li,
+.faq-desc,
+.eligibility-note,
+.alert-box p,
+.rule-content,
+.event-details p {
+  text-align: justify;
+  text-justify: inter-word;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+/* Centered Lead Text & Section Subtitles */
+.hero-tagline,
+.hero-description,
+p.hero-description,
+.section-header,
+.section-header .section-subtitle,
+p.section-subtitle,
+.section-subtitle {
+  text-align: center !important;
+  text-align-last: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 body.light-mode {
   background-color: var(--bg-primary);
   background-image:
@@ -269,13 +319,27 @@ body.light-mode {
 }
 
 @keyframes auroraBreath {
-  0% { transform: translateX(-50%) scale(1); opacity: 0.85; }
-  100% { transform: translateX(-50%) scale(1.06); opacity: 1; }
+  0% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.85;
+  }
+
+  100% {
+    transform: translateX(-50%) scale(1.06);
+    opacity: 1;
+  }
 }
 
 @keyframes auroraShift {
-  0% { transform: translate(-50%, -30%) rotate(0deg); opacity: 0.8; }
-  100% { transform: translate(-48%, -28%) rotate(6deg); opacity: 1; }
+  0% {
+    transform: translate(-50%, -30%) rotate(0deg);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translate(-48%, -28%) rotate(6deg);
+    opacity: 1;
+  }
 }
 
 /* Pure CSS GPU-Accelerated Circuit Data Packet Streams */
@@ -322,17 +386,43 @@ body.light-mode {
 }
 
 @keyframes streamH {
-  0% { transform: translateX(-100%); opacity: 0; }
-  15% { opacity: 0.75; }
-  85% { opacity: 0.75; }
-  100% { transform: translateX(100%); opacity: 0; }
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.75;
+  }
+
+  85% {
+    opacity: 0.75;
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 }
 
 @keyframes streamV {
-  0% { transform: translateY(-100%); opacity: 0; }
-  15% { opacity: 0.65; }
-  85% { opacity: 0.65; }
-  100% { transform: translateY(100%); opacity: 0; }
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.65;
+  }
+
+  85% {
+    opacity: 0.65;
+  }
+
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
 }
 
 /* Technical HUD Telemetry Chips */
@@ -352,10 +442,25 @@ body.light-mode {
   text-transform: uppercase;
 }
 
-.hud-tl { top: 22px; left: 24px; }
-.hud-tr { top: 22px; right: 24px; }
-.hud-bl { bottom: 20px; left: 24px; }
-.hud-br { bottom: 20px; right: 24px; }
+.hud-tl {
+  top: 22px;
+  left: 24px;
+}
+
+.hud-tr {
+  top: 22px;
+  right: 24px;
+}
+
+.hud-bl {
+  bottom: 20px;
+  left: 24px;
+}
+
+.hud-br {
+  bottom: 20px;
+  right: 24px;
+}
 
 .hud-dot {
   width: 5px;
@@ -367,17 +472,52 @@ body.light-mode {
 }
 
 @keyframes hudPulse {
-  0%, 100% { opacity: 0.35; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.25); }
+
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
 }
 
 @media (max-width: 768px) {
-  #siteBgCanvas { display: none !important; }
-  .cyber-data-stream { display: none !important; }
-  .site-bg-beam, .site-bg-ambient, .site-bg-nebula { animation: none !important; }
-  .hud-tr, .hud-bl { display: none !important; }
-  .hud-tl { top: 12px; left: 14px; font-size: 0.58rem; letter-spacing: 1.2px; }
-  .hud-br { bottom: 12px; right: 14px; font-size: 0.58rem; letter-spacing: 1.2px; }
+  #siteBgCanvas {
+    display: none !important;
+  }
+
+  .cyber-data-stream {
+    display: none !important;
+  }
+
+  .site-bg-beam,
+  .site-bg-ambient,
+  .site-bg-nebula {
+    animation: none !important;
+  }
+
+  .hud-tr,
+  .hud-bl {
+    display: none !important;
+  }
+
+  .hud-tl {
+    top: 12px;
+    left: 14px;
+    font-size: 0.58rem;
+    letter-spacing: 1.2px;
+  }
+
+  .hud-br {
+    bottom: 12px;
+    right: 14px;
+    font-size: 0.58rem;
+    letter-spacing: 1.2px;
+  }
 }
 
 /* Light Mode Overrides */
@@ -751,6 +891,7 @@ body.light-mode .hud-dot {
 }
 
 @keyframes pulseGlow {
+
   0%,
   100% {
     opacity: 0.6;
@@ -2707,10 +2848,31 @@ footer::before {
   color: #38bdf8;
 }
 
+footer,
+footer p,
+.footer-content,
+.footer-content p,
+.footer-brand,
+.footer-fest,
+.footer-copy,
+.footer-rights {
+  text-align: center !important;
+  text-justify: auto !important;
+}
+
 .footer-copy {
   color: var(--text-muted);
   font-size: 0.84rem;
   line-height: 1.8;
+  margin-bottom: 6px;
+}
+
+.footer-rights {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin: 0 auto;
 }
 
 .footer-divider {
@@ -3400,7 +3562,7 @@ footer::before {
 
 /* =============================================================================
 /* =============================================================================
-   TECHFUSION 2K26 — CSE & CSO DEPARTMENT CINEMATIC OPENING EXPERIENCE
+   TECHFUSION 2K26 — CSE & IOT DEPARTMENT CINEMATIC OPENING EXPERIENCE
    ============================================================================= */
 
 .intro-splash-screen {
@@ -3607,15 +3769,24 @@ footer::before {
   animation: introPillFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.intro-event-pill:nth-child(1) { animation-delay: 0.12s; }
-.intro-event-pill:nth-child(2) { animation-delay: 0.24s; }
-.intro-event-pill:nth-child(3) { animation-delay: 0.36s; }
+.intro-event-pill:nth-child(1) {
+  animation-delay: 0.12s;
+}
+
+.intro-event-pill:nth-child(2) {
+  animation-delay: 0.24s;
+}
+
+.intro-event-pill:nth-child(3) {
+  animation-delay: 0.36s;
+}
 
 @keyframes introPillFade {
   0% {
     opacity: 0;
     transform: translateY(12px) scale(0.96);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -3716,6 +3887,7 @@ footer::before {
     opacity: 0;
     transform: scale(0.88) translateY(20px);
   }
+
   100% {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -4674,7 +4846,8 @@ body.light-mode .social-pill.twitter:hover {
   box-shadow: 0 5px 18px rgba(14, 165, 233, 0.18);
 }
 
-body.light-mode .footer-copy {
+body.light-mode .footer-copy,
+body.light-mode .footer-rights {
   color: #64748b;
 }
 
@@ -6029,19 +6202,23 @@ body.light-mode .ai-input-field:focus {
 /* ==========================================================================
    ULTRA-SMOOTH MOBILE SCROLLING & GPU PERFORMANCE ENGINE
    ========================================================================== */
-@media (max-width: 768px), (pointer: coarse) {
+@media (max-width: 768px),
+(pointer: coarse) {
+
   /* 1. Eliminate Background Re-rasterization on Mobile Touch Scrolling */
   html,
   body,
   body.light-mode {
     background-attachment: scroll !important;
-    scroll-behavior: auto !important; /* Native 120Hz/60Hz touch momentum */
+    scroll-behavior: auto !important;
+    /* Native 120Hz/60Hz touch momentum */
     -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
   }
 
   body.light-mode::before {
-    display: none !important; /* Disable fixed repeating gradients during mobile scroll */
+    display: none !important;
+    /* Disable fixed repeating gradients during mobile scroll */
   }
 
   /* 2. Remove GPU Fill-rate bottleneck (heavy backdrop-filters) on mobile */
@@ -6066,7 +6243,8 @@ body.light-mode .ai-input-field:focus {
   .countdown-segment {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-    transform: translateZ(0); /* Hardware accelerate composite layer */
+    transform: translateZ(0);
+    /* Hardware accelerate composite layer */
   }
 
   /* 3. Disable continuous GPU repaint animations on mobile cards */
