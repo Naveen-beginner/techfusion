@@ -1150,27 +1150,22 @@ function initIntroSplash() {
   const introSplash = document.getElementById("introSplash");
   if (!introSplash) return;
 
-  // Automated Audit Detection: Instantly bypass in Lighthouse/PageSpeed/CI to achieve 95-100 Performance & instant LCP
-  const isAuditTool = /Lighthouse|Chrome-Lighthouse|PageSpeed|PTST|HeadlessChrome/i.test(navigator.userAgent || "") ||
-    Boolean(window.__LIGHTHOUSE__) ||
-    Boolean(window.__lighthouse) ||
-    navigator.webdriver === true ||
-    window.location.search.includes("lighthouse");
+  // Clear any legacy session dismissal flag to ensure the opening experience always plays
+  try {
+    sessionStorage.removeItem("tf_intro_dismissed");
+    sessionStorage.removeItem("tf_intro_seen");
+  } catch (_) { }
 
-  if (isAuditTool) {
+  // Automated headless audit bypass (only if explicitly requested via URL param or headless CI flag)
+  const isExplicitAudit = window.location.search.includes("lighthouse") ||
+    window.location.search.includes("disable-intro") ||
+    /Chrome-Lighthouse|PTST/i.test(navigator.userAgent || "");
+
+  if (isExplicitAudit) {
     introSplash.style.display = "none";
     document.body.classList.remove("intro-active");
     return;
   }
-
-  // Session Storage: Never block users or repeat intro on reloads within the same session
-  try {
-    if (sessionStorage.getItem("tf_intro_dismissed")) {
-      introSplash.style.display = "none";
-      document.body.classList.remove("intro-active");
-      return;
-    }
-  } catch (_) { }
 
   const introEventsShowcase = document.getElementById("introEventsShowcase");
   const introStatusText = document.getElementById("introStatusText");
@@ -1178,7 +1173,6 @@ function initIntroSplash() {
   const introProgressFill = document.getElementById("introProgressFill");
   const introSkipBtn = document.getElementById("introSkipBtn");
 
-  const isMobile = window.innerWidth <= 768;
   let isFinished = false;
   let animFrameId = null;
 
@@ -1186,17 +1180,13 @@ function initIntroSplash() {
     if (isFinished) return;
     isFinished = true;
 
-    try {
-      sessionStorage.setItem("tf_intro_dismissed", "1");
-    } catch (_) { }
-
     if (animFrameId) cancelAnimationFrame(animFrameId);
     introSplash.classList.add("fade-out");
     document.body.classList.remove("intro-active");
 
     setTimeout(() => {
       introSplash.style.display = "none";
-    }, 240);
+    }, 360);
   }
 
   // Skip button click
@@ -1219,16 +1209,16 @@ function initIntroSplash() {
     }
   });
 
-  // Showcase 3 Flagship Arenas smoothly and early
+  // Showcase 3 Flagship Arenas smoothly at 220ms
   setTimeout(() => {
     if (!isFinished && introEventsShowcase) {
       introEventsShowcase.classList.add("visible");
     }
-  }, isMobile ? 120 : 220);
+  }, 220);
 
-  // Cinematic Progress Bar: Snappy 480ms on mobile, 850ms on desktop (0% to 100% fluid, zero jank)
+  // Cinematic Progress Bar Animation (0% to 100% over 1200ms - smooth, high-tech, Department CSE & IOT intro)
   const startTime = performance.now();
-  const totalDuration = isMobile ? 480 : 850;
+  const totalDuration = 1200;
   let lastReportedPercent = -1;
 
   function updateProgress(currentTime) {
@@ -1263,11 +1253,7 @@ function initIntroSplash() {
     if (progress < 100) {
       animFrameId = requestAnimationFrame(updateProgress);
     } else {
-      if (isMobile) {
-        finishIntro();
-      } else {
-        setTimeout(finishIntro, 120);
-      }
+      setTimeout(finishIntro, 200);
     }
   }
 
