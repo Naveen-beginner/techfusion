@@ -6371,4 +6371,184 @@ body.light-mode .ai-input-field:focus {
   }
 }
 
+/* =============================================================================
+   TECHFUSION POSTER POPUP MODAL (CINEMATIC OPENING)
+   ============================================================================= */
+
+.poster-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(3, 7, 18, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.poster-modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.poster-modal-card {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px);
+  border-radius: 16px;
+  background: #090f1d;
+  box-shadow: 0 25px 65px -10px rgba(0, 0, 0, 0.85),
+              0 0 40px rgba(0, 242, 254, 0.22),
+              0 0 0 1px rgba(255, 255, 255, 0.12);
+  transform: scale(0.9) translateY(12px);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+}
+
+.poster-modal-backdrop.active .poster-modal-card {
+  transform: scale(1) translateY(0);
+}
+
+.poster-img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.poster-modal-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(88vw, 560px);
+  max-height: 84vh;
+  max-height: 84dvh;
+  object-fit: contain;
+  border-radius: 16px;
+  pointer-events: auto;
+}
+
+/* Yellow circular close button matching reference */
+.poster-close-btn {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 50%;
+  background: #fde047; /* Sunny Vibrant Yellow */
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.2s ease,
+              box-shadow 0.2s ease;
+  padding: 0;
+  touch-action: manipulation;
+  outline: none;
+}
+
+.poster-close-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: #000000;
+  stroke-width: 3.8;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.poster-close-btn:hover {
+  background: #facc15;
+  transform: scale(1.14);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.65), 0 0 15px rgba(253, 224, 71, 0.4);
+}
+
+.poster-close-btn:hover svg {
+  transform: rotate(90deg);
+}
+
+.poster-close-btn:active {
+  transform: scale(0.94);
+}
+
+.poster-close-btn:focus-visible {
+  outline: 3px solid #38bdf8;
+  outline-offset: 3px;
+}
+
+/* Single-glance responsive optimization for mobile & tablet */
+@media (max-width: 640px) {
+  .poster-modal-backdrop {
+    padding: 16px 12px;
+  }
+
+  .poster-modal-card {
+    max-width: calc(100vw - 24px);
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+    border-radius: 14px;
+  }
+
+  .poster-img-container {
+    border-radius: 14px;
+  }
+
+  .poster-modal-img {
+    max-width: calc(100vw - 28px);
+    max-height: 80vh;
+    max-height: 80dvh;
+    border-radius: 14px;
+  }
+
+  .poster-close-btn {
+    top: -12px;
+    right: -10px;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .poster-close-btn svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* Ultra small devices (height or width constrained) */
+@media (max-height: 600px) {
+  .poster-modal-img {
+    max-height: 76vh;
+    max-height: 76dvh;
+  }
+
+  .poster-close-btn {
+    top: -10px;
+    right: -10px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
 /* END ENHANCEMENTS */

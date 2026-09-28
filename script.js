@@ -373,6 +373,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   replaceFaWithSvg();
   initIntroSplash();
+  initPosterModal();
   renderEventCards();
   initEventModal();
   initCountdown();
@@ -1207,6 +1208,9 @@ function initIntroSplash() {
 
     setTimeout(() => {
       introSplash.style.display = "none";
+      if (typeof window.openPosterModal === "function") {
+        window.openPosterModal();
+      }
     }, 360);
   }
 
@@ -1282,7 +1286,68 @@ function initIntroSplash() {
 }
 
 // =============================================================================
-// 11b. THEME TOGGLE — LIGHT / DARK MODE
+// 11b. TECHFUSION POSTER POPUP MODAL CONTROLLER
+// =============================================================================
+
+function initPosterModal() {
+  const backdrop = document.getElementById("posterModalBackdrop");
+  const card = document.getElementById("posterModalCard");
+  const closeBtn = document.getElementById("posterCloseBtn");
+
+  if (!backdrop) return;
+
+  function openPosterModal() {
+    backdrop.classList.add("active");
+    document.body.style.overflow = "hidden";
+    if (closeBtn) {
+      try {
+        closeBtn.focus({ preventScroll: true });
+      } catch (_) {
+        closeBtn.focus();
+      }
+    }
+  }
+
+  function closePosterModal() {
+    if (!backdrop.classList.contains("active")) return;
+    backdrop.classList.remove("active");
+
+    // Only reset body overflow if event details dialog is not open
+    const eventModal = document.getElementById("eventModal");
+    if (!eventModal || !eventModal.open) {
+      document.body.style.overflow = "";
+    }
+  }
+
+  // Expose globally so finishIntro can trigger it
+  window.openPosterModal = openPosterModal;
+  window.closePosterModal = closePosterModal;
+
+  // 1. Close on clicking yellow cross button
+  if (closeBtn) {
+    closeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      closePosterModal();
+    });
+  }
+
+  // 2. Close on clicking outside the poster card (on backdrop)
+  backdrop.addEventListener("click", (e) => {
+    if (e.target === backdrop || (card && !card.contains(e.target))) {
+      closePosterModal();
+    }
+  });
+
+  // 3. Close on Escape key
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && backdrop.classList.contains("active")) {
+      closePosterModal();
+    }
+  });
+}
+
+// =============================================================================
+// 11c. THEME TOGGLE — LIGHT / DARK MODE
 // =============================================================================
 
 function initThemeToggle() {
