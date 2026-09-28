@@ -1354,15 +1354,14 @@ function initThemeToggle() {
   const btn = document.getElementById("themeToggleBtn");
   if (!btn) return;
 
-  // Restore saved preference
-  const savedTheme = localStorage.getItem("tf-theme");
-  if (savedTheme === "light") {
-    document.body.classList.add("light-mode");
-  }
+  // Always default to Dark Mode on fresh load or page refresh
+  try {
+    localStorage.removeItem("tf-theme");
+  } catch (_) { }
+  document.body.classList.remove("light-mode");
 
   btn.addEventListener("click", () => {
-    const isLight = document.body.classList.toggle("light-mode");
-    localStorage.setItem("tf-theme", isLight ? "light" : "dark");
+    document.body.classList.toggle("light-mode");
 
     // Add click flash to the toggle button itself
     btn.classList.remove("btn-click-flash");
