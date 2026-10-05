@@ -203,7 +203,7 @@ const eventsData = [
       "Each team must submit one static meme based on one of the given themes: Developers vs Bugs, Technology vs Reality, or The Life of Software Professionals With AI.",
       "Prelims submissions must be in PNG or JPG format with a maximum file size of 10 MB.",
       "The file name must follow the format Team_leadname.jpg Example: PixelKings_Technology vs Reality.",
-      "The Prelims submission deadline is 6th October 2026 at 11:59 PM IST.",
+      "The Prelims submission deadline is 7th October 2026 at 12:00 PM IST.",
       "The Mains Round will be conducted on campus and will consist of a Surprise Theme Reveal, Video Meme Creation, Submission & Verification, and Judging & Presentation.",
       "The Mains Round theme will be revealed on the spot. Participants must create their meme/video based on the given theme.",
       "Canva, Clip Champ, and Picsart will be provided as the available editing tools. One editing tool to be used for video generation will also be announced on the spot for Mains Round .",
@@ -220,13 +220,13 @@ const eventsData = [
     teamSize: "2 Members",
     eligibility: "Open to student teams consisting of two members from the same college.",
     date: "9th October 2026",
-    time: "Prelims Deadline: 6th Oct 2026 - 11:59 PM IST | Mains: 1:00 PM - 3:00 PM",
-    prelimsTime: "Prelims Deadline: 6th Oct 2026 - 11:59 PM IST",
+    time: "Prelims Deadline: 7th Oct 2026 - 12:00 PM IST | Mains: 1:00 PM - 3:00 PM",
+    prelimsTime: "Prelims Deadline: 7th Oct 2026 - 12:00 PM IST",
     mainsTime: "Mains: 1:00 PM - 3:00 PM",
     prelims: {
-      timing: "Deadline: 6th Oct 2026 - 11:59 PM IST",
+      timing: "Deadline: 7th Oct 2026 - 12:00 PM IST",
       questions: "1 Static Meme (Themes: Developers vs Bugs / Technology vs Reality / Life with AI)",
-      timeLimit: "Submission Deadline: 6th Oct 2026"
+      timeLimit: "Submission Deadline: 7th Oct 2026 (12:00 PM)"
     },
     mains: {
       timing: "1:00 PM - 3:00 PM",
@@ -1777,13 +1777,13 @@ function initAiAgent() {
     }
 
     // 4. MEME MAGIC (EVENT 03 - CREATIVE / MEMES)
-    if ((q.includes("meme") || q.includes("magic") || q.includes("event 3") || q.includes("video meme") || q.includes("deadline") || q.includes("6th oct")) && !q.includes("coord") && !q.includes("staff") && !q.includes("contact")) {
+    if ((q.includes("meme") || q.includes("magic") || q.includes("event 3") || q.includes("video meme") || q.includes("deadline") || q.includes("7th oct") || q.includes("6th oct")) && !q.includes("coord") && !q.includes("staff") && !q.includes("contact")) {
       return {
         text: `
           <p>🎭 <strong>EVENT 03: MEME MAGIC</strong> (Meme Design Challenge)</p>
           <p>A witty and creative digital challenge celebrating visual storytelling, humor, and tech culture.</p>
           <ul>
-            <li><strong>Prelims (Online Submission):</strong> Submit 1 static meme by <strong>6th October 2026 (11:59 PM IST)</strong>. Themes:
+            <li><strong>Prelims (Online Submission):</strong> Submit 1 static meme by <strong>7th October 2026 (12:00 PM IST)</strong>. Themes:
               <em>Developers vs Bugs</em>, <em>Technology vs Reality</em>, or <em>The Life of Software Professionals With AI</em>.
               Top 25 teams qualify for on-campus mains!</li>
             <li><strong>Mains (On Campus):</strong> 9th Oct, 1:00 PM – 3:00 PM &bull; Create a 15–30s Video Meme based on a surprise theme revealed on the spot! Plus a tie-breaker dialogue guessing round.</li>
@@ -1814,7 +1814,7 @@ function initAiAgent() {
           <ul>
             <li>⚡ <strong>EVENT 01: MICRO MISSION</strong> &bull; Technical Quest &bull; Prelims: 8:00 AM - 12:00 PM, Mains: 1:00 PM - 3:30 PM (Think N Sync, Charades, Racking Brains, Byte Talks).</li>
             <li>💻 <strong>EVENT 02: META MATRIX</strong> &bull; Coding Challenge &bull; Prelims: 8:00 AM - 12:00 PM, Mains: 1:00 PM - 3:00 PM (5 competitive coding problems).</li>
-            <li>🎭 <strong>EVENT 03: MEME MAGIC</strong> &bull; Creative Meme Design &bull; Online static meme prelims (Deadline: Oct 6), Mains: 1:00 PM - 3:00 PM (15–30s video meme).</li>
+            <li>🎭 <strong>EVENT 03: MEME MAGIC</strong> &bull; Creative Meme Design &bull; Online static meme prelims (Deadline: Oct 7, 12:00 PM), Mains: 1:00 PM - 3:00 PM (15–30s video meme).</li>
           </ul>
           <p><em>All events are for teams of 2 students from the same college, with zero registration fees and ₹6,000 in cash prizes per event!</em></p>
         `,
@@ -2021,7 +2021,7 @@ function initAiAgent() {
             <li>2. Choose your preferred event(s): Micro Mission, Meta Matrix, or Meme Magic.</li>
             <li>3. Fill out the official Google Form (no fee required).</li>
             <li>4. Carry your valid college ID card on the day of the event (Oct 9, 2026).</li>
-            <li>5. <em>Note:</em> For Meme Magic, submit your static meme before <strong>6th Oct 11:59 PM</strong>.</li>
+            <li>5. <em>Note:</em> For Meme Magic, submit your static meme before <strong>7th Oct 12:00 PM</strong>.</li>
           </ol>
         `,
         actions: [
